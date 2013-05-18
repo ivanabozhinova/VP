@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Game.Properties;
 
 
-namespace BubbleTrouble
+namespace Game
 {
     class Game
     {

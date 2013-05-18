@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Game.Properties;
 
-namespace BubbleTrouble
+namespace Game
 {
     public class Scene
     {
