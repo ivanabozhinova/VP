@@ -16,7 +16,7 @@ namespace Game
         public float currentScore { set; get; }
         public int numLives { set; get; }
         public Scene currentScene { set; get; }
-        public bool gameOver { set; get; }
+
         //ova najverojatno ke treba u forms poso tamu ke se regulira dali e udren ili ne 
         //public bool isPlayerHit { set; get; }
 
@@ -27,7 +27,6 @@ namespace Game
             this.currentScore = 0.0f;
             this.numLives = 5;
             this.currentScene = new Scene(currentLevel, currentScore, numLives);
-            this.gameOver = false;
         }
 
 
@@ -37,7 +36,7 @@ namespace Game
             if (currentLevel <= MAXLevel)
                 this.currentScene = new Scene(currentLevel, currentScore, numLives);
             else
-                gameOver = true;
+                gameOver();
 
         }
 
@@ -46,11 +45,20 @@ namespace Game
         public void replayLevel(Graphics g, Rectangle ClientRectangle)
         {
             this.numLives -= 1;
-            this.currentScene.numLives = numLives;
-            this.currentScene.setScene(currentLevel, currentScore, numLives);
-            this.currentScene.drawScene(g, ClientRectangle);
+            if (numLives == 0)
+                gameOver();
+            else
+            {
+                this.currentScene.numLives = numLives;
+                this.currentScene.setScene(currentLevel, currentScore, numLives);
+                this.currentScene.drawScene(g, ClientRectangle);
+            }
         }
 
+        public void gameOver()
+        {
+            //neso da se otvori novo proozrce ili neso natpis nz ..
+        }
 
     }
 }
