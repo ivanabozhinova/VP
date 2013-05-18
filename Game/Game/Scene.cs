@@ -10,49 +10,97 @@ namespace BubbleTrouble
 {
     public class Scene
     {
-        private static readonly int TIME = 120;
-
-        public int numLifes { set; get; }
+        public int numLives { set; get; }
         public float score { set; get; }
         public Image backgroundImg { set; get; }
         public Image lifeImg { set; get; }
-        public Image infoBarImg { set; get; }
+        public Image statusBarImg { set; get; }
+        public Image levelImg { set; get; } //da se najdat slikichki
         public int level { set; get; }
 
-
-
-
-        public Scene()
+        public Scene(int level, float score, int numLives)
         {
-            numLifes = 5;
-            score = 0.0f;
-            level = 1;
+            this.setScene(level, score, numLives);
+
+        }
+
+        //set the Scene for the current level
+        public void setScene(int level, float score, int numLives)
+        {
+            this.numLives = numLives;
+            this.score = score;
+            this.level = level;
             backgroundImg = Resources.level1;
             lifeImg = Resources.fire;
-            infoBarImg = Resources.infoBar;
-
+            statusBarImg = Resources.infoBar;
+            /*
+             switch (level)
+             {
+                 case 3:
+                          levelImg=Resources.three; 
+                          break;
+                 case 2:
+                          levelImg=Resources.two; 
+                          break;
+                 case 1:
+                          levelImg=Resources.one; 
+                          break;
+             }
+              
+             
+             
+             */
         }
 
-        public void updateTime()
+
+
+        //display the currentlevel
+        public void showLevel(Graphics g, Rectangle ClientRectangle);
+
+
+
+        //display the background of the status bar
+        public void showStatusBar(Graphics g, Rectangle ClientRectangle)
         {
-
+            g.DrawImage(statusBarImg, ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height,
+                        statusBarImg.Width + 5, statusBarImg.Height);
         }
 
-        public void showInfoBar(Graphics g, Rectangle ClientRectangle)
+        //display the number of lives
+        public void showLives(Graphics g, Rectangle ClientRectangle)
         {
-            g.DrawImage(infoBarImg, ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height - infoBarImg.Height, infoBarImg.Width+5, infoBarImg.Height);
+            if (numLives > 0)
+            {
+                //display the first life
+                g.DrawImage(lifeImg, ClientRectangle.X + 9, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 4,
+                            lifeImg.Width + 12, lifeImg.Height - 2);
+                //display the rest
+                if (numLives > 1)
+                {
+                    for (int i = 1; i < numLives; i++)
+                        g.DrawImage(lifeImg,
+                                    ClientRectangle.X + i * (lifeImg.Width + 12) + 9, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 4,
+                                    lifeImg.Width + 11, lifeImg.Height - 2);
+                }
+            }
         }
 
-        public void showLifes(Graphics g, Rectangle ClientRectangle)
+        //draw the background
+        public void drawBackground(Graphics g, Rectangle ClientRectangle)
         {
-            if (numLifes > 0) g.DrawImage(lifeImg, ClientRectangle.X  + 9, ClientRectangle.Y + ClientRectangle.Height - infoBarImg.Height * 2 / 3 + 4, lifeImg.Width + 12, lifeImg.Height - 2);
-            for (int i = 1; i < numLifes; i++)
-                g.DrawImage(lifeImg, ClientRectangle.X + i * (lifeImg.Width + 12) + 9, ClientRectangle.Y + ClientRectangle.Height - infoBarImg.Height * 2 / 3 +4, lifeImg.Width + 11, lifeImg.Height-2);
-
-
+            g.DrawImage(this.backgroundImg, ClientRectangle);
         }
 
+        //draw the whole Scene
+        public void drawScene(Graphics g, Rectangle ClientRectangle)
+        {
+            g.Clear(Color.White);
 
+            this.drawBackground(g, ClientRectangle);
+            this.showStatusBar(g, ClientRectangle);
+            this.showLives(g, ClientRectangle);
+            this.showLevel(g, ClientRectangle);
 
+        }
     }
 }
