@@ -12,3 +12,5 @@ Scena: da bide bukvalno samo sliki i niso drugo : toa so istekuvanje na vreme mo
 Ball : 
 
 Coveve:
+
+i jas da probam :)
