@@ -1,0 +1,9 @@
+C:\Users\User\Documents\GitHub\VP\Game\Game\bin\Debug\Game.exe
+C:\Users\User\Documents\GitHub\VP\Game\Game\bin\Debug\Game.pdb
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\Game.Form1.resources
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\Game.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\Game.exe
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Debug\Game.pdb

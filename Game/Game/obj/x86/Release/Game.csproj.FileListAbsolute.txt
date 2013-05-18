@@ -7,3 +7,5 @@ C:\Users\Windows\Documents\GitHub\VP\Game\Game\bin\Release\Game.exe
 C:\Users\Windows\Documents\GitHub\VP\Game\Game\bin\Release\Game.pdb
 C:\Users\Windows\Documents\GitHub\VP\Game\Game\obj\x86\Release\Game.exe
 C:\Users\Windows\Documents\GitHub\VP\Game\Game\obj\x86\Release\Game.pdb
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Release\Game.exe
+C:\Users\User\Documents\GitHub\VP\Game\Game\obj\x86\Release\Game.pdb

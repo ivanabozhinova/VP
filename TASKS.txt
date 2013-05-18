@@ -2,5 +2,7 @@ Tasks                           Name:                            State:					Desc
  
 1.Class Scene 			Sneze				18.05.2013 /12:17 pocnav		Ke stavam slikicki od scenata ,ke ja kreiram klasata ..
 2.Sliki				Ivana				18.05.2013 /na kraj 			Statusna lenta, brojcinja, pozadini
+3.Class Bubble 			Simona				18.05.2013				implementacija na klasata
  
- -da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si
+
+-da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si
