@@ -1,9 +1,8 @@
-
 Tasks                           Name:                            State:					Descripiton:
  
 1.Class Scene 			Sneze				18.05.2013 /12:17 pocnav		Ke stavam slikicki od scenata ,ke ja kreiram klasata ..
      
- -da se ovojat tie lentite za zivoti u belo i da se trgne 2riot igrac                              http://prntscr.com/15i71w
+ -da se obojat tie lentite za zivoti u belo i da se trgne 2riot igrac                              http://prntscr.com/15i71w
  -da se najdat pozadini za drugite leveli
- -da se napise metod kaj sto ke se menuvaat pozadinite vo zavisnost od toa koj level si
+ -da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si
  -da se najdat slikicki so brojki so ke pokazuvat koj level si
