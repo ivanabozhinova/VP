@@ -14,7 +14,7 @@ Form1 : da kreirame samo istanci od Level klasata . i da kontrolirame neli koj l
                  -scena
 
  class Topka:
-                 -koordninati 
+		 -koordninati 
 		 -tip
 		 -boja
 class Podarok:
