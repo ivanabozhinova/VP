@@ -17,6 +17,10 @@ Form1 : da kreirame samo istanci od Level klasata . i da kontrolirame neli koj l
 		 -koordninati 
 		 -tip
 		 -boja
+		 
+class Bubble:
+		-img bubble //tip na bubble
+		
 class Podarok:
                -tip
 
