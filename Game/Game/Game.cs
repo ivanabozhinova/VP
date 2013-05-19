@@ -9,7 +9,7 @@ using Game.Properties;
 
 namespace Game
 {
-    class Game
+    public class Game
     {
         public static readonly int MAXLevel = 3;
         public int currentLevel { set; get; }
@@ -58,6 +58,7 @@ namespace Game
         public void gameOver()
         {
             //neso da se otvori novo proozrce ili neso natpis nz ..
+
         }
 
     }
