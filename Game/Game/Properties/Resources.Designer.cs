@@ -88,6 +88,13 @@ namespace Game.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ivana4 {
+            get {
+                object obj = ResourceManager.GetObject("ivana4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap level1 {
             get {
                 object obj = ResourceManager.GetObject("level1", resourceCulture);
@@ -109,6 +116,13 @@ namespace Game.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap simona4 {
+            get {
+                object obj = ResourceManager.GetObject("simona4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap sneze {
             get {
                 object obj = ResourceManager.GetObject("sneze", resourceCulture);
@@ -119,6 +133,13 @@ namespace Game.Properties {
         internal static System.Drawing.Bitmap sneze2 {
             get {
                 object obj = ResourceManager.GetObject("sneze2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap sneze4 {
+            get {
+                object obj = ResourceManager.GetObject("sneze4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

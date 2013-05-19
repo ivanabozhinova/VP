@@ -21,19 +21,19 @@ namespace Game
 
 
 
-        public Scene(int level, float score, int numLives,Player player)
+        public Scene(int level, float score, int numLives)
         {
-            this.setScene(level, score, numLives,player);
+            this.setScene(level, score, numLives);
 
         }
 
         //set the Scene for the current level
-        public void setScene(int level, float score, int numLives, Player player)
+        public void setScene(int level, float score, int numLives)
         {
             this.numLives = numLives;
             this.score = score;
             this.level = level;
-            this.player = player;
+
             backgroundImg = Resources.level1;
             lifeImg = Resources.fire;
             statusBarImg = Resources.infoBar;
@@ -59,7 +59,7 @@ namespace Game
 
 
         //display the currentlevel
-        public void showLevel(Graphics g, Rectangle ClientRectangle);
+        //public void showLevel(Graphics g, Rectangle ClientRectangle);
 
 
 
@@ -103,8 +103,7 @@ namespace Game
             this.drawBackground(g, ClientRectangle);
             this.showStatusBar(g, ClientRectangle);
             this.showLives(g, ClientRectangle);
-            this.showLevel(g, ClientRectangle);
-            this.player.DrawPlayer(g,ClientRectangle);
+            //this.showLevel(g, ClientRectangle);
 
         }
     }
