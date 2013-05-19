@@ -10,19 +10,38 @@ namespace Game
     {
         public Image bubble { set; get; }
         public Point coordinates { set; get; }
-        public float size { set; get; }
-        public float velocity { get; set; }
-        public float angle { get; set; }
+        public double size { set; get; }
+        public double velocity { get; set; }
+        public double angle { get; set; }
+        public bool ishited { set; get; }
 
-        private float velocityX;
-        private float velocityY;
+        private double velocityX;
+        private double velocityY;
 
-        public Ball(Point Coordinates, float Size, float Velocity, float Angle)
+        public Ball(Point Coordinates)
         {
             coordinates = Coordinates;
-            size = Size;
-            velocity = Velocity;
-            angle = Angle;
+            size = 30.0;
+            velocity = 10;
+            Random r = new Random();
+            angle = r.NextDouble() * 2 * Math.PI;
+            velocityX = (float)(Math.Cos(angle) * velocity);
+            velocityY = (float)(Math.Sin(angle) * velocity);
+        }
+
+
+        public void MoveBall()
+        {
+        }
+
+
+        public bool isHitBall()
+        {
+            return false;
+        }
+
+        public void DrawBall()
+        { 
         }
 
     }

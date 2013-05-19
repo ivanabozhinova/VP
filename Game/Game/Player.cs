@@ -95,5 +95,13 @@ namespace Game
                 g.DrawImage(playerBackImg, X, Y, playerBackImg.Width, playerBackImg.Height);
         }
 
+
+        //public bool isHit()
+        //{
+        //    //da se implementira
+        //    return false;
+        //}
+
+
     }
 }
