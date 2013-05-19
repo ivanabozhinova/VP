@@ -71,7 +71,7 @@ namespace Game
             {
                 case DIRECTION.right:
                     X += 5;
-                    if (X > worldWidth) X = worldWidth;
+                    if (X >= worldWidth-30) X = worldWidth-30;
                     break;
                 case DIRECTION.left:
                     X -= 5;

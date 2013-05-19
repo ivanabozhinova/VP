@@ -6,3 +6,4 @@ Tasks                           Name:                            State:					Desc
 4.Class Game     		Sneze    			18.05.2013    				pocetno da se dodade objekt od Scene i nekoi osnovni promenlivi i metodi
 
 -da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si
+-da se sredi dvizenjeto da coveceto za da ne izleguva od granicite na prozorecot
