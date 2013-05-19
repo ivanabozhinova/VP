@@ -54,6 +54,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
@@ -88,6 +89,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\level1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simona.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simona2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simona4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze4.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

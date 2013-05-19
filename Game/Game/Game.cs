@@ -16,6 +16,7 @@ namespace Game
         public float currentScore { set; get; }
         public int numLives { set; get; }
         public Scene currentScene { set; get; }
+ 
 
         //ova najverojatno ke treba u forms poso tamu ke se regulira dali e udren ili ne 
         //public bool isPlayerHit { set; get; }
