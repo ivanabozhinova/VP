@@ -17,19 +17,23 @@ namespace Game
         public Image statusBarImg { set; get; }
         public Image levelImg { set; get; } //da se najdat slikichki
         public int level { set; get; }
+        public Player player{ set; get; }
 
-        public Scene(int level, float score, int numLives)
+
+
+        public Scene(int level, float score, int numLives,Player player)
         {
-            this.setScene(level, score, numLives);
+            this.setScene(level, score, numLives,player);
 
         }
 
         //set the Scene for the current level
-        public void setScene(int level, float score, int numLives)
+        public void setScene(int level, float score, int numLives, Player player)
         {
             this.numLives = numLives;
             this.score = score;
             this.level = level;
+            this.player = player;
             backgroundImg = Resources.level1;
             lifeImg = Resources.fire;
             statusBarImg = Resources.infoBar;
@@ -100,6 +104,7 @@ namespace Game
             this.showStatusBar(g, ClientRectangle);
             this.showLives(g, ClientRectangle);
             this.showLevel(g, ClientRectangle);
+            this.player.DrawPlayer(g,ClientRectangle);
 
         }
     }

@@ -16,17 +16,19 @@ namespace Game
         public float currentScore { set; get; }
         public int numLives { set; get; }
         public Scene currentScene { set; get; }
+        public Player player { set; get; }
 
         //ova najverojatno ke treba u forms poso tamu ke se regulira dali e udren ili ne 
         //public bool isPlayerHit { set; get; }
 
 
-        public Game()
+        public Game(Player player)
         {
             this.currentLevel = 1;
             this.currentScore = 0.0f;
             this.numLives = 5;
-            this.currentScene = new Scene(currentLevel, currentScore, numLives);
+            this.player = player;
+            this.currentScene = new Scene(currentLevel, currentScore, numLives,player);
         }
 
 
@@ -34,7 +36,7 @@ namespace Game
         {
             currentLevel += 1;
             if (currentLevel <= MAXLevel)
-                this.currentScene = new Scene(currentLevel, currentScore, numLives);
+                this.currentScene = new Scene(currentLevel, currentScore, numLives,player);
             else
                 gameOver();
 
@@ -50,7 +52,7 @@ namespace Game
             else
             {
                 this.currentScene.numLives = numLives;
-                this.currentScene.setScene(currentLevel, currentScore, numLives);
+                this.currentScene.setScene(currentLevel, currentScore, numLives,player);
                 this.currentScene.drawScene(g, ClientRectangle);
             }
         }
