@@ -52,13 +52,16 @@ namespace Game
                 case Keys.Left:
                     player.ChangeDirection(DIRECTION.left);
                     player.Move(this.Width);
+                    isWalking = true;
                     break;
                 case Keys.Right:
                     player.ChangeDirection(DIRECTION.right);
                     player.Move(this.Width);
+                    isWalking = true;
                     break;
+                
             }
-            isWalking = true;
+            
             Invalidate();
         }
 
