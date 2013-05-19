@@ -32,7 +32,7 @@ namespace Game
             this.MinimizeBox = false;
             isWalking = false;
             playerId = PLAYERID.simona;
-            player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height-65,playerId);
+            player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height-65, playerId);
         }
 
         
