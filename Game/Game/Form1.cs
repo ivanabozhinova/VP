@@ -38,26 +38,17 @@ namespace Game
             this.MinimizeBox = false;
             playerIsWalking = false;
             playerId = PLAYERID.simona;
-<<<<<<< HEAD
-            player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height-65, playerId);
-
-            ball = new Ball(this.Width/13, this.Height/13);
-
-            ball = new Ball(this.Width/3, this.Height/3);
-=======
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
->>>>>>> 48e5c9c2fa062cd02f8bb865ddf4b68e8dc40a7e
 
-            ball = new Ball(30, 30, this.Width, this.Height, 40, Math.PI / 4);
+            ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
             Balls.Add(ball);
-            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 40, 3 * Math.PI / 4);
+            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
             Balls.Add(ball);
 
             this.timer1.Interval = 40;
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
-
 
         }
 
@@ -67,12 +58,12 @@ namespace Game
             Graphics g = e.Graphics;
             g.Clear(Color.White);
             game.currentScene.drawScene(g, this.ClientRectangle);
+            player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
             foreach (Ball ball in Balls)
                 ball.DrawBall(g);
-             if (!player.isHit(Balls))
-            player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
-            
             //Brush zigzagBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black);
+            if (player.isHit(Balls))
+                timer1.Dispose();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -95,24 +86,15 @@ namespace Game
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             playerIsWalking = false;
-           // Invalidate();
+            //Invalidate();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             foreach (Ball ball in Balls)
                 ball.MoveBall();
-            if (player.isHit(Balls))
-            {
-               // MessageBox.Show("Game over");
-                timer1.Stop();
-            }
-            
-            else  
             Invalidate();
         }
-
-
 
 
     }
