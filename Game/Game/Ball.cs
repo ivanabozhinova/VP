@@ -10,8 +10,8 @@ namespace Game
     public class Ball
     {
         public Image bubble { set; get; }
-        public int X { set; get; }
-        public int Y { set; get; } 
+        public float X { set; get; }
+        public float Y { set; get; } 
         public double size { set; get; }
         public double velocity { get; set; }
         public double angle { get; set; }
@@ -34,8 +34,12 @@ namespace Game
         }
 
 
-        public void MoveBall()
+        public void MoveBall(float X)
         {
+           //neso mrda ama ne eopfaten slucajot koa se odbiva  
+                this.X *= (float)Math.PI / 180; ;
+                this.Y = (float)Math.Abs(Math.Cos(X));
+            
         }
 
 
