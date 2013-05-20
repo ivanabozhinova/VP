@@ -35,7 +35,7 @@ namespace Game
             playerIsWalking = false;
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height-65, playerId);
-            ball = new Ball(this.Width/3, this.Height/3);
+            ball = new Ball(this.Width/13, this.Height/13);
         }
 
         

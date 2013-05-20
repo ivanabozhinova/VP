@@ -10,17 +10,17 @@ namespace Game
     public class Ball
     {
         public Image bubble { set; get; }
-        public int X { set; get; }
-        public int Y { set; get; } 
+        public float X { set; get; }
+        public float Y { set; get; } 
         public double size { set; get; }
         public double velocity { get; set; }
         public double angle { get; set; }
         public bool ishited { set; get; }
 
-        private double velocityX;
-        private double velocityY;
+        private float velocityX;
+        private float velocityY;
 
-        public Ball(int x, int y)
+        public Ball(float x, float y)
         {
             bubble = Resources.rball6;
             X = x;
@@ -36,6 +36,18 @@ namespace Game
 
         public void MoveBall()
         {
+            double nextX = X + velocityX;
+            double nextY = Y + velocityY;
+            if (nextX - size <= Bounds.Left || (nextX + size >= Bounds.Right))
+            {
+                velocityX = -velocityX;
+            }
+            if (nextY - size <= Bounds.Top || (nextY + size >= Bounds.Bottom))
+            {
+                velocityY = -velocityY;
+            }
+            X += velocityX;
+            Y += velocityY;
         }
 
 
@@ -47,6 +59,7 @@ namespace Game
         public void DrawBall(Graphics g)
         {
             g.DrawImage(bubble, X, Y, bubble.Width, bubble.Height);
+            
         }
 
     }
