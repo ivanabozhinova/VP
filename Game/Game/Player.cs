@@ -78,9 +78,6 @@ namespace Game
                     if (X < 0) X = 0;
                     break;
             }
-
-            
-            
         }
 
         public void DrawPlayer(Graphics g, Rectangle ClientRectangle,bool isWalking)
@@ -95,11 +92,23 @@ namespace Game
                 g.DrawImage(playerBackImg, X, Y, playerBackImg.Width, playerBackImg.Height);
         }
 
-
         //public bool isHit()
         //{
         //    //da se implementira
         //}
+
+        public bool isHit(List<Ball> balls) //ne raboti tocno
+        {
+            foreach (Ball ball in balls)
+            {
+                if (X + 30 <= ball.Radius && Y+30 <= ball.Radius)
+                     return true;
+                   // return false;
+                if (X - 30 <= ball.Radius && Y - 30 <= ball.Radius)
+                    return true;
+            }
+            return false;
+        }
 
 
     }
