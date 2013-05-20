@@ -35,10 +35,19 @@ namespace Game
             playerIsWalking = false;
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height-65, playerId);
+<<<<<<< HEAD
             ball = new Ball(this.Width/13, this.Height/13);
+=======
+            ball = new Ball(this.Width/3, this.Height/3);
+
+            this.timer1.Interval = 850;
+            this.timer1.Enabled = true;
+            this.timer1.Start();
+
+>>>>>>> ce59ddcda0c2c5052f0349c2a1766224960d8c3b
         }
 
-        
+
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -76,10 +85,14 @@ namespace Game
             Invalidate();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-
+            ball.X += 20;
+            ball.MoveBall(ball.X); 
+            Invalidate(); 
         }
+
+        
         
 
     }

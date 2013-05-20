@@ -34,8 +34,9 @@ namespace Game
         }
 
 
-        public void MoveBall()
+        public void MoveBall(float X)
         {
+<<<<<<< HEAD
             double nextX = X + velocityX;
             double nextY = Y + velocityY;
             if (nextX - size <= Bounds.Left || (nextX + size >= Bounds.Right))
@@ -48,6 +49,12 @@ namespace Game
             }
             X += velocityX;
             Y += velocityY;
+=======
+           //neso mrda ama ne eopfaten slucajot koa se odbiva  
+                this.X *= (float)Math.PI / 180; ;
+                this.Y = (float)Math.Abs(Math.Cos(X));
+            
+>>>>>>> ce59ddcda0c2c5052f0349c2a1766224960d8c3b
         }
 
 
