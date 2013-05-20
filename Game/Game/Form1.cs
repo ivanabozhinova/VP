@@ -17,6 +17,7 @@ namespace Game
         bool playerIsWalking { set; get; }
         public PLAYERID playerId { set; get; }
         public Ball ball { set; get; }
+        public List<Ball> Balls;
 
 
         public Form1()
@@ -24,6 +25,8 @@ namespace Game
             InitializeComponent();
             //creating a new game 
             game = new Game();
+
+            Balls = new List<Ball>();
 
 
             //fixing the form
@@ -36,7 +39,11 @@ namespace Game
             playerIsWalking = false;
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
-            ball = new Ball(0, 0, this.Width, this.Height);
+
+            ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
+            Balls.Add(ball);
+            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
+            Balls.Add(ball);
 
             this.timer1.Interval = 40;
             this.timer1.Tick += new EventHandler(timer1_Tick);
@@ -46,14 +53,14 @@ namespace Game
         }
 
 
-
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.Clear(Color.White);
             game.currentScene.drawScene(g, this.ClientRectangle);
             player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
-            ball.DrawBall(g);
+            foreach (Ball ball in Balls)
+                ball.DrawBall(g);
             //Brush zigzagBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black);
         }
 
@@ -85,7 +92,8 @@ namespace Game
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ball.MoveBall();
+            foreach (Ball ball in Balls)
+                ball.MoveBall();
             Invalidate();
         }
 

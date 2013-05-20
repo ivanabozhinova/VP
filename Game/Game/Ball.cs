@@ -14,7 +14,7 @@ namespace Game
         public double Y { set; get; }
         public double Radius { set; get; }
         public double velocity { get; set; }
-        public double angle { get; set; }
+        public double Angle { get; set; }
         public bool ishited { set; get; }
 
         private double velocityX;
@@ -22,19 +22,20 @@ namespace Game
         private int Width;
         private int Height;
 
-        public Ball(int x, int y, int width, int height)
+        public Ball(double x, double y, int worldWidth, int worldHeight, double radius, double angle)
         {
-            Width = width - 30;
-            Height = height - 150;
+            Width = worldWidth - 30;
+            Height = worldHeight - 150;
             bubble = Resources.rball61;
-            X = 30;
-            Y = 30;
-            Radius = 30;
+            X = x;
+            Y = y;
+            Radius = 40;
             velocity = 5;
-            Random r = new Random();
-            angle = Math.PI / 4;
-            velocityX = (float)(Math.Cos(angle) * velocity);
-            velocityY = (float)(Math.Sin(angle) * velocity);
+            //Random r = new Random();
+            // angle = Math.PI * r.NextDouble();
+            Angle = angle;
+            velocityX = (float)(Math.Cos(Angle) * velocity);
+            velocityY = (float)(Math.Sin(Angle) * velocity);
         }
 
 
