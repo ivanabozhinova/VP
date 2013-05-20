@@ -9,6 +9,8 @@ namespace Game
 {
     public enum DIRECTION { right, left };
     public enum PLAYERID { ivana, simona, sneze };
+    public enum BOUNDS { left, right, top, down };
+
     public class Player
     {
         public int X { set; get; }
@@ -20,13 +22,13 @@ namespace Game
         public DIRECTION direction { set; get; }
         //nekoe property za pukanjeto nz so da pisam 
 
-        public Player(int x,int y, PLAYERID playerId)
+        public Player(int x, int y, PLAYERID playerId)
         {
             this.X = x;
             this.Y = y;
             this.playerId = playerId;
             isShooting = false;
-          
+
             direction = DIRECTION.left;
 
             switch (playerId) //ova mozda ke treba u form poso go predavam po reference sekade
@@ -52,14 +54,14 @@ namespace Game
             switch (direction)
             {
                 case DIRECTION.right:
-                                      if (this.playerId==PLAYERID.ivana) this.playerProfileImg = Resources.ivana4;
-                                 else if (this.playerId == PLAYERID.simona) this.playerProfileImg = Resources.simona4;
-                                 else if (this.playerId == PLAYERID.sneze) this.playerProfileImg = Resources.sneze4;
+                    if (this.playerId == PLAYERID.ivana) this.playerProfileImg = Resources.ivana4;
+                    else if (this.playerId == PLAYERID.simona) this.playerProfileImg = Resources.simona4;
+                    else if (this.playerId == PLAYERID.sneze) this.playerProfileImg = Resources.sneze4;
                     break;
                 case DIRECTION.left:
-                                     if (this.playerId == PLAYERID.ivana) this.playerProfileImg = Resources.ivana;
-                                else if (this.playerId == PLAYERID.simona) this.playerProfileImg = Resources.simona;
-                                else if (this.playerId == PLAYERID.sneze) this.playerProfileImg = Resources.sneze;
+                    if (this.playerId == PLAYERID.ivana) this.playerProfileImg = Resources.ivana;
+                    else if (this.playerId == PLAYERID.simona) this.playerProfileImg = Resources.simona;
+                    else if (this.playerId == PLAYERID.sneze) this.playerProfileImg = Resources.sneze;
                     break;
             }
         }
@@ -71,27 +73,24 @@ namespace Game
             {
                 case DIRECTION.right:
                     X += 5;
-                    if (X >= worldWidth-30) X = worldWidth-30;
+                    if (X >= worldWidth - 30) X = worldWidth - 30;
                     break;
                 case DIRECTION.left:
                     X -= 5;
                     if (X < 0) X = 0;
                     break;
             }
-
-            
-            
         }
 
-        public void DrawPlayer(Graphics g, Rectangle ClientRectangle,bool isWalking)
+        public void DrawPlayer(Graphics g, Rectangle ClientRectangle, bool isWalking)
         {
-         
+
             if (isWalking)
             {
                 g.DrawImage(playerProfileImg, X, Y, playerProfileImg.Width, playerProfileImg.Height);
-                
+
             }
-            if (!isWalking)
+            else
                 g.DrawImage(playerBackImg, X, Y, playerBackImg.Width, playerBackImg.Height);
         }
 
@@ -100,6 +99,22 @@ namespace Game
         //{
         //    //da se implementira
         //}
+
+
+        public bool isHit(List<Ball> Balls)
+        {
+            foreach (Ball ball in Balls)
+            {
+                double Xc = X + playerBackImg.Width / 2;
+                double Yc = Y + playerBackImg.Height / 2;
+                double distance = (Xc - ball.X) * (Xc - ball.X) + (Yc - ball.Y) * (Yc - ball.Y);
+                //double playerRadius = (Xc - X) * (Xc - X) + (Yc - Y) * (Yc - Y);
+                double playerRadius = 60;
+                if (distance <= ((ball.Radius + playerRadius) * (ball.Radius + playerRadius)))
+                    return true;
+            }
+            return false;
+        }
 
 
     }
