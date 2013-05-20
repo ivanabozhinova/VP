@@ -16,6 +16,8 @@ namespace Game
         public Player player { set; get; }
         bool playerIsWalking { set; get; }
         public PLAYERID playerId { set; get; }
+        public Ball ball { set; get; }
+
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace Game
             playerIsWalking = false;
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height-65, playerId);
+            ball = new Ball(this.Width/3, this.Height/3);
         }
 
         
@@ -43,6 +46,7 @@ namespace Game
             g.Clear(Color.White);
             game.currentScene.drawScene(g, this.ClientRectangle);
             player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
+            ball.DrawBall(g);
             //Brush zigzagBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black);
         }
 
