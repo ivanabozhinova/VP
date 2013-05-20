@@ -58,9 +58,7 @@ namespace Game
             X += velocityX;
             Y += velocityY;
 
-
         }
-
 
         public bool isHitBall()
         {

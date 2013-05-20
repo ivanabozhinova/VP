@@ -40,9 +40,9 @@ namespace Game
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
 
-            ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
+            ball = new Ball(30, 30, this.Width, this.Height, 40, Math.PI / 4);
             Balls.Add(ball);
-            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
+            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 40, 3 * Math.PI / 4);
             Balls.Add(ball);
 
             this.timer1.Interval = 40;
@@ -58,9 +58,11 @@ namespace Game
             Graphics g = e.Graphics;
             g.Clear(Color.White);
             game.currentScene.drawScene(g, this.ClientRectangle);
-            player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
             foreach (Ball ball in Balls)
                 ball.DrawBall(g);
+             if (!player.isHit(Balls))
+            player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
+            
             //Brush zigzagBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black);
         }
 
@@ -78,22 +80,26 @@ namespace Game
                     player.Move(this.Width);
                     playerIsWalking = true;
                     break;
-
             }
-
-            Invalidate();
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             playerIsWalking = false;
-            Invalidate();
+           // Invalidate();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             foreach (Ball ball in Balls)
                 ball.MoveBall();
+            if (player.isHit(Balls))
+            {
+               // MessageBox.Show("Game over");
+                timer1.Stop();
+            }
+            
+            else  
             Invalidate();
         }
 
