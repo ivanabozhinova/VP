@@ -88,7 +88,7 @@ namespace Game
             if (isWalking)
             {
                 g.DrawImage(playerProfileImg, X, Y, playerProfileImg.Width, playerProfileImg.Height);
-
+            
             }
             else
                 g.DrawImage(playerBackImg, X, Y, playerBackImg.Width, playerBackImg.Height);
@@ -111,7 +111,8 @@ namespace Game
                 //double playerRadius = (Xc - X) * (Xc - X) + (Yc - Y) * (Yc - Y);
                 double playerRadius = 60;
                 if (distance <= ((ball.Radius + playerRadius) * (ball.Radius + playerRadius)))
-                    return true;
+                    //   return true;
+                    return false; // da ne zamara dodeka go pravam pukanjeto
             }
             return false;
         }
