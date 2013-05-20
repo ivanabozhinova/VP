@@ -99,7 +99,6 @@ namespace Game
         //public bool isHit()
         //{
         //    //da se implementira
-        //    return false;
         //}
 
 

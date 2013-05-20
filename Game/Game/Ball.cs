@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using Game.Properties;
 
 namespace Game
 {
     public class Ball
     {
         public Image bubble { set; get; }
-        public Point coordinates { set; get; }
+        public int X { set; get; }
+        public int Y { set; get; } 
         public double size { set; get; }
         public double velocity { get; set; }
         public double angle { get; set; }
@@ -18,9 +20,11 @@ namespace Game
         private double velocityX;
         private double velocityY;
 
-        public Ball(Point Coordinates)
+        public Ball(int x, int y)
         {
-            coordinates = Coordinates;
+            bubble = Resources.rball6;
+            X = x;
+            Y = y;
             size = 30.0;
             velocity = 10;
             Random r = new Random();
@@ -40,8 +44,9 @@ namespace Game
             return false;
         }
 
-        public void DrawBall()
-        { 
+        public void DrawBall(Graphics g)
+        {
+            g.DrawImage(bubble, X, Y, bubble.Width, bubble.Height);
         }
 
     }
