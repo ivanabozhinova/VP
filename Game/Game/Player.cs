@@ -103,6 +103,16 @@ namespace Game
 
         public bool isHit(List<Ball> Balls)
         {
+            foreach (Ball ball in Balls)
+            {
+                double Xc = X + playerBackImg.Width / 2;
+                double Yc = Y + playerBackImg.Height / 2;
+                double distance = (Xc - ball.X) * (Xc - ball.X) + (Yc - ball.Y) * (Yc - ball.Y);
+                //double playerRadius = (Xc - X) * (Xc - X) + (Yc - Y) * (Yc - Y);
+                double playerRadius = 60;
+                if (distance <= ((ball.Radius + playerRadius) * (ball.Radius + playerRadius)))
+                    return true;
+            }
             return false;
         }
 
