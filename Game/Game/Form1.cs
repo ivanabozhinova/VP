@@ -9,9 +9,14 @@ using System.Windows.Forms;
 
 namespace Game
 {
+
+
     public partial class Form1 : Form
     {
 
+        private int timeElapsed; //izminato vreme vo sekundi
+        private static readonly int TIME = 1200; //vremetraenje na igrata
+        private int lives;
         public Game game { set; get; }
         public Player player { set; get; }
         bool playerIsWalking { set; get; }
@@ -28,9 +33,7 @@ namespace Game
 
             Balls = new List<Ball>();
 
-
-            //fixing the form
-            DoubleBuffered = true;
+            DoubleBuffered = true; //fixing the form
             this.Width = game.currentScene.statusBarImg.Width + 15;
             this.Height = 520;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -40,6 +43,9 @@ namespace Game
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
 
+            lives = 3;
+            pbTime.ForeColor = Color.FromArgb(255, 0, 0);
+            
             ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
             Balls.Add(ball);
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
@@ -49,7 +55,7 @@ namespace Game
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
-
+            
         }
 
 
@@ -64,6 +70,8 @@ namespace Game
             //Brush zigzagBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black);
             if (player.isHit(Balls))
                 timer1.Dispose();
+            
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -93,9 +101,29 @@ namespace Game
         {
             foreach (Ball ball in Balls)
                 ball.MoveBall();
+            
+            timeElapsed++;
+            pbTime.Value = TIME - timeElapsed;
+            
+            if (timeElapsed == TIME)
+            {
+                timer1.Stop();
+            }
+            updateTime();
+
+
             Invalidate();
         }
 
+        private void updateTime() //metod za obnovuvanje na vremeto
+        {
+            int left = TIME - timeElapsed;
+            int min = left / 60;
+            int sec = left % 60;
+            
+        }
 
+       
+        
     }
 }
