@@ -49,7 +49,11 @@ namespace Game
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 8, 3 * Math.PI / 4);
             Balls.Add(ball);
 
+<<<<<<< HEAD
             pbTime = new ProgressBar(6, 408, this.Width, 15);
+=======
+            pbTime = new ProgressBar(10, 412, this.Width, 5);
+>>>>>>> 86d49a8d7e900fd81f70306f1664315e97295ec4
 
             this.timer1.Interval = 60;
             this.timer1.Tick += new EventHandler(timer1_Tick);
@@ -83,7 +87,7 @@ namespace Game
             //iscrtuvanje na linijata za pukanje
             if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150) 
             {
-                Shot.Draw(g);
+                Shot.Draw(g, player);
             }
 
             //iscrtuvanje na progres barot

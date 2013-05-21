@@ -29,7 +29,10 @@ namespace Game
         public void DrawPB(Graphics g)
         {
             g.FillRectangle(barBrush, startX, startY, timeChange, heightR);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 86d49a8d7e900fd81f70306f1664315e97295ec4
         }
 
 

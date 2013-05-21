@@ -84,12 +84,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fire.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\infoBar.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\level1.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rball6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fire.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\infoBar.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
