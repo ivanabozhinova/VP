@@ -9,9 +9,14 @@ using System.Windows.Forms;
 
 namespace Game
 {
+
+
     public partial class Form1 : Form
     {
 
+        private int timeElapsed; //izminato vreme vo sekundi
+        private static readonly int TIME = 1200; //vremetraenje na igrata
+        private int lives;
         public Game game { set; get; }
         public Player player { set; get; }
         bool playerIsWalking { set; get; }
@@ -39,6 +44,7 @@ namespace Game
 
             //fixing the form
             DoubleBuffered = true;
+            DoubleBuffered = true; //fixing the form
             this.Width = game.currentScene.statusBarImg.Width + 15;
             this.Height = 520;
 
@@ -49,6 +55,9 @@ namespace Game
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
 
+            lives = 3;
+            pbTime.ForeColor = Color.FromArgb(255, 0, 0);
+            
             ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
             Balls.Add(ball);
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
@@ -59,6 +68,11 @@ namespace Game
             this.timer1.Enabled = true;
             this.timer1.Start();
 
+            this.timer2.Interval = 50;
+            this.timer2.Tick += new EventHandler(timer2_Tick);
+            this.timer2.Enabled = true;
+            this.timer2.Start();
+            
         }
 
 
@@ -153,9 +167,46 @@ namespace Game
                // MessageBox.Show(numTicks.ToString());
             }
             numTicks++;
+            
+           /* timeElapsed++;
+            pbTime.Value = TIME - timeElapsed;
+            
+            if (timeElapsed == TIME)
+            {
+                timer1.Stop();
+            }
+            updateTime();
+
+            Invalidate();*/
+        }
+
+        
+
+
+        private void updateTime() //metod za obnovuvanje na vremeto
+        {
+            int left = TIME - timeElapsed;
+            int min = left / 60;
+            int sec = left % 60;            
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timeElapsed++;
+            pbTime.Value = TIME - timeElapsed;
+
+            if (timeElapsed == TIME)
+            {
+                timer2.Stop();
+            }
+            updateTime();
+
             Invalidate();
         }
 
+        
 
+       
+        
     }
 }
