@@ -18,7 +18,10 @@ namespace Game
         public Ball ball { set; get; }
         public List<Ball> Balls;
         public Shot Shot;
-
+        private int timeElapsed; //izminato vreme vo sekundi
+        private static readonly int TIME = 1200; //vremetraenje na igrata
+        
+        
         public Form1()
         {
             InitializeComponent();
@@ -123,9 +126,24 @@ namespace Game
                 // MessageBox.Show(numTicks.ToString());
             }
             Shot.numTicks++;
+
+            //timeElapsed++;
+            //pbTime.Value = TIME - timeElapsed;
+
+            //if (timeElapsed == TIME)
+            //{
+            //    timer1.Stop();
+            //}
+            //updateTime();
             Invalidate();
         }
 
+        private void updateTime() //metod za obnovuvanje na vremeto
+        {
+            int left = TIME - timeElapsed;
+            int min = left / 60;
+            int sec = left % 60;
 
+        }
     }
 }
