@@ -21,6 +21,8 @@ namespace Game
         public PLAYERID playerId { set; get; }
         public DIRECTION direction { set; get; }
         //nekoe property za pukanjeto nz so da pisam 
+        double Xc;
+        double Yc;
 
         public Player(int x, int y, PLAYERID playerId)
         {
@@ -105,14 +107,15 @@ namespace Game
         {
             foreach (Ball ball in Balls)
             {
-                double Xc = X + playerBackImg.Width / 2;
-                double Yc = Y + playerBackImg.Height / 2;
-                double distance = (Xc - ball.X) * (Xc - ball.X) + (Yc - ball.Y) * (Yc - ball.Y);
-                //double playerRadius = (Xc - X) * (Xc - X) + (Yc - Y) * (Yc - Y);
-                double playerRadius = 60;
+                Xc = X + playerBackImg.Width / 2;
+                Yc = Y + playerBackImg.Height / 2;
+                double BallXc = ball.X + ball.Radius;
+                double BallYc = ball.Y + ball.Radius;
+                double distance = (Xc - BallXc) * (Xc - BallXc) + (Yc - BallYc) * (Yc - BallYc);
+                double playerRadius = 20;
                 if (distance <= ((ball.Radius + playerRadius) * (ball.Radius + playerRadius)))
-                    //   return true;
-                    return false; // da ne zamara dodeka go pravam pukanjeto
+                       return true;
+                    //return false; // da ne zamara dodeka go pravam pukanjeto
             }
             return false;
         }
