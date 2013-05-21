@@ -48,49 +48,23 @@ namespace Game
 
         public void Draw(Graphics g, Player player)
         {
-
-            g.DrawCurve(shootingPen, ShootingPoints.ToArray());
-            g.TranslateTransform(1, 0);
-            g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
-            g.ResetTransform();
-
-
-            //STRELKA
-            // shootingX = player.X + 15;
-            //  shootingY = height - 100;
-
             if (ShootingPoints.Count > 0)
             {
+                g.DrawCurve(shootingPen, ShootingPoints.ToArray());
+                g.TranslateTransform(1, 0);
+                g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
+                g.ResetTransform();
+
+                //STRELKA
                 Point lastOne = (Point)ShootingPoints.Last();
+                trianglePoints = new Point[3];
 
-                //foreach (Point lastOne in ShootingPoints)
-                {
-                    trianglePoints = new Point[3];
-                    //ili if numticks == shootX
-                    //so sekoj tik se dodava nova tocka
-                    //koordinatite po x im se naizmenicno ili shoot x
-                    //ili shootx - deviation
-                    if (numTicks % 2 == 0)
-                    {
-                        trianglePoints[0] = new Point(lastOne.X + 4, lastOne.Y - 10);
-                        trianglePoints[1] = new Point(lastOne.X - 8, lastOne.Y + 2);
-                        trianglePoints[2] = new Point(lastOne.X + 4, lastOne.Y + 7);
-                    }
-                    else
-                    {
-                        trianglePoints[0] = new Point(lastOne.X - 4, lastOne.Y - 10);
-                        trianglePoints[1] = new Point(lastOne.X - 4, lastOne.Y + 6);
-                        trianglePoints[2] = new Point(lastOne.X + 8, lastOne.Y);
-                    }
+                trianglePoints[0] = new Point(lastOne.X - 2, lastOne.Y - 10);
+                trianglePoints[1] = new Point(lastOne.X - 8, lastOne.Y + 2);
+                trianglePoints[2] = new Point(lastOne.X + 4, lastOne.Y + 2);
 
-
-                    g.FillPolygon(new SolidBrush(Color.Black), trianglePoints);
-                    trianglePoints = new Point[3];
-                }
-
-
-
-
+                g.FillPolygon(new SolidBrush(Color.Black), trianglePoints);
+                trianglePoints = new Point[3];
             }
         }
 
