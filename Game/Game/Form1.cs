@@ -154,6 +154,7 @@ namespace Game
                 // MessageBox.Show(numTicks.ToString());
             }
             Shot.numTicks++;
+            
             Invalidate();
         }
     }
