@@ -47,15 +47,15 @@ namespace Game
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
             Balls.Add(ball);
 
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 100;
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
 
-           // this.timer2.Interval = 50;
-           // this.timer2.Tick += new EventHandler(timer2_Tick);
-           // this.timer2.Enabled = true;
-           // this.timer2.Start();
+            // this.timer2.Interval = 50;
+            // this.timer2.Tick += new EventHandler(timer2_Tick);
+            // this.timer2.Enabled = true;
+            // this.timer2.Start();
         }
 
 
@@ -70,10 +70,10 @@ namespace Game
 
             if (player.isHit(Balls))
             {
-                timer1.Dispose();
+                timer1.Stop();
             }
             //prviot pat koa se iscrtuva PAINT numTicks e 0 i paga na exception u shot kaj draw poso prazna e nizata
-            if (player.isShooting && Shot.numTicks> 0 && Shot.numTicks < 50)
+            if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
             {
                 Shot.Draw(g);
             }
@@ -110,31 +110,23 @@ namespace Game
             }
 
         }
-       
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             foreach (Ball ball in Balls)
                 ball.MoveBall();
 
+            //timer za progress bar
+            //timeElapsed++;
+            //pbTime.Value = TIME - timeElapsed;
+            //if (timeElapsed == TIME)
+            //{
+            //    timer1.Stop();
+            //}
+            // updateTime();
 
-            timeElapsed++;
-            pbTime.Value = TIME - timeElapsed;
 
-            if (timeElapsed == TIME)
-            {
-                timer1.Stop();
-            }
-           // updateTime();
-
-            timer2_Tick();
-            Invalidate();
-        }
-
-        
-
-        private void timer2_Tick()
-        {                          //(object sender, EventArgs e)
-
+            //timer za pukanje
             if (player.isShooting && Shot.shootingY > 5)
             {
                 Shot.deviation *= -1;
@@ -150,20 +142,8 @@ namespace Game
                 // MessageBox.Show(numTicks.ToString());
             }
             Shot.numTicks++;
-            
-           // Invalidate();
+            Invalidate();
         }
-
-
-
-        private void updateTime() //metod za obnovuvanje na vremeto
-        {
-            int left = TIME - timeElapsed;
-            int min = left / 60;
-            int sec = left % 60;
-
-        }
-
 
     }
 }
