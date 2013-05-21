@@ -18,9 +18,10 @@ namespace Game
         public Ball ball { set; get; }
         public List<Ball> Balls;
         public Shot Shot;
-        private int timeElapsed; //izminato vreme vo sekundi
-        private static readonly int TIME = 1200; //vremetraenje na igrata
+        //private int timeElapsed; //izminato vreme vo sekundi
+        //private static readonly int TIME = 1200; //vremetraenje na igrata
 
+        public ProgressBar pbTime;
 
         public Form1()
         {
@@ -29,6 +30,7 @@ namespace Game
             game = new Game();
             Shot = new Shot();
             Balls = new List<Ball>();
+
 
             //fixing the form
             DoubleBuffered = true;
@@ -47,15 +49,13 @@ namespace Game
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
             Balls.Add(ball);
 
-            this.timer1.Interval = 100;
+            pbTime = new ProgressBar(15, 413, this.Width, 0.005F);
+
+            this.timer1.Interval = 60;
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
-
-            // this.timer2.Interval = 50;
-            // this.timer2.Tick += new EventHandler(timer2_Tick);
-            // this.timer2.Enabled = true;
-            // this.timer2.Start();
+            
         }
 
 
@@ -63,20 +63,31 @@ namespace Game
         {
             Graphics g = e.Graphics;
             g.Clear(Color.White);
-            game.currentScene.drawScene(g, this.ClientRectangle);
-            player.DrawPlayer(g, this.ClientRectangle);
-            foreach (Ball ball in Balls)
+
+            //iscrtuvanje na scenata
+            game.currentScene.drawScene(g, this.ClientRectangle); 
+
+            //iscrtuvanje na topkite
+            foreach (Ball ball in Balls) 
                 ball.DrawBall(g);
 
-            if (player.isHit(Balls))
+            //iscrtuvanje na igracot
+            player.DrawPlayer(g, this.ClientRectangle); 
+
+            //ako igracot e pogoden od topka igrata zavrsuva
+            if (player.isHit(Balls)) 
             {
                 timer1.Stop();
             }
-            //prviot pat koa se iscrtuva PAINT numTicks e 0 i paga na exception u shot kaj draw poso prazna e nizata
-            if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
+
+            //iscrtuvanje na linijata za pukanje
+            if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150) 
             {
                 Shot.Draw(g);
             }
+
+            //iscrtuvanje na progres barot
+            pbTime.DrawPB(g); 
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -116,16 +127,6 @@ namespace Game
             foreach (Ball ball in Balls)
                 ball.MoveBall();
 
-            //timer za progress bar
-            //timeElapsed++;
-            //pbTime.Value = TIME - timeElapsed;
-            //if (timeElapsed == TIME)
-            //{
-            //    timer1.Stop();
-            //}
-            // updateTime();
-
-
             //timer za pukanje
             if (player.isShooting && Shot.shootingY > 5)
             {
@@ -142,6 +143,11 @@ namespace Game
                 // MessageBox.Show(numTicks.ToString());
             }
             Shot.numTicks++;
+
+            pbTime.timeChange++;
+            if (pbTime.timeChange == this.Width-5)
+                timer1.Stop();
+           
             Invalidate();
         }
 

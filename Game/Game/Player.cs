@@ -98,12 +98,6 @@ namespace Game
         }
 
 
-        //public bool isHit()
-        //{
-        //    //da se implementira
-        //}
-
-
         public bool isHit(List<Ball> Balls)
         {
             foreach (Ball ball in Balls)

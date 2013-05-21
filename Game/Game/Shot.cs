@@ -9,8 +9,8 @@ namespace Game
     public class Shot
     {
         public List<Point> ShootingPoints { get; set; }
-        public int shootingY { get; set; }
         public int shootingX { get; set; }
+        public int shootingY { get; set; }
         public Pen shootingPen = new Pen(Color.Black, 3);
         public Pen shootingPen1 = new Pen(Color.Gray, 1);
         public int deviation = 5;
@@ -19,8 +19,7 @@ namespace Game
         public Shot()
         {
             ShootingPoints = new List<Point>();
-            numTicks = 0;
-            
+            numTicks = 0;            
         }
 
         public void Draw(Graphics g)
