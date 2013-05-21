@@ -51,6 +51,11 @@ namespace Game
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
+
+            this.timer2.Interval = 50;
+            this.timer2.Tick += new EventHandler(timer2_Tick);
+            this.timer2.Enabled = true;
+            this.timer2.Start();
         }
 
 
@@ -111,6 +116,29 @@ namespace Game
             foreach (Ball ball in Balls)
                 ball.MoveBall();
 
+
+            timeElapsed++;
+            pbTime.Value = TIME - timeElapsed;
+
+            if (timeElapsed == TIME)
+            {
+                timer1.Stop();
+            }
+            updateTime();
+            Invalidate();
+        }
+
+        private void updateTime() //metod za obnovuvanje na vremeto
+        {
+            int left = TIME - timeElapsed;
+            int min = left / 60;
+            int sec = left % 60;
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+
             if (player.isShooting && Shot.shootingY > 5)
             {
                 Shot.deviation *= -1;
@@ -126,24 +154,7 @@ namespace Game
                 // MessageBox.Show(numTicks.ToString());
             }
             Shot.numTicks++;
-
-            //timeElapsed++;
-            //pbTime.Value = TIME - timeElapsed;
-
-            //if (timeElapsed == TIME)
-            //{
-            //    timer1.Stop();
-            //}
-            //updateTime();
             Invalidate();
-        }
-
-        private void updateTime() //metod za obnovuvanje na vremeto
-        {
-            int left = TIME - timeElapsed;
-            int min = left / 60;
-            int sec = left % 60;
-
         }
     }
 }
