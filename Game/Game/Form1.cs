@@ -44,9 +44,13 @@ namespace Game
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
             player.IsWalking = false;
 
-            ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
+            ball = new Ball(30, 30, this.Width, this.Height, 40, Math.PI / 4);
             Balls.Add(ball);
-            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 30, 3 * Math.PI / 4);
+            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 32, 3 * Math.PI / 4);
+            Balls.Add(ball);
+            ball = new Ball(30, 30, this.Width, this.Height, 20, Math.PI / 4);
+            Balls.Add(ball);
+            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 8, 3 * Math.PI / 4);
             Balls.Add(ball);
 
             pbTime = new ProgressBar(15, 413, this.Width, 0.005F);
@@ -125,7 +129,10 @@ namespace Game
         private void timer1_Tick(object sender, EventArgs e)
         {
             foreach (Ball ball in Balls)
+            {
                 ball.MoveBall();
+                ball.Time++;
+            }
 
             //timer za pukanje
             if (player.isShooting && Shot.shootingY > 5)

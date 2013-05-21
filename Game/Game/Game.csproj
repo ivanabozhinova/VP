@@ -123,6 +123,15 @@
     <None Include="Resources\rball6.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\rball2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball5.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\rball6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
