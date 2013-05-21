@@ -15,7 +15,7 @@ namespace Game
 
         public float timeChange;
 
-        public Pen barPen = new Pen(Color.Red, 20);
+        public Brush barBrush = new SolidBrush(Color.Red);
 
         public ProgressBar(float sX, float sY, float wR, float hR) 
         {
@@ -28,7 +28,7 @@ namespace Game
 
         public void DrawPB(Graphics g)
         {
-            g.DrawRectangle(barPen, startX, startY, timeChange, heightR);
+            g.FillRectangle(barBrush, startX, startY, timeChange, heightR);
 
         }
 
