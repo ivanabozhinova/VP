@@ -18,25 +18,34 @@ namespace Game
         public List<Ball> Balls;
         public Shot Shot;
         public ProgressBar pbTime;
-
+        public SCENE_NUMBER currentGameState { set; get; }
         public Form1()
         {
             InitializeComponent();
+            currentGameState = SCENE_NUMBER.begin;
             //creating a new game 
-            game = new Game();
-            Shot = new Shot();
-            Balls = new List<Ball>();
-
+            game = new Game(currentGameState);
+            this.playerId = PLAYERID.ivana;
 
             //fixing the form
             DoubleBuffered = true;
-            this.Width = game.currentScene.statusBarImg.Width + 15;
+            this.Width = 700 + 15;
             this.Height = 520;
 
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            playerId = PLAYERID.simona;
+
+
+
+        }
+
+        public void setNewGame(PLAYERID playerId)
+        {
+            Shot = new Shot();
+            Balls = new List<Ball>();
+
+            this.playerId = playerId;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
             player.IsWalking = false;
 
@@ -51,11 +60,10 @@ namespace Game
 
             pbTime = new ProgressBar(10, 412, this.Width, 5);
 
-            this.timer1.Interval = 60;
+            this.timer1.Interval = 50;
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
-            
         }
 
 
@@ -64,30 +72,38 @@ namespace Game
             Graphics g = e.Graphics;
             g.Clear(Color.White);
 
-            //iscrtuvanje na scenata
-            game.currentScene.drawScene(g, this.ClientRectangle); 
+            if (currentGameState == SCENE_NUMBER.begin)
+                game.currentScene.drawBeginScene(g, this.ClientRectangle);
 
-            //iscrtuvanje na topkite
-            foreach (Ball ball in Balls) 
-                ball.DrawBall(g);
 
-            //iscrtuvanje na igracot
-            player.DrawPlayer(g, this.ClientRectangle); 
-
-            //ako igracot e pogoden od topka igrata zavrsuva
-            if (player.isHit(Balls)) 
+            else
             {
-                timer1.Stop();
-            }
 
-            //iscrtuvanje na linijata za pukanje
-            if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150) 
-            {
-                Shot.Draw(g, player);
-            }
+                //iscrtuvanje na scenata
+                game.currentScene.drawScene(g, this.ClientRectangle);
 
-            //iscrtuvanje na progres barot
-            pbTime.DrawPB(g); 
+                //iscrtuvanje na topkite
+                foreach (Ball ball in Balls)
+                    ball.DrawBall(g);
+
+                //iscrtuvanje na igracot
+                player.DrawPlayer(g, this.ClientRectangle);
+
+                //ako igracot e pogoden od topka igrata zavrsuva
+                if (player.isHit(Balls))
+                {
+                    timer1.Stop();
+                }
+
+                //iscrtuvanje na linijata za pukanje
+                if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
+                {
+                    Shot.Draw(g, player);
+                }
+
+                //iscrtuvanje na progres barot
+                pbTime.DrawPB(g);
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -142,11 +158,34 @@ namespace Game
             Shot.numTicks++;
 
             pbTime.timeChange++;
-            if (pbTime.timeChange == this.Width-5)
+            if (pbTime.timeChange == this.Width - 5)
                 timer1.Stop();
-           
+
             Invalidate();
         }
+
+        private void buttonNewGAME_Click(object sender, EventArgs e)
+        {
+            currentGameState = SCENE_NUMBER.level1;
+            game.goToScene(SCENE_NUMBER.level1);
+            this.buttonChoosePLAYER.Visible = false;
+            this.buttonCONTROLS.Visible = false;
+            this.buttonNewGAME.Visible = false;
+
+            this.buttonChoosePLAYER.Enabled = false;
+            this.buttonCONTROLS.Enabled = false;
+            this.buttonNewGAME.Enabled = false;
+
+            this.setNewGame(this.playerId);
+        }
+
+
+
+
+
+
+
+
 
     }
 }
