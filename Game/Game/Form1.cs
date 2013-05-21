@@ -58,11 +58,11 @@ namespace Game
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 8, 3 * Math.PI / 4);
             Balls.Add(ball);
 
-<<<<<<< HEAD
+
             pbTime = new ProgressBar(6, 408, this.Width, 15);
-=======
+
             pbTime = new ProgressBar(10, 412, this.Width, 5);
->>>>>>> 86d49a8d7e900fd81f70306f1664315e97295ec4
+
 
             this.timer1.Interval = 50;
             this.timer1.Tick += new EventHandler(timer1_Tick);
@@ -165,6 +165,8 @@ namespace Game
             if (pbTime.timeChange == this.Width - 5)
                 timer1.Stop();
 
+
+            hitBallCheck();
             Invalidate();
         }
 
@@ -183,7 +185,24 @@ namespace Game
             this.setNewGame(this.playerId);
         }
 
+        public void hitBallCheck()
+        {
+            for (int i = 0; i < Balls.Count; i++)
+                for (int j = 0; j < Shot.ShootingPoints.Count; j++)
+                {
+                    if (Balls[i].isHitBall(Shot))
+                    {
+                        Balls[i].ishited = true;
+                    }
 
+                }
+
+            for (int i = Balls.Count; i <= 0; i--)
+            {
+                if (Balls[i].ishited)
+                    Balls.RemoveAt(i);
+            }
+        }
 
 
 

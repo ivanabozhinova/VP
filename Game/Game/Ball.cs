@@ -97,10 +97,21 @@ namespace Game
         }
 
 
-        public bool isHitBall()
+        public bool isHitBall(Shot shot)
         {
+            double ShotRadius = 5; 
+
+            double Xs = shot.shootingX + ShotRadius;
+            double Ys = shot.shootingY + ShotRadius;
+            double BallXc = X + Radius;
+            double BallYc = Y + Radius;
+            double distance = (Xs - BallXc) * (Xs - BallXc) + (Ys - BallYc) * (Ys - BallYc);
+
+            if (distance <= ((Radius + ShotRadius) * (Radius + ShotRadius)))
+                return true;
             return false;
         }
+
 
         public void DrawBall(Graphics g)
         {
