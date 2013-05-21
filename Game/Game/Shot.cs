@@ -13,19 +13,21 @@ namespace Game
         public int shootingY { get; set; } //Y koordinata na tocka od linijata
         public Pen shootingPen = new Pen(Color.Black, 3);
         public Pen shootingPen1 = new Pen(Color.Gray, 1);
-        
+
         public int numTicks { get; set; } // kolku vreme pominalo od pritiskanjeto Space
         public int yGrowth; // kolku brzo da raste po Y
         public int deviation; // kolku da otstapuva od prava linija
+        Point[] trianglePoints;
 
-       
+
 
         public Shot()
         {
-            ShootingPoints = new List<Point>(); 
+            ShootingPoints = new List<Point>();
             numTicks = 0;
             yGrowth = 10;
             deviation = 5;
+
         }
 
         /*Crtanjeto na linijata e implementirano so pomos na metodot DrawCurve
@@ -41,16 +43,54 @@ namespace Game
             shootingX += deviation;
             shootingY -= yGrowth;
             ShootingPoints.Add(new Point(shootingX, shootingY));
+            trianglePoints = new Point[3];
         }
 
-        public void Draw(Graphics g)
+        public void Draw(Graphics g, Player player)
         {
+
+            g.DrawCurve(shootingPen, ShootingPoints.ToArray());
+            g.TranslateTransform(1, 0);
+            g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
+            g.ResetTransform();
+
+
+            //STRELKA
+            // shootingX = player.X + 15;
+            //  shootingY = height - 100;
+
             if (ShootingPoints.Count > 0)
             {
-                g.DrawCurve(shootingPen, ShootingPoints.ToArray());
-                g.TranslateTransform(1, 0);
-                g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
-                g.ResetTransform();
+                Point lastOne = (Point)ShootingPoints.Last();
+
+                //foreach (Point lastOne in ShootingPoints)
+                {
+                    trianglePoints = new Point[3];
+                    //ili if numticks == shootX
+                    //so sekoj tik se dodava nova tocka
+                    //koordinatite po x im se naizmenicno ili shoot x
+                    //ili shootx - deviation
+                    if (numTicks % 2 == 0)
+                    {
+                        trianglePoints[0] = new Point(lastOne.X + 4, lastOne.Y - 10);
+                        trianglePoints[1] = new Point(lastOne.X - 8, lastOne.Y + 2);
+                        trianglePoints[2] = new Point(lastOne.X + 4, lastOne.Y + 7);
+                    }
+                    else
+                    {
+                        trianglePoints[0] = new Point(lastOne.X - 4, lastOne.Y - 10);
+                        trianglePoints[1] = new Point(lastOne.X - 4, lastOne.Y + 6);
+                        trianglePoints[2] = new Point(lastOne.X + 8, lastOne.Y);
+                    }
+
+
+                    g.FillPolygon(new SolidBrush(Color.Black), trianglePoints);
+                    trianglePoints = new Point[3];
+                }
+
+
+
+
             }
         }
 
@@ -63,6 +103,7 @@ namespace Game
                 shootingY = height - 100;
                 numTicks = 0;
                 ShootingPoints = new List<Point>();
+                deviation = 5;
             }
         }
     }
