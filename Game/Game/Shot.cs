@@ -20,24 +20,30 @@ namespace Game
         {
             ShootingPoints = new List<Point>();
             numTicks = 0;
+            
         }
 
         public void Draw(Graphics g)
-        { 
-            g.DrawCurve(shootingPen, ShootingPoints.ToArray());
-            g.TranslateTransform(1, 0);
-            g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
-            g.ResetTransform();
+        {
+            if (ShootingPoints.Count > 0)
+            {
+                g.DrawCurve(shootingPen, ShootingPoints.ToArray());
+                g.TranslateTransform(1, 0);
+                g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
+                g.ResetTransform();
+            }
         }
 
         public void resetShot(Player player, int height)
         {
-            player.isShooting = true;
-            shootingX = player.X + 15;
-            shootingY = height - 100;
-            numTicks = 0;
-            ShootingPoints = new List<Point>();
-
+            if ( numTicks>30)
+            {
+                player.isShooting = true;
+                shootingX = player.X + 15;
+                shootingY = height - 100;
+                numTicks = 0;
+                ShootingPoints = new List<Point>();
+            }
         }
     }
 
