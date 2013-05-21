@@ -83,7 +83,7 @@ namespace Game
             //iscrtuvanje na linijata za pukanje
             if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150) 
             {
-                Shot.Draw(g);
+                Shot.Draw(g, player);
             }
 
             //iscrtuvanje na progres barot
