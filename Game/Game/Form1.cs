@@ -11,31 +11,21 @@ namespace Game
 {
     public partial class Form1 : Form
     {
-
         public Game game { set; get; }
         public Player player { set; get; }
-        bool playerIsWalking { set; get; }
+        // bool playerIsWalking { set; get; }
         public PLAYERID playerId { set; get; }
         public Ball ball { set; get; }
         public List<Ball> Balls;
-
-        public List<Point> ShootingPoints;
-        private int shootingY;
-        private int shootingX;
-        private Pen shootingPen = new Pen(Color.Black, 3);
-        private Pen shootingPen1 = new Pen(Color.Gray, 1);
-        private int deviation = 5;
-        private int numTicks = 0;
-
+        public Shot Shot;
 
         public Form1()
         {
             InitializeComponent();
             //creating a new game 
             game = new Game();
-
+            Shot = new Shot();
             Balls = new List<Ball>();
-            ShootingPoints = new List<Point>();
 
             //fixing the form
             DoubleBuffered = true;
@@ -45,9 +35,9 @@ namespace Game
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            playerIsWalking = false;
             playerId = PLAYERID.simona;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
+            player.IsWalking = false;
 
             ball = new Ball(30, 30, this.Width, this.Height, 30, Math.PI / 4);
             Balls.Add(ball);
@@ -58,7 +48,6 @@ namespace Game
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
-
         }
 
 
@@ -67,33 +56,18 @@ namespace Game
             Graphics g = e.Graphics;
             g.Clear(Color.White);
             game.currentScene.drawScene(g, this.ClientRectangle);
-            player.DrawPlayer(g, this.ClientRectangle, playerIsWalking);
+            player.DrawPlayer(g, this.ClientRectangle);
             foreach (Ball ball in Balls)
                 ball.DrawBall(g);
-            //Brush zigzagBrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black);
+
             if (player.isHit(Balls))
             {
                 timer1.Dispose();
             }
 
-            //test na krivata
-            g.TranslateTransform(100, 0);
-            Point[] points = new Point[4];
-            points[0] = new Point(-5, 70);
-            points[1] = new Point(5, 80);
-            points[2] = new Point(-5, 90);
-            points[3] = new Point(5, 100);
-
-            Pen blackPen = new Pen(Color.Black, 5);
-           // g.DrawCurve(blackPen, points);
-
-            if (player.isShooting && numTicks < 50)
+            if (player.isShooting && Shot.numTicks < 50)
             {
-                g.DrawCurve(shootingPen, ShootingPoints.ToArray());
-                g.TranslateTransform(1, 0);
-                g.DrawCurve(shootingPen1, ShootingPoints.ToArray());
-                g.ResetTransform();
-                //ShootingPoints.ToArray();
+                Shot.Draw(g);
             }
         }
 
@@ -104,20 +78,16 @@ namespace Game
                 case Keys.Left:
                     player.ChangeDirection(DIRECTION.left);
                     player.Move(this.Width);
-                    playerIsWalking = true;
+                    player.IsWalking = true;
                     break;
                 case Keys.Right:
                     player.ChangeDirection(DIRECTION.right);
                     player.Move(this.Width);
-                    playerIsWalking = true;
+                    player.IsWalking = true;
                     break;
                 case Keys.Space:
-                    player.isShooting = true;
-                    shootingX = player.X-85;
-                    shootingY = this.Height-100;
-                    numTicks = 0;
-                    ShootingPoints = new List<Point>();
-                    break;                    
+                    Shot.resetShot(player, this.Height);
+                    break;
             }
         }
 
@@ -127,10 +97,10 @@ namespace Game
             {
                 case Keys.Left:
                 case Keys.Right:
-                    playerIsWalking = false;
+                    player.IsWalking = false;
                     break;
-            }            
-     
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -138,21 +108,21 @@ namespace Game
             foreach (Ball ball in Balls)
                 ball.MoveBall();
 
-            if (player.isShooting && shootingY > 5)
+            if (player.isShooting && Shot.shootingY > 5)
             {
-                deviation *= -1;
-                shootingX += deviation;
-                shootingY -=10;
-                ShootingPoints.Add(new Point(shootingX, shootingY));
-               
+                Shot.deviation *= -1;
+                Shot.shootingX += Shot.deviation;
+                Shot.shootingY -= 10;
+                Shot.ShootingPoints.Add(new Point(Shot.shootingX, Shot.shootingY));
+
             }
-            if (player.isShooting && shootingY < 5)
+            if (player.isShooting && Shot.shootingY < 5)
             {
                 player.isShooting = false;
-                ShootingPoints = new List<Point>();
-               // MessageBox.Show(numTicks.ToString());
+                Shot.ShootingPoints = new List<Point>();
+                // MessageBox.Show(numTicks.ToString());
             }
-            numTicks++;
+            Shot.numTicks++;
             Invalidate();
         }
 

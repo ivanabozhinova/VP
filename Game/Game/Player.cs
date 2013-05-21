@@ -20,6 +20,7 @@ namespace Game
         public bool isShooting { set; get; }
         public PLAYERID playerId { set; get; }
         public DIRECTION direction { set; get; }
+        public bool IsWalking { set; get; }
         //nekoe property za pukanjeto nz so da pisam 
         double Xc;
         double Yc;
@@ -84,10 +85,10 @@ namespace Game
             }
         }
 
-        public void DrawPlayer(Graphics g, Rectangle ClientRectangle, bool isWalking)
+        public void DrawPlayer(Graphics g, Rectangle ClientRectangle)
         {
 
-            if (isWalking)
+            if (IsWalking)
             {
                 g.DrawImage(playerProfileImg, X, Y, playerProfileImg.Width, playerProfileImg.Height);
             
