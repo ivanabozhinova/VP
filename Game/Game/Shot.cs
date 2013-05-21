@@ -56,7 +56,7 @@ namespace Game
 
         public void resetShot(Player player, int height)
         {
-            //if ( numTicks>30)
+            if (!player.isShooting)
             {
                 player.isShooting = true;
                 shootingX = player.X + 15;
