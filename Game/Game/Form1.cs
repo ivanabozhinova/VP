@@ -13,14 +13,10 @@ namespace Game
     {
         public Game game { set; get; }
         public Player player { set; get; }
-        // bool playerIsWalking { set; get; }
         public PLAYERID playerId { set; get; }
         public Ball ball { set; get; }
         public List<Ball> Balls;
         public Shot Shot;
-        //private int timeElapsed; //izminato vreme vo sekundi
-        //private static readonly int TIME = 1200; //vremetraenje na igrata
-
         public ProgressBar pbTime;
 
         public Form1()
@@ -134,20 +130,14 @@ namespace Game
                 ball.Time++;
             }
 
-            //timer za pukanje
             if (player.isShooting && Shot.shootingY > 5)
             {
-                Shot.deviation *= -1;
-                Shot.shootingX += Shot.deviation;
-                Shot.shootingY -= 10;
-                Shot.ShootingPoints.Add(new Point(Shot.shootingX, Shot.shootingY));
-
+                Shot.addNewPoint();
             }
             if (player.isShooting && Shot.shootingY < 5)
             {
                 player.isShooting = false;
-                Shot.ShootingPoints = new List<Point>();
-                // MessageBox.Show(numTicks.ToString());
+                //Shot.ShootingPoints = new List<Point>();
             }
             Shot.numTicks++;
 
