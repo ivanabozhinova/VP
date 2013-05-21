@@ -9,33 +9,43 @@ using Game.Properties;
 
 namespace Game
 {
+    public enum SCENE_NUMBER {begin,choosePlayer,controls,level1,level2,level3};
     public class Game
-    {
-        public static readonly int MAXLevel = 3;
-        public int currentLevel { set; get; }
+    {   
+        public SCENE_NUMBER sceneNo { set; get; }
         public float currentScore { set; get; }
         public int numLives { set; get; }
         public Scene currentScene { set; get; }
- 
+       
+      
 
         //ova najverojatno ke treba u forms poso tamu ke se regulira dali e udren ili ne 
         //public bool isPlayerHit { set; get; }
 
 
-        public Game()
+        public Game(SCENE_NUMBER sceneNo)
         {
-            this.currentLevel = 1;
+            goToScene(sceneNo);
+            
+            
+        }
+
+        //moze da se bira samo begin(pocetna strana),choosePlayer,controls,ili da pocne so level 1 
+        public void goToScene(SCENE_NUMBER sceneNo)
+        {
+            this.sceneNo = sceneNo;
             this.currentScore = 0.0f;
             this.numLives = 5;
-            this.currentScene = new Scene(currentLevel, currentScore, numLives);
+            this.currentScene = new Scene(sceneNo, currentScore, numLives);
         }
+       
 
 
         public void nextLevel()
         {
-            currentLevel += 1;
-            if (currentLevel <= MAXLevel)
-                this.currentScene = new Scene(currentLevel, currentScore, numLives);
+            sceneNo += 1;
+            if (sceneNo <= SCENE_NUMBER.level3)
+                this.currentScene = new Scene(sceneNo, currentScore, numLives);
             else
                 gameOver();
 
@@ -51,7 +61,7 @@ namespace Game
             else
             {
                 this.currentScene.numLives = numLives;
-                this.currentScene.setScene(currentLevel, currentScore, numLives);
+                this.currentScene.setScene(sceneNo, currentScore, numLives);
                 this.currentScene.drawScene(g, ClientRectangle);
             }
         }

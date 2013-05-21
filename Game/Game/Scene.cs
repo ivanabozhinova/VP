@@ -15,45 +15,48 @@ namespace Game
         public Image backgroundImg { set; get; }
         public Image lifeImg { set; get; }
         public Image statusBarImg { set; get; }
-        public Image levelImg { set; get; } //da se najdat slikichki
-        public int level { set; get; }
-        public Player player{ set; get; }
+        public Image levelImg { set; get; } 
+        public SCENE_NUMBER sceneNo { set; get; }
+        public Player player { set; get; }
 
 
 
-        public Scene(int level, float score, int numLives)
+        public Scene(SCENE_NUMBER sceneNo, float score, int numLives)
         {
-            this.setScene(level, score, numLives);
+            this.setScene(sceneNo, score, numLives);
 
         }
 
         //set the Scene for the current level
-        public void setScene(int level, float score, int numLives)
+        public void setScene(SCENE_NUMBER sceneNo, float score, int numLives)
         {
             this.numLives = numLives;
             this.score = score;
-            this.level = level;
+            this.sceneNo = sceneNo;
 
-            backgroundImg = Resources.level1;
+            backgroundImg = Resources.begin1;
             lifeImg = Resources.fire;
             statusBarImg = Resources.infoBar;
-            /*
-             switch (level)
+            
+             switch (sceneNo)
              {
-                 case 3:
-                          levelImg=Resources.three; 
+                 case SCENE_NUMBER.level3:
+                     backgroundImg = Resources.lvl3; 
                           break;
-                 case 2:
-                          levelImg=Resources.two; 
+                 case SCENE_NUMBER.level2:
+                          backgroundImg = Resources.level2; 
                           break;
-                 case 1:
-                          levelImg=Resources.one; 
+                 case SCENE_NUMBER.level1:
+                          backgroundImg = Resources.lvl1; 
+                          break;
+                 case SCENE_NUMBER.begin:
+                          backgroundImg = Resources.begin1; 
                           break;
              }
               
              
              
-             */
+            
         }
 
 
@@ -93,6 +96,12 @@ namespace Game
         public void drawBackground(Graphics g, Rectangle ClientRectangle)
         {
             g.DrawImage(this.backgroundImg, ClientRectangle);
+        }
+        public void drawBeginScene(Graphics g, Rectangle ClientRectangle)
+        {
+            g.Clear(Color.White);
+
+            this.drawBackground(g, ClientRectangle);
         }
 
         //draw the whole Scene
