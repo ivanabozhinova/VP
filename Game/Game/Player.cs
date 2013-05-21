@@ -98,12 +98,6 @@ namespace Game
         }
 
 
-        //public bool isHit()
-        //{
-        //    //da se implementira
-        //}
-
-
         public bool isHit(List<Ball> Balls)
         {
             foreach (Ball ball in Balls)
@@ -116,7 +110,7 @@ namespace Game
                 double playerRadius = 20;
                 if (distance <= ((ball.Radius + playerRadius) * (ball.Radius + playerRadius)))
                        return true;
-                    //return false; // da ne zamara dodeka go pravam pukanjeto
+                   // return false; // da ne zamara
             }
             return false;
         }

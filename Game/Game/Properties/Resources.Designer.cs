@@ -102,16 +102,30 @@ namespace Game.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap rball6 {
+        internal static System.Drawing.Bitmap rball2 {
             get {
-                object obj = ResourceManager.GetObject("rball6", resourceCulture);
+                object obj = ResourceManager.GetObject("rball2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap rball61 {
+        internal static System.Drawing.Bitmap rball4 {
             get {
-                object obj = ResourceManager.GetObject("rball61", resourceCulture);
+                object obj = ResourceManager.GetObject("rball4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap rball5 {
+            get {
+                object obj = ResourceManager.GetObject("rball5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap rball6 {
+            get {
+                object obj = ResourceManager.GetObject("rball6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
