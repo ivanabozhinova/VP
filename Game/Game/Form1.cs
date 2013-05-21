@@ -20,8 +20,8 @@ namespace Game
         public Shot Shot;
         private int timeElapsed; //izminato vreme vo sekundi
         private static readonly int TIME = 1200; //vremetraenje na igrata
-        
-        
+
+
         public Form1()
         {
             InitializeComponent();
