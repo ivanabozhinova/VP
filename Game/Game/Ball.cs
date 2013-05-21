@@ -41,9 +41,6 @@ namespace Game
 
         public void MoveBall()
         {
-            //neso mrda ama ne eopfaten slucajot koa se odbiva  
-            //    this.X *= (float)Math.PI / 180; ;
-            //    this.Y = (float)Math.Abs(Math.Cos(X));
 
             double nextX = X + velocityX;
             double nextY = Y + velocityY;
@@ -70,8 +67,6 @@ namespace Game
         public void DrawBall(Graphics g)
         {
             g.DrawImage(bubble, (float)X, (float)Y, bubble.Width, bubble.Height);
-           // Brush brush = new SolidBrush(Color.Red);
-           // g.FillEllipse(brush, (float)X, (float)Y, (float)(2 * Radius), (float)(2 * Radius));
         }
 
     }
