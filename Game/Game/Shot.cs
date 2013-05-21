@@ -23,7 +23,7 @@ namespace Game
         }
 
         public void Draw(Graphics g)
-        {
+        { 
             g.DrawCurve(shootingPen, ShootingPoints.ToArray());
             g.TranslateTransform(1, 0);
             g.DrawCurve(shootingPen1, ShootingPoints.ToArray());

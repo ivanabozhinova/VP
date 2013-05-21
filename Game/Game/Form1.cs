@@ -52,10 +52,10 @@ namespace Game
             this.timer1.Enabled = true;
             this.timer1.Start();
 
-            this.timer2.Interval = 50;
-            this.timer2.Tick += new EventHandler(timer2_Tick);
-            this.timer2.Enabled = true;
-            this.timer2.Start();
+           // this.timer2.Interval = 50;
+           // this.timer2.Tick += new EventHandler(timer2_Tick);
+           // this.timer2.Enabled = true;
+           // this.timer2.Start();
         }
 
 
@@ -72,8 +72,8 @@ namespace Game
             {
                 timer1.Dispose();
             }
-
-            if (player.isShooting && Shot.numTicks < 50)
+            //prviot pat koa se iscrtuva PAINT numTicks e 0 i paga na exception u shot kaj draw poso prazna e nizata
+            if (player.isShooting && Shot.numTicks> 0 && Shot.numTicks < 50)
             {
                 Shot.Draw(g);
             }
@@ -110,7 +110,7 @@ namespace Game
             }
 
         }
-
+       
         private void timer1_Tick(object sender, EventArgs e)
         {
             foreach (Ball ball in Balls)
@@ -124,20 +124,16 @@ namespace Game
             {
                 timer1.Stop();
             }
-            updateTime();
+           // updateTime();
+
+            timer2_Tick();
             Invalidate();
         }
 
-        private void updateTime() //metod za obnovuvanje na vremeto
-        {
-            int left = TIME - timeElapsed;
-            int min = left / 60;
-            int sec = left % 60;
+        
 
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
+        private void timer2_Tick()
+        {                          //(object sender, EventArgs e)
 
             if (player.isShooting && Shot.shootingY > 5)
             {
@@ -155,10 +151,9 @@ namespace Game
             }
             Shot.numTicks++;
             
-            Invalidate();
+           // Invalidate();
         }
-<<<<<<< HEAD
-=======
+
 
 
         private void updateTime() //metod za obnovuvanje na vremeto
@@ -169,6 +164,6 @@ namespace Game
 
         }
 
->>>>>>> 321afa2307d130c7cc665dba33d42299ab31f5f2
+
     }
 }
