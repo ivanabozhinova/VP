@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pbTime = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // timer1
@@ -37,11 +38,20 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pbTime
+            // 
+            this.pbTime.Location = new System.Drawing.Point(3, 408);
+            this.pbTime.Maximum = 1200;
+            this.pbTime.Name = "pbTime";
+            this.pbTime.Size = new System.Drawing.Size(696, 20);
+            this.pbTime.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 321);
+            this.ClientSize = new System.Drawing.Size(723, 431);
+            this.Controls.Add(this.pbTime);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -55,6 +65,7 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar pbTime;
     }
 }
 
