@@ -49,7 +49,7 @@ namespace Game
             ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 8, 3 * Math.PI / 4);
             Balls.Add(ball);
 
-            pbTime = new ProgressBar(6, 408, this.Width, 15);
+            pbTime = new ProgressBar(10, 412, this.Width, 5);
 
             this.timer1.Interval = 60;
             this.timer1.Tick += new EventHandler(timer1_Tick);
