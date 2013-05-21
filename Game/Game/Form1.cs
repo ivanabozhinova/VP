@@ -138,16 +138,7 @@ namespace Game
             Invalidate();
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-    //AAAAAAAAAAAAAAAAAAAAAAAA 
-       
-        
-=======
 
->>>>>>> 932ec26b2e1d2d862fbe173b70cd578c866af2b2
-=======
         private void updateTime() //metod za obnovuvanje na vremeto
         {
             int left = TIME - timeElapsed;
@@ -155,6 +146,6 @@ namespace Game
             int sec = left % 60;
 
         }
->>>>>>> 82e9e85d44c1f7658c83f8f2de32c88c5063cab5
+
     }
 }
