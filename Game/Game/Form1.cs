@@ -64,7 +64,7 @@ namespace Game
             pbTime = new ProgressBar(10, 412, this.Width, 5);
            
             this.timer1.Interval = 5;
-            //this.timer1.Tick += new EventHandler(timer1_Tick);
+            this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
 
@@ -379,5 +379,7 @@ namespace Game
             this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
+
+      
     }
 }
