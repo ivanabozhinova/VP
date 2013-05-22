@@ -67,13 +67,6 @@ namespace Game.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap _011 {
-            get {
-                object obj = ResourceManager.GetObject("_011", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap _02 {
             get {
                 object obj = ResourceManager.GetObject("_02", resourceCulture);
@@ -95,13 +88,6 @@ namespace Game.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap begin1 {
-            get {
-                object obj = ResourceManager.GetObject("begin1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap choose {
             get {
                 object obj = ResourceManager.GetObject("choose", resourceCulture);
@@ -109,23 +95,9 @@ namespace Game.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap explosion {
-            get {
-                object obj = ResourceManager.GetObject("explosion", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap fire {
             get {
                 object obj = ResourceManager.GetObject("fire", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap gameover {
-            get {
-                object obj = ResourceManager.GetObject("gameover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
