@@ -103,6 +103,7 @@ namespace Game
                 if (player.isHit(Balls))
                 {
                     timer1.Stop();
+                    game.gameOver(this.player.X+500,this.player.Y,400,g); Invalidate();
                 }
 
                 //iscrtuvanje na linijata za pukanje
@@ -117,6 +118,13 @@ namespace Game
 
             
         }
+
+
+        
+
+
+
+
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -263,6 +271,7 @@ namespace Game
         {
             currentGameState=SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
+            this.activateAllBeginMenuControls();
             this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }

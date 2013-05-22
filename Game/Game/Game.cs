@@ -42,34 +42,46 @@ namespace Game
        
 
 
-        public void nextLevel()
-        {
-            sceneNo += 1;
-            if (sceneNo <= SCENE_NUMBER.level3)
-                this.currentScene = new Scene(sceneNo, currentScore, numLives);
-            else
-                gameOver();
+        //public void nextLevel()
+        //{
+        //    sceneNo += 1;
+        //    if (sceneNo <= SCENE_NUMBER.level3)
+        //        this.currentScene = new Scene(sceneNo, currentScore, numLives);
+        //    else
+        //        gameOver();
 
-        }
+        //}
 
         //ako izgubi da ja povtori
 
-        public void replayLevel(Graphics g, Rectangle ClientRectangle)
-        {
-            this.numLives -= 1;
-            if (numLives == 0)
-                gameOver();
-            else
-            {
-                this.currentScene.numLives = numLives;
-                this.currentScene.setScene(sceneNo, currentScore, numLives);
-                this.currentScene.drawScene(g, ClientRectangle);
-            }
-        }
+        //public void replayLevel(Graphics g, Rectangle ClientRectangle)
+        //{
+        //    this.numLives -= 1;
+        //    if (numLives == 0)
+        //      //  gameOver();
+        //    else
+        //    {
+        //        this.currentScene.numLives = numLives;
+        //        this.currentScene.setScene(sceneNo, currentScore, numLives);
+        //        this.currentScene.drawScene(g, ClientRectangle);
+        //    }
+        //}
 
-        public void gameOver()
+        public void gameOver(float playerCoordinateX, float playerCoordinateY,float radius,Graphics g)
         {
-            //neso da se otvori novo proozrce ili neso natpis nz ..
+            using ( g = Graphics.FromImage(currentScene.backgroundImg))
+            {
+                using (Brush brush = new SolidBrush(Color.FromArgb(45, 1, 1, 1)))
+                {
+                    g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);
+                    
+                }
+                Brush brush1 = new SolidBrush(Color.FromArgb(50, 240, 240, 240));
+
+                g.FillEllipse(brush1, playerCoordinateX, playerCoordinateX, radius,radius);
+
+                
+            }
 
         }
 
