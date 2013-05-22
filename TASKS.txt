@@ -1,7 +1,7 @@
 Tasks                           Name:                            State:					Descripiton:
  
 1.Class Scene 			Sneze				18.05.2013 /12:17 pocnav		Ke stavam slikicki od scenata ,ke ja kreiram klasata ..
-2.Sliki				Ivana				18.05.2013 /na kraj 			Statusna lenta, brojcinja, pozadini
+2.Sliki				Ivana				18.05.2013 /DONE 			Statusna lenta, brojcinja, pozadini
 3.Class Bubble 			Simona				18.05.2013				implementacija na klasata
 4.Class Game     		Sneze    			18.05.2013    				pocetno da se dodade objekt od Scene i nekoi osnovni promenlivi 													i metodi
 
@@ -14,6 +14,9 @@ Tasks                           Name:                            State:					Desc
 9.State gameOver		Sneze									Mislam deka bi trebalo da bide nova scena
 													so opcii quit i play again so ke te nosi na main menu
 10.Instrukcii												Da se napise tekstot, da se stavi vo slika ili labela i da se 													sredi momentot na negovo prikazuvanje
-11.[IMPORTATNT] ball.isHit										Dali topceto e pogodeno od Shot-ot
-12. [IMPORTANT] delenje na topce									Koga ball.isHit == true da se otstrani topceto od listata, da 													se dodadat edno ili dve novi so slednata pomala golemina i 														da se pojavi slikickata explosion (opcionalno) 
+11.[IMPORTATNT] ball.isHit   	Simona		DONE										Dali topceto e pogodeno od Shot-ot
+12. [IMPORTANT] delenje na topce Ivana		DONE									Koga ball.isHit == true da se otstrani topceto od listata, da 													se dodadat edno ili dve novi so slednata pomala golemina i 														da se pojavi slikickata explosion (opcionalno) 
 13.Replay level metod u  GAME   Sneze
+
+14.Update na levelNo
+
