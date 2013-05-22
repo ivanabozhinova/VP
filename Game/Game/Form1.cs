@@ -23,6 +23,7 @@ namespace Game
         {
             InitializeComponent();
             currentGameState = SCENE_NUMBER.begin;
+            this.hideAllChoosePlayerMenuControls();
             //creating a new game 
             game = new Game(currentGameState);
             this.playerId = PLAYERID.player3;
@@ -114,31 +115,6 @@ namespace Game
                 pbTime.DrawPB(g);
             }
 
-
-            if (currentGameState != SCENE_NUMBER.choosePlayer)
-            {
-                btn_back.Enabled = false;
-                btn_pl1.Enabled = false;
-                btn_pl2.Enabled = false;
-                btn_pl3.Enabled = false;
-
-                btn_back.Visible = false;
-                btn_pl1.Visible = false;
-                btn_pl2.Visible = false;
-                btn_pl3.Visible = false;
-            }
-            else
-            {
-                btn_back.Enabled = true;
-                btn_pl1.Enabled = true;
-                btn_pl2.Enabled = true;
-                btn_pl3.Enabled = true;
-
-                btn_back.Visible = true;
-                btn_pl1.Visible = true;
-                btn_pl2.Visible = true;
-                btn_pl3.Visible = true;
-            }
             
         }
 
@@ -221,11 +197,36 @@ namespace Game
             this.buttonNewGAME.Enabled = true;
         }
 
+         private void hideAllChoosePlayerMenuControls()
+         {
+             btn_back.Enabled = false;
+             btn_pl1.Enabled = false;
+             btn_pl2.Enabled = false;
+             btn_pl3.Enabled = false;
+
+             btn_back.Visible = false;
+             btn_pl1.Visible = false;
+             btn_pl2.Visible = false;
+             btn_pl3.Visible = false;
+         }
+         private void activateAllChoosePlayerMenuControls()
+         {
+             btn_back.Enabled = true;
+             btn_pl1.Enabled = true;
+             btn_pl2.Enabled = true;
+             btn_pl3.Enabled = true;
+
+             btn_back.Visible = true;
+             btn_pl1.Visible = true;
+             btn_pl2.Visible = true;
+             btn_pl3.Visible = true;
+         }
         private void buttonNewGAME_Click(object sender, EventArgs e)
         {
             currentGameState = SCENE_NUMBER.level1;
             game.goToScene(SCENE_NUMBER.level1);
             this.hideAllBeginMenuControls();
+            this.hideAllChoosePlayerMenuControls();
             this.setNewGame(this.playerId);
         }
 
@@ -233,6 +234,7 @@ namespace Game
         {
             currentGameState = SCENE_NUMBER.choosePlayer;
             this.hideAllBeginMenuControls();
+            this.activateAllChoosePlayerMenuControls();
             game.goToScene(SCENE_NUMBER.choosePlayer);
             Invalidate();
             //ne rabote kako so treba
@@ -261,6 +263,7 @@ namespace Game
         {
             currentGameState=SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
+            this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
 
@@ -270,6 +273,7 @@ namespace Game
             currentGameState = SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
             this.activateAllBeginMenuControls();
+            this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
 
@@ -279,6 +283,7 @@ namespace Game
             currentGameState = SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
             this.activateAllBeginMenuControls();
+            this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
 
@@ -288,6 +293,7 @@ namespace Game
             currentGameState = SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
             this.activateAllBeginMenuControls();
+            this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
 
