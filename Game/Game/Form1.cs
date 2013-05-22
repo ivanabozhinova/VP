@@ -141,6 +141,7 @@ namespace Game
                     player.IsWalking = true;
                     break;
                 case Keys.Space:
+                    if (Shot != null)
                     Shot.resetShot(player, this.Height);
                     break;
             }
@@ -255,14 +256,13 @@ namespace Game
                 {
                     if (Balls[i].isHitBall(Shot.ShootingPoints[j]))
                     {
-                        Balls[i].ishited = true;
+                        Balls[i].isHit = true;                       
                     }
 
                 }
-
-            for (int i = Balls.Count - 1; i <= 0; i--)
+            for (int i = Balls.Count - 1; i >= 0; i--)
             {
-                if (Balls[i].ishited)
+                if (Balls[i].isHit)
                     Balls.RemoveAt(i);
             }
         }
