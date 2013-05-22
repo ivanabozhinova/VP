@@ -49,14 +49,14 @@ namespace Game
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 91, playerId);
             player.IsWalking = false;
 
-            ball = new Ball(30, 30, this.Width, this.Height, 40, Math.PI / 4);
+            ball = new Ball(30, 40, this.Width, this.Height, 40, Math.PI / 4);
             Balls.Add(ball);
-            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 32, 3 * Math.PI / 4);
+            ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
             Balls.Add(ball);
-            ball = new Ball(30, 30, this.Width, this.Height, 20, Math.PI / 4);
-            Balls.Add(ball);
-            ball = new Ball(this.Width - 115, 30, this.Width, this.Height, 8, 3 * Math.PI / 4);
-            Balls.Add(ball);
+            ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
+            //Balls.Add(ball);
+            ball = new Ball(this.Width - 115, 270, this.Width, this.Height, 8, 3 * Math.PI / 4);
+            //Balls.Add(ball);
 
 
             pbTime = new ProgressBar(6, 408, this.Width, 15);
@@ -182,7 +182,7 @@ namespace Game
             if (pbTime.timeChange == this.Width - 5)
                 timer1.Stop();
 
-
+            if (player.isShooting)
             hitBallCheck();
             Invalidate();
         }
@@ -256,16 +256,51 @@ namespace Game
                 {
                     if (Balls[i].isHitBall(Shot.ShootingPoints[j]))
                     {
-                        Balls[i].isHit = true;                       
+                        Balls[i].isHit = true;
+                        player.isShooting = false;
+                        break;
                     }
-
+                    else
+                    {
+                        Balls[i].isHit = false;
+                    }
                 }
+
+
             for (int i = Balls.Count - 1; i >= 0; i--)
             {
-                if (Balls[i].isHit)
+                Ball current = Balls[i];
+                if (current.isHit)
+                {
+                    switch (current.Radius)
+                    {
+                        case 40:
+                            ball = new Ball(current.X+40, current.Y, this.Width, this.Height, 32, -Math.PI / 4);
+                            Balls.Add(ball);
+                            ball = new Ball(current.X-40, current.Y, this.Width, this.Height, 32, -3* Math.PI / 4);
+                            Balls.Add(ball);
+                            break;
+                        case 32:
+                            ball = new Ball(current.X+30, current.Y, this.Width, this.Height, 20, -Math.PI / 4);
+                            Balls.Add(ball);
+                            ball = new Ball(current.X-30, current.Y, this.Width, this.Height, 20, -3* Math.PI / 4);
+                            Balls.Add(ball);
+                            break;
+                        case 20:
+                            ball = new Ball(current.X+20, current.Y, this.Width, this.Height, 8, -Math.PI / 4);
+                            Balls.Add(ball);
+                            ball = new Ball(current.X-20, current.Y, this.Width, this.Height, 8, -3* Math.PI / 4);
+                            Balls.Add(ball);
+                            break;
+                    }
                     Balls.RemoveAt(i);
+                    break;
+                }
+               
             }
+
         }
+        
 
         private void btn_back_Click(object sender, EventArgs e)
         {

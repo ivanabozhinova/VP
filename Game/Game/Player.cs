@@ -89,11 +89,9 @@ namespace Game
 
         public void DrawPlayer(Graphics g, Rectangle ClientRectangle)
         {
-
             if (IsWalking)
             {
-                g.DrawImage(playerProfileImg, X, Y, playerProfileImg.Width, playerProfileImg.Height);
-            
+                g.DrawImage(playerProfileImg, X, Y, playerProfileImg.Width, playerProfileImg.Height);            
             }
             else
                 g.DrawImage(playerBackImg, X, Y, playerBackImg.Width, playerBackImg.Height);
