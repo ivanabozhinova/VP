@@ -202,7 +202,7 @@ namespace Game
             Invalidate();
         }
 
-        private void hideAllControls()
+        private void hideAllBeginMenuControls()
         {
             this.buttonChoosePLAYER.Visible = false;
             this.buttonCONTROLS.Visible = false;
@@ -211,19 +211,28 @@ namespace Game
             this.buttonCONTROLS.Enabled = false;
             this.buttonNewGAME.Enabled = false;
         }
+        private void activateAllBeginMenuControls()
+        {
+            this.buttonChoosePLAYER.Visible = true;
+            this.buttonCONTROLS.Visible = true;
+            this.buttonNewGAME.Visible = true;
+            this.buttonChoosePLAYER.Enabled = true;
+            this.buttonCONTROLS.Enabled = true;
+            this.buttonNewGAME.Enabled = true;
+        }
 
         private void buttonNewGAME_Click(object sender, EventArgs e)
         {
             currentGameState = SCENE_NUMBER.level1;
             game.goToScene(SCENE_NUMBER.level1);
-            this.hideAllControls();
+            this.hideAllBeginMenuControls();
             this.setNewGame(this.playerId);
         }
 
         private void buttonChoosePLAYER_Click(object sender, EventArgs e)
         {
             currentGameState = SCENE_NUMBER.choosePlayer;
-            this.hideAllControls();
+            this.hideAllBeginMenuControls();
             game.goToScene(SCENE_NUMBER.choosePlayer);
             Invalidate();
             //ne rabote kako so treba
@@ -252,6 +261,33 @@ namespace Game
         {
             currentGameState=SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
+            Invalidate();
+        }
+
+        private void btn_pl1_Click(object sender, EventArgs e)
+        {
+            this.playerId = PLAYERID.player1;
+            currentGameState = SCENE_NUMBER.begin;
+            game.goToScene(currentGameState);
+            this.activateAllBeginMenuControls();
+            Invalidate();
+        }
+
+        private void btn_pl2_Click(object sender, EventArgs e)
+        {
+            this.playerId = PLAYERID.player2;
+            currentGameState = SCENE_NUMBER.begin;
+            game.goToScene(currentGameState);
+            this.activateAllBeginMenuControls();
+            Invalidate();
+        }
+
+        private void btn_pl3_Click(object sender, EventArgs e)
+        {
+            this.playerId = PLAYERID.player3;
+            currentGameState = SCENE_NUMBER.begin;
+            game.goToScene(currentGameState);
+            this.activateAllBeginMenuControls();
             Invalidate();
         }
 

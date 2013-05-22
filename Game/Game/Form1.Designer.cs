@@ -50,11 +50,12 @@
             this.btn_pl3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_pl3.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_pl3.Image = global::Game.Properties.Resources.pl3;
-            this.btn_pl3.Location = new System.Drawing.Point(416, 194);
+            this.btn_pl3.Location = new System.Drawing.Point(446, 399);
             this.btn_pl3.Name = "btn_pl3";
             this.btn_pl3.Size = new System.Drawing.Size(63, 58);
             this.btn_pl3.TabIndex = 5;
             this.btn_pl3.UseVisualStyleBackColor = false;
+            this.btn_pl3.Click += new System.EventHandler(this.btn_pl3_Click);
             // 
             // btn_pl2
             // 
@@ -62,11 +63,12 @@
             this.btn_pl2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_pl2.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_pl2.Image = global::Game.Properties.Resources.pl2;
-            this.btn_pl2.Location = new System.Drawing.Point(330, 193);
+            this.btn_pl2.Location = new System.Drawing.Point(309, 399);
             this.btn_pl2.Name = "btn_pl2";
             this.btn_pl2.Size = new System.Drawing.Size(63, 58);
             this.btn_pl2.TabIndex = 4;
             this.btn_pl2.UseVisualStyleBackColor = false;
+            this.btn_pl2.Click += new System.EventHandler(this.btn_pl2_Click);
             // 
             // btn_pl1
             // 
@@ -74,11 +76,12 @@
             this.btn_pl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_pl1.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_pl1.Image = global::Game.Properties.Resources.pl1;
-            this.btn_pl1.Location = new System.Drawing.Point(245, 193);
+            this.btn_pl1.Location = new System.Drawing.Point(192, 399);
             this.btn_pl1.Name = "btn_pl1";
             this.btn_pl1.Size = new System.Drawing.Size(63, 58);
             this.btn_pl1.TabIndex = 3;
             this.btn_pl1.UseVisualStyleBackColor = false;
+            this.btn_pl1.Click += new System.EventHandler(this.btn_pl1_Click);
             // 
             // buttonCONTROLS
             // 
