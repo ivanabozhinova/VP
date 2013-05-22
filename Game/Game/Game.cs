@@ -52,20 +52,10 @@ namespace Game
 
         //}
 
-        //ako izgubi da ja povtori
+      
 
-        //public void replayLevel(Graphics g, Rectangle ClientRectangle)
-        //{
-        //    this.numLives -= 1;
-        //    if (numLives == 0)
-        //      //  gameOver();
-        //    else
-        //    {
-        //        this.currentScene.numLives = numLives;
-        //        this.currentScene.setScene(sceneNo, currentScore, numLives);
-        //        this.currentScene.drawScene(g, ClientRectangle);
-        //    }
-        //}
+        
+
 
         public void playerKilled(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
         {

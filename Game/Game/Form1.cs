@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Game
 {
@@ -19,6 +21,7 @@ namespace Game
         public Shot Shot;
         public ProgressBar pbTime;
         public SCENE_NUMBER currentGameState { set; get; }
+        public Stopwatch stopwatch;
         public Form1()
         {
             InitializeComponent();
@@ -63,7 +66,7 @@ namespace Game
 
             pbTime = new ProgressBar(10, 412, this.Width, 5);
 
-
+           
             this.timer1.Interval = 50;
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
@@ -103,11 +106,25 @@ namespace Game
                 if (player.isHit(Balls))
                 {
                     timer1.Stop();
-                    game.playerKilled(this.player.X-25,this.player.Y-10,100,g,this.ClientRectangle);
+                    game.playerKilled(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
                     player.isKilled = true;
-                    Invalidate();
-                   // (using
+                    this.Update();
+
+                    //if (player.isKilled)
+                    //{
+                    //    stopwatch = new Stopwatch();
+                    //    stopwatch.Start();
+                    //    while (stopwatch.Elapsed.Seconds <= 1) ;
+
+
+                    //    stopwatch.Stop();
+                    //    replayLevel();
+
+                    //}                  
+
                 }
+
+
 
                 //iscrtuvanje na linijata za pukanje
                 if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
@@ -117,14 +134,26 @@ namespace Game
 
                 //iscrtuvanje na progres barot
                 pbTime.DrawPB(g);
+
+                               
             }
 
-            
         }
 
 
         
 
+        public void replayLevel()
+        {
+            player.isKilled = false;
+            float score = game.currentScore;
+            SCENE_NUMBER scNo = game.sceneNo;
+            int lives = game.numLives;
+            game = new Game(scNo);
+            game.goToScene(scNo, score, lives);
+            setNewGame(playerId);
+            
+        }
 
 
 
@@ -146,11 +175,11 @@ namespace Game
                     player.IsWalking = true;
                     break;
                 case Keys.Space:
-<<<<<<< HEAD
+
                     if (player.isKilled) break;
-=======
+
                     if (Shot != null)
->>>>>>> c6c060706f0e4f57d21f3aba997fc8fd4c21827e
+
                     Shot.resetShot(player, this.Height);
                     break;
             }

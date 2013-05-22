@@ -31,8 +31,10 @@ namespace Game
             this.X = x;
             this.Y = y;
             this.playerId = playerId;
+            isShooting = new bool();
             isShooting = false;
-            isKilled = false;
+            isKilled = new bool();
+            isKilled=false;
             direction = DIRECTION.left;
 
             switch (playerId) //ova mozda ke treba u form poso go predavam po reference sekade
