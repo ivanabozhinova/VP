@@ -118,7 +118,7 @@ namespace Game
 
 
                     //    stopwatch.Stop();
-                    //    replayLevel();
+                       replayLevel();
 
                     //}                  
 
@@ -145,14 +145,16 @@ namespace Game
 
         public void replayLevel()
         {
-            player.isKilled = false;
-            float score = game.currentScore;
-            SCENE_NUMBER scNo = game.sceneNo;
-            int lives = game.numLives;
-            game = new Game(scNo);
-            game.goToScene(scNo, score, lives);
-            setNewGame(playerId);
-            
+            if (game.numLives >0)
+            {
+                player.isKilled = false;
+                float score = game.currentScore;
+                SCENE_NUMBER scNo = game.sceneNo;
+                int lives = game.numLives;
+                game = new Game(scNo);
+                game.goToScene(scNo, score, lives);
+                setNewGame(playerId);
+            }
         }
 
 

@@ -79,17 +79,11 @@ namespace Game
             if (sceneNo != SCENE_NUMBER.choosePlayer)
                 if (numLives > 0)
                 {
-                    //display the first life
-                    g.DrawImage(lifeImg, ClientRectangle.X + 375, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 27,
-                                lifeImg.Width + 5, lifeImg.Height - 5);
-                    //display the rest
-                    if (numLives > 1)
-                    {
-                        for (int i = 1; i < numLives; i++)
+                        for (int i = numLives; i >= 0; i--)
                             g.DrawImage(lifeImg,
                                         ClientRectangle.X + i * (lifeImg.Width + 12) + 260, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 27,
                                         lifeImg.Width + 5, lifeImg.Height - 5);
-                    }
+                    
                 }
         }
 
