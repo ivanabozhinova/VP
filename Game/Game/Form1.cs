@@ -248,6 +248,13 @@ namespace Game
             }
         }
 
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            currentGameState=SCENE_NUMBER.begin;
+            game.goToScene(currentGameState);
+            Invalidate();
+        }
+
        
 
 

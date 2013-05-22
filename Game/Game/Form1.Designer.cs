@@ -130,6 +130,7 @@
             this.btn_back.Size = new System.Drawing.Size(139, 58);
             this.btn_back.TabIndex = 6;
             this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // Form1
             // 
