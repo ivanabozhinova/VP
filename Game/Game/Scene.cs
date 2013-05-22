@@ -20,11 +20,9 @@ namespace Game
         public Player player { set; get; }
 
 
-
         public Scene(SCENE_NUMBER sceneNo, float score, int numLives)
         {
             this.setScene(sceneNo, score, numLives);
-
         }
 
         //set the Scene for the current level
@@ -50,10 +48,12 @@ namespace Game
                           backgroundImg = Resources.lvl1; 
                           break;
                  case SCENE_NUMBER.begin:
-                          backgroundImg = Resources.begin1; 
+                          backgroundImg = Resources.start;
                           break;
-             }
-              
+                 case SCENE_NUMBER.choosePlayer:
+                          backgroundImg = Resources.choose;
+                          break;                            
+             }             
              
              
             
@@ -69,6 +69,7 @@ namespace Game
         //display the background of the status bar
         public void showStatusBar(Graphics g, Rectangle ClientRectangle)
         {
+            if (sceneNo != SCENE_NUMBER.choosePlayer)
             g.DrawImage(statusBarImg, ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height,
                         statusBarImg.Width + 5, statusBarImg.Height);
         }
@@ -76,6 +77,7 @@ namespace Game
         //display the number of lives
         public void showLives(Graphics g, Rectangle ClientRectangle)
         {
+            if (sceneNo != SCENE_NUMBER.choosePlayer)
             if (numLives > 0)
             {
                 //display the first life
@@ -100,7 +102,6 @@ namespace Game
         public void drawBeginScene(Graphics g, Rectangle ClientRectangle)
         {
             g.Clear(Color.White);
-
             this.drawBackground(g, ClientRectangle);
         }
 

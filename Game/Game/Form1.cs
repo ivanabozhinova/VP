@@ -25,7 +25,7 @@ namespace Game
             currentGameState = SCENE_NUMBER.begin;
             //creating a new game 
             game = new Game(currentGameState);
-            this.playerId = PLAYERID.ivana;
+            this.playerId = PLAYERID.player3;
 
             //fixing the form
             DoubleBuffered = true;
@@ -37,7 +37,6 @@ namespace Game
             this.MinimizeBox = false;
 
 
-
         }
 
         public void setNewGame(PLAYERID playerId)
@@ -46,7 +45,7 @@ namespace Game
             Balls = new List<Ball>();
 
             this.playerId = playerId;
-            player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 65, playerId);
+            player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 91, playerId);
             player.IsWalking = false;
 
             ball = new Ball(30, 30, this.Width, this.Height, 40, Math.PI / 4);
@@ -68,6 +67,7 @@ namespace Game
             this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
+
         }
 
 
@@ -77,8 +77,10 @@ namespace Game
             g.Clear(Color.White);
 
             if (currentGameState == SCENE_NUMBER.begin)
+            {
                 game.currentScene.drawBeginScene(g, this.ClientRectangle);
 
+            }
 
             else
             {
@@ -108,6 +110,33 @@ namespace Game
                 //iscrtuvanje na progres barot
                 pbTime.DrawPB(g);
             }
+
+
+            if (currentGameState != SCENE_NUMBER.choosePlayer)
+            {
+                btn_back.Enabled = false;
+                btn_pl1.Enabled = false;
+                btn_pl2.Enabled = false;
+                btn_pl3.Enabled = false;
+
+                btn_back.Visible = false;
+                btn_pl1.Visible = false;
+                btn_pl2.Visible = false;
+                btn_pl3.Visible = false;
+            }
+            else
+            {
+                btn_back.Enabled = true;
+                btn_pl1.Enabled = true;
+                btn_pl2.Enabled = true;
+                btn_pl3.Enabled = true;
+
+                btn_back.Visible = true;
+                btn_pl1.Visible = true;
+                btn_pl2.Visible = true;
+                btn_pl3.Visible = true;
+            }
+            
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -177,12 +206,17 @@ namespace Game
             this.buttonChoosePLAYER.Visible = false;
             this.buttonCONTROLS.Visible = false;
             this.buttonNewGAME.Visible = false;
-
             this.buttonChoosePLAYER.Enabled = false;
             this.buttonCONTROLS.Enabled = false;
             this.buttonNewGAME.Enabled = false;
-
             this.setNewGame(this.playerId);
+        }
+
+        private void buttonChoosePLAYER_Click(object sender, EventArgs e)
+        {
+            currentGameState = SCENE_NUMBER.choosePlayer;
+            game.goToScene(SCENE_NUMBER.choosePlayer);
+            //ne rabote kako so treba
         }
 
         public void hitBallCheck()
@@ -203,6 +237,8 @@ namespace Game
                     Balls.RemoveAt(i);
             }
         }
+
+       
 
 
 

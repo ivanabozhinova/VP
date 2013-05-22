@@ -8,7 +8,7 @@ using Game.Properties;
 namespace Game
 {
     public enum DIRECTION { right, left };
-    public enum PLAYERID { ivana, simona, sneze };
+    public enum PLAYERID {player1, player2, player3 };
     public enum BOUNDS { left, right, top, down };
 
     public class Player
@@ -36,17 +36,17 @@ namespace Game
 
             switch (playerId) //ova mozda ke treba u form poso go predavam po reference sekade
             {
-                case PLAYERID.ivana:
-                    playerBackImg = Resources.ivana2;
-                    playerProfileImg = Resources.ivana;
+                case PLAYERID.player1:
+                    playerBackImg = Resources.player1b;
+                    playerProfileImg = Resources.player1l;
                     break;
-                case PLAYERID.simona:
-                    playerBackImg = Resources.simona2;
-                    playerProfileImg = Resources.simona;
+                case PLAYERID.player2:
+                    playerBackImg = Resources.player2b;
+                    playerProfileImg = Resources.player2l;
                     break;
-                case PLAYERID.sneze:
-                    playerBackImg = Resources.sneze2;
-                    playerProfileImg = Resources.sneze;
+                case PLAYERID.player3:
+                    playerBackImg = Resources.player3b;
+                    playerProfileImg = Resources.player3l;
                     break;
             }
         }
@@ -57,14 +57,14 @@ namespace Game
             switch (direction)
             {
                 case DIRECTION.right:
-                    if (this.playerId == PLAYERID.ivana) this.playerProfileImg = Resources.ivana4;
-                    else if (this.playerId == PLAYERID.simona) this.playerProfileImg = Resources.simona4;
-                    else if (this.playerId == PLAYERID.sneze) this.playerProfileImg = Resources.sneze4;
+                    if (this.playerId == PLAYERID.player1) this.playerProfileImg = Resources.player1r;
+                    else if (this.playerId == PLAYERID.player2) this.playerProfileImg = Resources.player2r;
+                    else if (this.playerId == PLAYERID.player3) this.playerProfileImg = Resources.player3r;
                     break;
                 case DIRECTION.left:
-                    if (this.playerId == PLAYERID.ivana) this.playerProfileImg = Resources.ivana;
-                    else if (this.playerId == PLAYERID.simona) this.playerProfileImg = Resources.simona;
-                    else if (this.playerId == PLAYERID.sneze) this.playerProfileImg = Resources.sneze;
+                    if (this.playerId == PLAYERID.player1) this.playerProfileImg = Resources.player1l;
+                    else if (this.playerId == PLAYERID.player2) this.playerProfileImg = Resources.player2l;
+                    else if (this.playerId == PLAYERID.player3) this.playerProfileImg = Resources.player3l;
                     break;
             }
         }
@@ -76,11 +76,13 @@ namespace Game
             {
                 case DIRECTION.right:
                     X += 5;
-                    if (X >= worldWidth - 30) X = worldWidth - 30;
+                    if (X >= worldWidth - 50) 
+                        X = worldWidth - 50;
                     break;
                 case DIRECTION.left:
                     X -= 5;
-                    if (X < 0) X = 0;
+                    if (X < -5) 
+                        X = -5;
                     break;
             }
         }

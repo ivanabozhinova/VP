@@ -60,9 +60,23 @@ namespace Game.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap back {
+            get {
+                object obj = ResourceManager.GetObject("back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap begin1 {
             get {
                 object obj = ResourceManager.GetObject("begin1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap choose {
+            get {
+                object obj = ResourceManager.GetObject("choose", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -77,6 +91,13 @@ namespace Game.Properties {
         internal static System.Drawing.Bitmap infoBar {
             get {
                 object obj = ResourceManager.GetObject("infoBar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap instructions {
+            get {
+                object obj = ResourceManager.GetObject("instructions", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -140,6 +161,104 @@ namespace Game.Properties {
         internal static System.Drawing.Bitmap lvl3_2 {
             get {
                 object obj = ResourceManager.GetObject("lvl3_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap newGame {
+            get {
+                object obj = ResourceManager.GetObject("newGame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl1 {
+            get {
+                object obj = ResourceManager.GetObject("pl1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl2 {
+            get {
+                object obj = ResourceManager.GetObject("pl2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap pl3 {
+            get {
+                object obj = ResourceManager.GetObject("pl3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player {
+            get {
+                object obj = ResourceManager.GetObject("player", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player1b {
+            get {
+                object obj = ResourceManager.GetObject("player1b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player1l {
+            get {
+                object obj = ResourceManager.GetObject("player1l", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player1r {
+            get {
+                object obj = ResourceManager.GetObject("player1r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player2b {
+            get {
+                object obj = ResourceManager.GetObject("player2b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player2l {
+            get {
+                object obj = ResourceManager.GetObject("player2l", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player2r {
+            get {
+                object obj = ResourceManager.GetObject("player2r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player3b {
+            get {
+                object obj = ResourceManager.GetObject("player3b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player3l {
+            get {
+                object obj = ResourceManager.GetObject("player3l", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player3r {
+            get {
+                object obj = ResourceManager.GetObject("player3r", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -210,6 +329,13 @@ namespace Game.Properties {
         internal static System.Drawing.Bitmap sneze4 {
             get {
                 object obj = ResourceManager.GetObject("sneze4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap start {
+            get {
+                object obj = ResourceManager.GetObject("start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -152,6 +152,66 @@
   <ItemGroup>
     <None Include="Resources\lvl3.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3r.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instructions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\choose.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pl1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pl2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pl3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
