@@ -3,7 +3,16 @@ Tasks                           Name:                            State:					Desc
 1.Class Scene 			Sneze				18.05.2013 /12:17 pocnav		Ke stavam slikicki od scenata ,ke ja kreiram klasata ..
 2.Sliki				Ivana				18.05.2013 /na kraj 			Statusna lenta, brojcinja, pozadini
 3.Class Bubble 			Simona				18.05.2013				implementacija na klasata
-4.Class Game     		Sneze    			18.05.2013    				pocetno da se dodade objekt od Scene i nekoi osnovni promenlivi i metodi
+4.Class Game     		Sneze    			18.05.2013    				pocetno da se dodade objekt od Scene i nekoi osnovni promenlivi 													i metodi
 
--da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si
--da se sredi dvizenjeto da coveceto za da ne izleguva od granicite na prozorecot - DONE
+5. da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si - DONE
+6. da se sredi dvizenjeto da coveceto za da ne izleguva od granicite na prozorecot - DONE
+
+7.Update na score											Pri sekoj hit na topce, da se menuva promenlivata i labelata
+8.Update na lives											Pri sekoj hit na igracot da se menuva promenlivata i 
+													brojot na ogancinja vo info barot
+9.State gameOver											Mislam deka bi trebalo da bide nova scena
+													so opcii quit i play again so ke te nosi na main menu
+10.Instrukcii												Da se napise tekstot, da se stavi vo slika ili labela i da se 													sredi momentot na negovo prikazuvanje
+11.[IMPORTATNT] ball.isHit										Dali topceto e pogodeno od Shot-ot
+12. [IMPORTANT] delenje na topce									Koga ball.isHit == true da se otstrani topceto od listata, da 													se dodadat edno ili dve novi so slednata pomala golemina i 														da se pojavi slikickata explosion (opcionalno) 
