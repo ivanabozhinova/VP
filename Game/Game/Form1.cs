@@ -61,14 +61,10 @@ namespace Game
             ball = new Ball(this.Width - 115, 270, this.Width, this.Height, 8, 3 * Math.PI / 4);
             //Balls.Add(ball);
 
-
-            pbTime = new ProgressBar(6, 408, this.Width, 15);
-
             pbTime = new ProgressBar(10, 412, this.Width, 5);
-
            
-            this.timer1.Interval = 50;
-            this.timer1.Tick += new EventHandler(timer1_Tick);
+            this.timer1.Interval = 5;
+            //this.timer1.Tick += new EventHandler(timer1_Tick);
             this.timer1.Enabled = true;
             this.timer1.Start();
 
@@ -83,7 +79,6 @@ namespace Game
             if (currentGameState == SCENE_NUMBER.begin)
             {
                 game.currentScene.drawBeginScene(g, this.ClientRectangle);
-
             }
             else if (currentGameState == SCENE_NUMBER.choosePlayer)
             {
@@ -91,7 +86,6 @@ namespace Game
             }
             else
             {
-
                 //iscrtuvanje na scenata
                 game.currentScene.drawScene(g, this.ClientRectangle);
 

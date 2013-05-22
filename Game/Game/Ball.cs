@@ -35,7 +35,7 @@ namespace Game
             X = x;
             //Y = y; //visinata od koja topceto paga pri negovoto pojavuvanje zavisi samo od negoviot radius
             Radius = radius;
-            velocity = 5;
+            velocity = 10;
             Angle = angle;
             velocityX = (float)(Math.Cos(Angle) * velocity);
             velocityY = (float)(Math.Sin(Angle) * velocity);
