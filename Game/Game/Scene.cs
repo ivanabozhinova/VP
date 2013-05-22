@@ -79,7 +79,7 @@ namespace Game
             if (sceneNo != SCENE_NUMBER.choosePlayer)
                 if (numLives > 0)
                 {
-                        for (int i = numLives; i >= 0; i--)
+                        for (int i = numLives; i >=1; i--)
                             g.DrawImage(lifeImg,
                                         ClientRectangle.X + i * (lifeImg.Width + 12) + 260, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 27,
                                         lifeImg.Width + 5, lifeImg.Height - 5);
