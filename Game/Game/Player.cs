@@ -21,6 +21,7 @@ namespace Game
         public PLAYERID playerId { set; get; }
         public DIRECTION direction { set; get; }
         public bool IsWalking { set; get; }
+        public bool isKilled { set; get; }
         //nekoe property za pukanjeto nz so da pisam 
         double Xc;
         double Yc;
@@ -31,7 +32,7 @@ namespace Game
             this.Y = y;
             this.playerId = playerId;
             isShooting = false;
-
+            isKilled = false;
             direction = DIRECTION.left;
 
             switch (playerId) //ova mozda ke treba u form poso go predavam po reference sekade

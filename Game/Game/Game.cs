@@ -9,15 +9,15 @@ using Game.Properties;
 
 namespace Game
 {
-    public enum SCENE_NUMBER {begin,choosePlayer,controls,level1,level2,level3};
+    public enum SCENE_NUMBER { begin, choosePlayer, controls, level1, level2, level3 };
     public class Game
-    {   
+    {
         public SCENE_NUMBER sceneNo { set; get; }
         public float currentScore { set; get; }
         public int numLives { set; get; }
         public Scene currentScene { set; get; }
-       
-      
+
+
 
         //ova najverojatno ke treba u forms poso tamu ke se regulira dali e udren ili ne 
         //public bool isPlayerHit { set; get; }
@@ -26,20 +26,20 @@ namespace Game
         public Game(SCENE_NUMBER sceneNo)
         {
             goToScene(sceneNo);
-            
-            
+
+
         }
 
         //moze da se bira samo begin(pocetna strana),choosePlayer,controls,ili da pocne so level 1 
-        public void goToScene(SCENE_NUMBER sceneNo)
+        public void goToScene(SCENE_NUMBER sceneNo = SCENE_NUMBER.begin, float currentScore = 0.00f, int numLives = 5)
         {
             this.sceneNo = sceneNo;
-            this.currentScore = 0.0f;
-            this.numLives = 5;
-           // if (sceneNo != SCENE_NUMBER.choosePlayer)
+            this.currentScore = currentScore;
+            this.numLives = numLives;
+            // if (sceneNo != SCENE_NUMBER.choosePlayer)
             this.currentScene = new Scene(sceneNo, currentScore, numLives);
         }
-       
+
 
 
         //public void nextLevel()
@@ -67,23 +67,16 @@ namespace Game
         //    }
         //}
 
-        public void gameOver(float playerCoordinateX, float playerCoordinateY,float radius,Graphics g)
+        public void playerKilled(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
         {
-            using ( g = Graphics.FromImage(currentScene.backgroundImg))
-            {
-                using (Brush brush = new SolidBrush(Color.FromArgb(45, 1, 1, 1)))
-                {
-                    g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);
-                    
-                }
-                Brush brush1 = new SolidBrush(Color.FromArgb(50, 240, 240, 240));
-
-                g.FillEllipse(brush1, playerCoordinateX, playerCoordinateX, radius,radius);
-
-                
-            }
-
+            this.numLives -= 1;
+            var circle = new System.Drawing.Drawing2D.GraphicsPath();
+            circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
+            
+            g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
+            Brush brush = new SolidBrush(Color.FromArgb(70, Color.Black));
+            g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);
+           
         }
-
     }
 }
