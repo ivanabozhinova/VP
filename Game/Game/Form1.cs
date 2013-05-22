@@ -146,7 +146,11 @@ namespace Game
                     player.IsWalking = true;
                     break;
                 case Keys.Space:
+<<<<<<< HEAD
                     if (player.isKilled) break;
+=======
+                    if (Shot != null)
+>>>>>>> c6c060706f0e4f57d21f3aba997fc8fd4c21827e
                     Shot.resetShot(player, this.Height);
                     break;
             }
@@ -259,16 +263,15 @@ namespace Game
             for (int i = 0; i < Balls.Count; i++)
                 for (int j = 0; j < Shot.ShootingPoints.Count; j++)
                 {
-                    if (Balls[i].isHitBall(Shot))
+                    if (Balls[i].isHitBall(Shot.ShootingPoints[j]))
                     {
-                        Balls[i].ishited = true;
+                        Balls[i].isHit = true;                       
                     }
 
                 }
-
-            for (int i = Balls.Count; i <= 0; i--)
+            for (int i = Balls.Count - 1; i >= 0; i--)
             {
-                if (Balls[i].ishited)
+                if (Balls[i].isHit)
                     Balls.RemoveAt(i);
             }
         }
@@ -311,14 +314,5 @@ namespace Game
             this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
-
-       
-
-
-
-
-
-
-
     }
 }

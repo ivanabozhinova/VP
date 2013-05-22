@@ -15,7 +15,7 @@ namespace Game
         public int Radius { set; get; }
         public double velocity { get; set; }
         public double Angle { get; set; }
-        public bool ishited { set; get; }
+        public bool isHit { set; get; }
         public int Time { set; get; } // kolku vreme pominalo otkako iskocila topkata, 
                                         // ni treba za da moze da padne od povisoko od so ke skoka posle
         public int FallTime { set; get; } //kolku vreme mu treba na topceto da padne do dole pri prvoto pushtanje
@@ -32,6 +32,7 @@ namespace Game
 
         public Ball(double x, double y, int worldWidth, int worldHeight, int radius, double angle)
         {
+            isHit = false;
             down = worldHeight - 150;
             left = -45;
             right = worldWidth - 30;
@@ -97,17 +98,13 @@ namespace Game
         }
 
 
-        public bool isHitBall(Shot shot)
+        public bool isHitBall(Point s)
         {
-            double ShotRadius = 5; 
+           double BallXc = X + Radius; //x koordinata na centarot na topkata
+            double BallYc = Y + Radius; //y koordinata na centarot na topkata
 
-            double Xs = shot.shootingX + ShotRadius;
-            double Ys = shot.shootingY + ShotRadius;
-            double BallXc = X + Radius;
-            double BallYc = Y + Radius;
-            double distance = (Xs - BallXc) * (Xs - BallXc) + (Ys - BallYc) * (Ys - BallYc);
-
-            if (distance <= ((Radius + ShotRadius) * (Radius + ShotRadius)))
+            double d = (s.X - BallXc) * (s.X - BallXc) + (s.Y - BallYc) * (s.Y - BallYc);
+            if (d <= ((Radius + 5) * (Radius + 5)))
                 return true;
             return false;
         }
