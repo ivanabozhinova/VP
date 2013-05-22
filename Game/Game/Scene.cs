@@ -45,7 +45,8 @@ namespace Game
                           backgroundImg = Resources.level2; 
                           break;
                  case SCENE_NUMBER.level1:
-                          backgroundImg = Resources.lvl1; 
+                          //backgroundImg = Resources.lvl1; 
+                          backgroundImg = Resources._01; 
                           break;
                  case SCENE_NUMBER.begin:
                           backgroundImg = Resources.start;
