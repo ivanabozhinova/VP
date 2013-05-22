@@ -22,6 +22,7 @@ namespace Game
         public ProgressBar pbTime;
         public SCENE_NUMBER currentGameState { set; get; }
         public Stopwatch stopwatch;
+        EventHandler eh;
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Game
             this.hideAllChoosePlayerMenuControls();
             //creating a new game 
             game = new Game(currentGameState);
+            eh = new EventHandler(timer1_Tick);
             this.playerId = PLAYERID.player3;
 
             //fixing the form
@@ -62,9 +64,10 @@ namespace Game
             //Balls.Add(ball);
 
             pbTime = new ProgressBar(10, 412, this.Width, 5);
-           
+            
             this.timer1.Interval = 5;
-            //this.timer1.Tick += new EventHandler(timer1_Tick);
+            if (game.numLives == 5) 
+            this.timer1.Tick += eh;
             this.timer1.Enabled = true;
             this.timer1.Start();
 
