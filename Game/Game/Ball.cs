@@ -97,17 +97,13 @@ namespace Game
         }
 
 
-        public bool isHitBall(Shot shot)
+        public bool isHitBall(Point s)
         {
-            double ShotRadius = 5; 
+            double BallXc = X + Radius; //x koordinata na centarot na topkata
+            double BallYc = Y + Radius; //y koordinata na centarot na topkata
 
-            double Xs = shot.shootingX + ShotRadius;
-            double Ys = shot.shootingY + ShotRadius;
-            double BallXc = X + Radius;
-            double BallYc = Y + Radius;
-            double distance = (Xs - BallXc) * (Xs - BallXc) + (Ys - BallYc) * (Ys - BallYc);
-
-            if (distance <= ((Radius + ShotRadius) * (Radius + ShotRadius)))
+            double d = (s.X - BallXc) * (s.X - BallXc) + (s.Y - BallYc) * (s.Y - BallYc);
+            if (d <= ((Radius + 5) * (Radius + 5)))
                 return true;
             return false;
         }

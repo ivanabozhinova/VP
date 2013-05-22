@@ -253,14 +253,14 @@ namespace Game
             for (int i = 0; i < Balls.Count; i++)
                 for (int j = 0; j < Shot.ShootingPoints.Count; j++)
                 {
-                    if (Balls[i].isHitBall(Shot))
+                    if (Balls[i].isHitBall(Shot.ShootingPoints[j]))
                     {
                         Balls[i].ishited = true;
                     }
 
                 }
 
-            for (int i = Balls.Count; i <= 0; i--)
+            for (int i = Balls.Count - 1; i <= 0; i--)
             {
                 if (Balls[i].ishited)
                     Balls.RemoveAt(i);
@@ -305,14 +305,5 @@ namespace Game
             this.hideAllChoosePlayerMenuControls();
             Invalidate();
         }
-
-       
-
-
-
-
-
-
-
     }
 }
