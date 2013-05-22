@@ -17,7 +17,6 @@ namespace Game
         public Image statusBarImg { set; get; }
         public Image levelImg { set; get; } 
         public SCENE_NUMBER sceneNo { set; get; }
-        public Player player { set; get; }
 
 
         public Scene(SCENE_NUMBER sceneNo, float score, int numLives)
@@ -45,7 +44,6 @@ namespace Game
                           backgroundImg = Resources.level2; 
                           break;
                  case SCENE_NUMBER.level1:
-                          //backgroundImg = Resources.lvl1; 
                           backgroundImg = Resources._01; 
                           break;
                  case SCENE_NUMBER.begin:

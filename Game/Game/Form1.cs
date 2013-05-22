@@ -103,7 +103,10 @@ namespace Game
                 if (player.isHit(Balls))
                 {
                     timer1.Stop();
-                    game.gameOver(this.player.X+500,this.player.Y,400,g); Invalidate();
+                    game.playerKilled(this.player.X-25,this.player.Y-10,100,g,this.ClientRectangle);
+                    player.isKilled = true;
+                    Invalidate();
+                   // (using
                 }
 
                 //iscrtuvanje na linijata za pukanje
@@ -131,16 +134,19 @@ namespace Game
             switch (e.KeyCode)
             {
                 case Keys.Left:
+                    if (player.isKilled) break;
                     player.ChangeDirection(DIRECTION.left);
                     player.Move(this.Width);
                     player.IsWalking = true;
                     break;
                 case Keys.Right:
+                    if (player.isKilled) break;
                     player.ChangeDirection(DIRECTION.right);
                     player.Move(this.Width);
                     player.IsWalking = true;
                     break;
                 case Keys.Space:
+                    if (player.isKilled) break;
                     Shot.resetShot(player, this.Height);
                     break;
             }
