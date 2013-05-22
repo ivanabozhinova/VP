@@ -36,7 +36,7 @@ namespace Game
             this.sceneNo = sceneNo;
             this.currentScore = 0.0f;
             this.numLives = 5;
-            if (sceneNo != SCENE_NUMBER.choosePlayer)
+           // if (sceneNo != SCENE_NUMBER.choosePlayer)
             this.currentScene = new Scene(sceneNo, currentScore, numLives);
         }
        

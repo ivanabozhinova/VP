@@ -81,7 +81,10 @@ namespace Game
                 game.currentScene.drawBeginScene(g, this.ClientRectangle);
 
             }
-
+            else if (currentGameState == SCENE_NUMBER.choosePlayer)
+            {
+                game.currentScene.drawBeginScene(g, this.ClientRectangle);
+            }
             else
             {
 
@@ -199,23 +202,30 @@ namespace Game
             Invalidate();
         }
 
-        private void buttonNewGAME_Click(object sender, EventArgs e)
+        private void hideAllControls()
         {
-            currentGameState = SCENE_NUMBER.level1;
-            game.goToScene(SCENE_NUMBER.level1);
             this.buttonChoosePLAYER.Visible = false;
             this.buttonCONTROLS.Visible = false;
             this.buttonNewGAME.Visible = false;
             this.buttonChoosePLAYER.Enabled = false;
             this.buttonCONTROLS.Enabled = false;
             this.buttonNewGAME.Enabled = false;
+        }
+
+        private void buttonNewGAME_Click(object sender, EventArgs e)
+        {
+            currentGameState = SCENE_NUMBER.level1;
+            game.goToScene(SCENE_NUMBER.level1);
+            this.hideAllControls();
             this.setNewGame(this.playerId);
         }
 
         private void buttonChoosePLAYER_Click(object sender, EventArgs e)
         {
             currentGameState = SCENE_NUMBER.choosePlayer;
+            this.hideAllControls();
             game.goToScene(SCENE_NUMBER.choosePlayer);
+            Invalidate();
             //ne rabote kako so treba
         }
 
