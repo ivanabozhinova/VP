@@ -9,10 +9,11 @@ Tasks                           Name:                            State:					Desc
 6. da se sredi dvizenjeto da coveceto za da ne izleguva od granicite na prozorecot - DONE
 
 7.Update na score											Pri sekoj hit na topce, da se menuva promenlivata i labelata
-8.Update na lives											Pri sekoj hit na igracot da se menuva promenlivata i 
+8.Update na lives		Sneze                          22.05.2013									Pri sekoj hit na igracot da se menuva promenlivata i 
 													brojot na ogancinja vo info barot
-9.State gameOver											Mislam deka bi trebalo da bide nova scena
+9.State gameOver		Sneze									Mislam deka bi trebalo da bide nova scena
 													so opcii quit i play again so ke te nosi na main menu
 10.Instrukcii												Da se napise tekstot, da se stavi vo slika ili labela i da se 													sredi momentot na negovo prikazuvanje
 11.[IMPORTATNT] ball.isHit										Dali topceto e pogodeno od Shot-ot
 12. [IMPORTANT] delenje na topce									Koga ball.isHit == true da se otstrani topceto od listata, da 													se dodadat edno ili dve novi so slednata pomala golemina i 														da se pojavi slikickata explosion (opcionalno) 
+13.Replay level metod u  GAME   Sneze
