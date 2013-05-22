@@ -73,7 +73,7 @@ namespace Game
             if (!player.isShooting)
             {
                 player.isShooting = true;
-                shootingX = player.X + 15;
+                shootingX = player.X + 25;
                 shootingY = height - 100;
                 numTicks = 0;
                 ShootingPoints = new List<Point>();
