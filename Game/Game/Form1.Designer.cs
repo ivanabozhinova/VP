@@ -37,7 +37,6 @@
             this.buttonNewGAME = new System.Windows.Forms.Button();
             this.buttonChoosePLAYER = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
-            this.button_showScore = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -137,22 +136,11 @@
             this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
-            // button_showScore
-            // 
-            this.button_showScore.Location = new System.Drawing.Point(289, 124);
-            this.button_showScore.Name = "button_showScore";
-            this.button_showScore.Size = new System.Drawing.Size(75, 61);
-            this.button_showScore.TabIndex = 7;
-            this.button_showScore.Text = "SCORE";
-            this.button_showScore.UseVisualStyleBackColor = true;
-            this.button_showScore.Click += new System.EventHandler(this.button_showScore_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 458);
-            this.Controls.Add(this.button_showScore);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_pl3);
             this.Controls.Add(this.btn_pl2);
@@ -179,7 +167,6 @@
         private System.Windows.Forms.Button btn_pl2;
         private System.Windows.Forms.Button btn_pl3;
         private System.Windows.Forms.Button btn_back;
-        private System.Windows.Forms.Button button_showScore;
     }
 }
 

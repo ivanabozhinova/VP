@@ -25,6 +25,7 @@ namespace Game
         public Stopwatch stopwatch;
 
         int ticksCounter;
+        int num;
 
         public Form1()
         {
@@ -35,6 +36,8 @@ namespace Game
             game = new Game(currentGameState);
             this.playerId = PLAYERID.player3;
 
+            num = 10;
+
             //fixing the form
             DoubleBuffered = true;
             this.Width = 700 + 15;
@@ -44,14 +47,10 @@ namespace Game
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
-            this.button_showScore.Enabled = false;
-            this.button_showScore.Visible = false;
-
             //this.button_QUIT.Enabled = false;
             //this.button_QUIT.Visible = false;
 
             ticksCounter = 0;
-            
 
         }
 
@@ -68,7 +67,7 @@ namespace Game
 
 
             ball = new Ball(30, 40, this.Width, this.Height, 40, Math.PI / 4);
-            //Balls.Add(ball);
+            Balls.Add(ball);
             ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
             //Balls.Add(ball);
             ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
@@ -140,14 +139,30 @@ namespace Game
                     //  if it's the last round draw the circle around the player and allow score View
                     if (game.numLives == 1)
                     {
-                        game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
                         //make Quit button disappear
                         //  this.button_QUIT.Enabled = false;
                         //  this.button_QUIT.Visible = false;
-                         this.button_showScore.Enabled = true;
-                         this.button_showScore.Visible = true;
                         player.isKilled = true;
                         this.Update();
+
+                        //otkako ke gi izgubi site zivoti
+                        //broi 15 ticks
+                        //za vreme na broenjeto se zatemnuva
+                        //i posle ide na gameOver(showScore)
+                        if (ticksCounter >= 15) 
+                        {
+                            currentGameState = SCENE_NUMBER.showScore;
+                            game.goToScene(currentGameState);
+                            ticksCounter = 0;
+                            //TODO: go to menu
+                        }
+                        else
+                        {
+                            ticksCounter++;
+                            num+=15; //kolkavo opacity da ima toa so se crta u game over (valjda :D)
+                            game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle, num);
+                        }
+                        Invalidate();
                     }
                     //if it's not the last round when the player is killed wait for 0.7 seconds and replay the round
                     else
@@ -159,7 +174,7 @@ namespace Game
                         {
                             stopwatch = new Stopwatch();
                             stopwatch.Start();
-                            while (stopwatch.Elapsed.Seconds <= 0.7) ;
+                            while (stopwatch.Elapsed.Seconds <= 0.7);
 
 
                             stopwatch.Stop();
@@ -180,7 +195,6 @@ namespace Game
 
                 //iscrtuvanje na progres barot
                 pbTime.DrawPB(g);
-
 
             }
 
@@ -204,9 +218,6 @@ namespace Game
                 setNewGame(playerId);
             }
         }
-
-
-
 
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -263,7 +274,7 @@ namespace Game
                     Balls[i].Time++;
                 else
                     Balls[i].Time = 0;
-            }
+            }            
 
             if (player.isShooting && Shot.shootingY > 5)
             {
@@ -272,7 +283,6 @@ namespace Game
             if (player.isShooting && Shot.shootingY < 5)
             {
                 player.isShooting = false;
-                //Shot.ShootingPoints = new List<Point>();
             }
             Shot.numTicks++;
 
@@ -280,8 +290,9 @@ namespace Game
             if (pbTime.timeChange == this.Width - 5)
                 timer1.Stop();
 
-            //if (player.isShooting)
-                hitBallCheck(player.isShooting);
+           
+            hitBallCheck(player.isShooting);
+
             Invalidate();
         }
 
@@ -316,7 +327,6 @@ namespace Game
                 Ball current = Balls[i];
                 if (current.isHit)
                 {
-
                     if (Balls[i].Time >= 2)
                     {
                         Balls.RemoveAt(i);
@@ -342,7 +352,6 @@ namespace Game
                                 break;
                         }
                     }
-                    //else Balls[i].Time++;
                     break;
                 }
             }
@@ -409,7 +418,6 @@ namespace Game
             this.activateAllChoosePlayerMenuControls();
             game.goToScene(SCENE_NUMBER.choosePlayer);
             Invalidate();
-            //ne rabote kako so treba
         }
 
 
@@ -460,8 +468,6 @@ namespace Game
             //this.button_QUIT.Visible = false;
             currentGameState = SCENE_NUMBER.showScore;
             game.goToScene(currentGameState);
-            this.button_showScore.Visible = false;
-            this.button_showScore.Enabled = false;
             //TODO: go to menu
             Invalidate();
         }
