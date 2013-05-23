@@ -39,12 +39,15 @@ namespace Game
             {
                 case SCENE_NUMBER.level3:
                     backgroundImg = Resources._03;
+                    levelImg = Resources.lvlNo3;
                     break;
                 case SCENE_NUMBER.level2:
                     backgroundImg = Resources._02;
+                    levelImg = Resources.lvlNo2;
                     break;
                 case SCENE_NUMBER.level1:
                     backgroundImg = Resources._01;
+                    levelImg = Resources.lvlNo1;
                     break;
                 case SCENE_NUMBER.begin:
                     backgroundImg = Resources.start;
@@ -59,16 +62,7 @@ namespace Game
                     backgroundImg = Resources._01;
                     break;
             }
-
-
-
         }
-
-
-
-        //display the currentlevel
-        //public void showLevel(Graphics g, Rectangle ClientRectangle);
-
 
 
         //display the background of the status bar
@@ -78,6 +72,7 @@ namespace Game
                 g.DrawImage(statusBarImg, ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height,
                             statusBarImg.Width + 5, statusBarImg.Height);
         }
+
 
         //display the number of lives
         public void showLives(Graphics g, Rectangle ClientRectangle)
@@ -89,8 +84,15 @@ namespace Game
                         g.DrawImage(lifeImg,
                                     ClientRectangle.X + i * (lifeImg.Width + 12) + 260, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 27,
                                     lifeImg.Width + 5, lifeImg.Height - 5);
-
                 }
+        }
+
+
+        //display the number of current level
+        public void showLevel(Graphics g, Rectangle ClientRectangle)
+        {
+            g.DrawImage(this.levelImg, ClientRectangle.X + 620, ClientRectangle.Y + 430,
+                                    levelImg.Width + 5, levelImg.Height - 5);
         }
 
         //draw the background
@@ -98,6 +100,7 @@ namespace Game
         {
             g.DrawImage(this.backgroundImg, ClientRectangle);
         }
+
         public void drawBeginScene(Graphics g, Rectangle ClientRectangle)
         {
             g.Clear(Color.White);
@@ -112,7 +115,7 @@ namespace Game
             this.drawBackground(g, ClientRectangle);
             this.showStatusBar(g, ClientRectangle);
             this.showLives(g, ClientRectangle);
-            //this.showLevel(g, ClientRectangle);
+            this.showLevel(g, ClientRectangle);
 
         }
     }
