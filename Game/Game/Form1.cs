@@ -129,7 +129,8 @@ namespace Game
                 {
                     ball.DrawBall(g);
                 }
-                
+                //iscrtuvanje na igracot
+                player.DrawPlayer(g, this.ClientRectangle);
 
 
                 //  ako igracot e pogoden od topka igrata zavrsuva
@@ -179,9 +180,6 @@ namespace Game
 
                 //iscrtuvanje na progres barot
                 pbTime.DrawPB(g);
-
-                //iscrtuvanje na igracot
-                player.DrawPlayer(g, this.ClientRectangle);
 
 
             }
