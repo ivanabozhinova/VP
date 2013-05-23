@@ -18,5 +18,10 @@ Tasks                           Name:                            State:					Desc
 12. [IMPORTANT] delenje na topce Ivana		DONE									Koga ball.isHit == true da se otstrani topceto od listata, da 													se dodadat edno ili dve novi so slednata pomala golemina i 														da se pojavi slikickata explosion (opcionalno) 
 13.Replay level metod u  GAME   Sneze
 
-14.Update na levelNo
+14.Update na levelNo		Simona 		DONE
 
+
+15. [OPTIONAL] pred da se otvori noviot level da ti ja zatemni scenata i da pise levelNo
+16. [OPTIONAL] vo infoBar da imame kopce za pauza
+17. [OPTIONAL] koga ke gi mine site leveli da ide u state YOU WIN -- nova slikicka, so isti kopcinja kako game over 
+18. [OPTIONAL] da se prikase eksplozijata koga nekoe topce e pogodeno
