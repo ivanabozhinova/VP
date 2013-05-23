@@ -38,10 +38,10 @@ namespace Game
             switch (sceneNo)
             {
                 case SCENE_NUMBER.level3:
-                    backgroundImg = Resources.lvl3;
+                    backgroundImg = Resources._03;
                     break;
                 case SCENE_NUMBER.level2:
-                    backgroundImg = Resources.level2;
+                    backgroundImg = Resources._02;
                     break;
                 case SCENE_NUMBER.level1:
                     backgroundImg = Resources._01;
