@@ -53,18 +53,14 @@ namespace Game
         //}
 
 
-
-
-
-
-        public void gameOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle, int num)
+        public void gameOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
         {
 
             var circle = new System.Drawing.Drawing2D.GraphicsPath();
             circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
 
             g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
-            Brush brush = new SolidBrush(Color.FromArgb(num, Color.Black));
+            Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
             g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);
 
             // Image gameover = Resourses.gameover;

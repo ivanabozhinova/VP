@@ -25,7 +25,7 @@ namespace Game
         public Stopwatch stopwatch;
 
         int ticksCounter;
-        int num;
+        
 
         public Form1()
         {
@@ -36,7 +36,7 @@ namespace Game
             game = new Game(currentGameState);
             this.playerId = PLAYERID.player3;
 
-            num = 10;
+            
 
             //fixing the form
             DoubleBuffered = true;
@@ -149,7 +149,7 @@ namespace Game
                         //broi 15 ticks
                         //za vreme na broenjeto se zatemnuva
                         //i posle ide na gameOver(showScore)
-                        if (ticksCounter >= 15) 
+                        if (ticksCounter >= 25) 
                         {
                             currentGameState = SCENE_NUMBER.showScore;
                             game.goToScene(currentGameState);
@@ -159,28 +159,28 @@ namespace Game
                         else
                         {
                             ticksCounter++;
-                            num+=15; //kolkavo opacity da ima toa so se crta u game over (valjda :D)
-                            game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle, num);
+                            game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
                         }
                         Invalidate();
                     }
-                    //if it's not the last round when the player is killed wait for 0.7 seconds and replay the round
+                    //if it's not the last round when the player is killed wait for10 ticks and replay the round
                     else
                     {
-                        player.isKilled = true;
-                        this.Update();
-
-                        if (player.isKilled && game.numLives > 1)
+                         if (ticksCounter >= 10) 
                         {
-                            stopwatch = new Stopwatch();
-                            stopwatch.Start();
-                            while (stopwatch.Elapsed.Seconds <= 0.7);
-
-
-                            stopwatch.Stop();
-                            replayLevel();
-
+                            
+                            ticksCounter = 0;
+                            player.isKilled = true;
+                            replayLevel();  
                         }
+                        else
+                        {
+                            ticksCounter++;
+                            game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                        }
+                         Invalidate();  
+
+                        
                     }
 
                 }
