@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
+using Game.Properties;
 
 namespace Game
 {
@@ -22,7 +23,9 @@ namespace Game
         public ProgressBar pbTime;
         public SCENE_NUMBER currentGameState { set; get; }
         public Stopwatch stopwatch;
-        EventHandler eh;
+
+        int ticksCounter;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +33,6 @@ namespace Game
             this.hideAllChoosePlayerMenuControls();
             //creating a new game 
             game = new Game(currentGameState);
-            eh = new EventHandler(timer1_Tick);
             this.playerId = PLAYERID.player3;
 
             //fixing the form
@@ -47,6 +49,9 @@ namespace Game
 
             //this.button_QUIT.Enabled = false;
             //this.button_QUIT.Visible = false;
+
+            ticksCounter = 0;
+            
 
         }
 
@@ -75,10 +80,8 @@ namespace Game
 
             this.timer1.Interval = 20;
 
-
-
             if (game.numLives == 5)
-                this.timer1.Tick += eh;
+                this.timer1.Tick += new EventHandler(timer1_Tick);
 
             this.timer1.Enabled = true;
             this.timer1.Start();
@@ -123,8 +126,9 @@ namespace Game
 
                 //iscrtuvanje na topkite
                 foreach (Ball ball in Balls)
+                {
                     ball.DrawBall(g);
-
+                }
                 //iscrtuvanje na igracot
                 player.DrawPlayer(g, this.ClientRectangle);
 
@@ -251,10 +255,14 @@ namespace Game
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            foreach (Ball ball in Balls)
+            for (int i = 0; i < Balls.Count; i++)
             {
-                ball.MoveBall();
-                ball.Time++;
+                if (!Balls[i].dying)
+                    Balls[i].MoveBall();
+                if (Balls[i].dying)
+                    Balls[i].Time++;
+                else
+                    Balls[i].Time = 0;
             }
 
             if (player.isShooting && Shot.shootingY > 5)
@@ -272,28 +280,35 @@ namespace Game
             if (pbTime.timeChange == this.Width - 5)
                 timer1.Stop();
 
-            if (player.isShooting)
-                hitBallCheck();
+            //if (player.isShooting)
+                hitBallCheck(player.isShooting);
             Invalidate();
         }
 
 
-        public void hitBallCheck()
+        public void hitBallCheck(bool isShooting)
         {
-            for (int i = 0; i < Balls.Count; i++)
-                for (int j = 0; j < Shot.ShootingPoints.Count; j++)
-                {
-                    if (Balls[i].isHitBall(Shot.ShootingPoints[j]))
+            if (isShooting)
+            {
+                for (int i = 0; i < Balls.Count; i++)
+                    for (int j = 0; j < Shot.ShootingPoints.Count; j++)
                     {
-                        Balls[i].isHit = true;
-                        player.isShooting = false;
-                        break;
+                        if (!Balls[i].isHit)
+                            if (Balls[i].isHitBall(Shot.ShootingPoints[j]))
+                            {
+                                Balls[i].bubble = Resources.explosion;
+                                Balls[i].isHit = true;
+                                player.isShooting = false;
+                                Balls[i].dying = true;
+                                Balls[i].velocity = 0;
+                                break;
+                            }
+                            else
+                            {
+                                Balls[i].isHit = false;
+                            }
                     }
-                    else
-                    {
-                        Balls[i].isHit = false;
-                    }
-                }
+            }
 
 
             for (int i = Balls.Count - 1; i >= 0; i--)
@@ -301,33 +316,36 @@ namespace Game
                 Ball current = Balls[i];
                 if (current.isHit)
                 {
-                    switch (current.Radius)
+
+                    if (Balls[i].Time >= 2)
                     {
-                        case 40:
-                            ball = new Ball(current.X + 40, current.Y, this.Width, this.Height, 32, -Math.PI / 4);
-                            Balls.Add(ball);
-                            ball = new Ball(current.X - 40, current.Y, this.Width, this.Height, 32, -3 * Math.PI / 4);
-                            Balls.Add(ball);
-                            break;
-                        case 32:
-                            ball = new Ball(current.X + 30, current.Y, this.Width, this.Height, 20, -Math.PI / 4);
-                            Balls.Add(ball);
-                            ball = new Ball(current.X - 30, current.Y, this.Width, this.Height, 20, -3 * Math.PI / 4);
-                            Balls.Add(ball);
-                            break;
-                        case 20:
-                            ball = new Ball(current.X + 20, current.Y, this.Width, this.Height, 8, -Math.PI / 4);
-                            Balls.Add(ball);
-                            ball = new Ball(current.X - 20, current.Y, this.Width, this.Height, 8, -3 * Math.PI / 4);
-                            Balls.Add(ball);
-                            break;
+                        Balls.RemoveAt(i);
+                        switch (current.Radius)
+                        {
+                            case 40:
+                                ball = new Ball(current.X + 40, current.Y, this.Width, this.Height, 32, -Math.PI / 4);
+                                Balls.Add(ball);
+                                ball = new Ball(current.X - 40, current.Y, this.Width, this.Height, 32, -3 * Math.PI / 4);
+                                Balls.Add(ball);
+                                break;
+                            case 32:
+                                ball = new Ball(current.X + 30, current.Y, this.Width, this.Height, 20, -Math.PI / 4);
+                                Balls.Add(ball);
+                                ball = new Ball(current.X - 30, current.Y, this.Width, this.Height, 20, -3 * Math.PI / 4);
+                                Balls.Add(ball);
+                                break;
+                            case 20:
+                                ball = new Ball(current.X + 20, current.Y, this.Width, this.Height, 8, -Math.PI / 4);
+                                Balls.Add(ball);
+                                ball = new Ball(current.X - 20, current.Y, this.Width, this.Height, 8, -3 * Math.PI / 4);
+                                Balls.Add(ball);
+                                break;
+                        }
                     }
-                    Balls.RemoveAt(i);
+                    //else Balls[i].Time++;
                     break;
                 }
-
             }
-
         }
 
 

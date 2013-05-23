@@ -18,7 +18,8 @@ namespace Game
         public bool isHit { set; get; }
         public int Time { set; get; } // kolku vreme pominalo otkako iskocila topkata, 
                                         // ni treba za da moze da padne od povisoko od so ke skoka posle
-        
+
+        public bool dying; //dali bila puknata vo poslednite nekolku tikovi
 
         private double velocityX;
         private double velocityY;
@@ -31,6 +32,7 @@ namespace Game
 
         public Ball(double x, double y, int worldWidth, int worldHeight, int radius, double angle)
         {
+            dying = false;
             isHit = false;
             X = x;
             //Y = y; //visinata od koja topceto paga pri negovoto pojavuvanje zavisi samo od negoviot radius
@@ -113,7 +115,7 @@ namespace Game
 
         public void DrawBall(Graphics g)
         {
-            g.DrawImage(bubble, (float)X, (float)Y, bubble.Width, bubble.Height);
+            g.DrawImage(bubble, (float)X, (float)Y, 2*Radius, 2*Radius);
         }
 
     }
