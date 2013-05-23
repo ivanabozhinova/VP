@@ -42,17 +42,25 @@ namespace Game
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
+            this.button_showScore.Enabled = false;
+            this.button_showScore.Visible = false;
+
+            //this.button_QUIT.Enabled = false;
+            //this.button_QUIT.Visible = false;
 
         }
 
+
         public void setNewGame(PLAYERID playerId)
         {
+
             Shot = new Shot();
             Balls = new List<Ball>();
 
             this.playerId = playerId;
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 91, playerId);
             player.IsWalking = false;
+
 
             ball = new Ball(30, 40, this.Width, this.Height, 40, Math.PI / 4);
             Balls.Add(ball);
@@ -64,14 +72,14 @@ namespace Game
             //Balls.Add(ball);
 
             pbTime = new ProgressBar(10, 412, this.Width, 5);
-            
-            this.timer1.Interval = 5;
-<<<<<<< HEAD
-            this.timer1.Tick += new EventHandler(timer1_Tick);
-=======
-            if (game.numLives == 5) 
-            this.timer1.Tick += eh;
->>>>>>> 55f61fa5848a574f3fa60459e7b547b0bd977d2b
+
+            this.timer1.Interval = 20;
+
+
+
+            if (game.numLives == 5)
+                this.timer1.Tick += eh;
+
             this.timer1.Enabled = true;
             this.timer1.Start();
 
@@ -91,8 +99,25 @@ namespace Game
             {
                 game.currentScene.drawBeginScene(g, this.ClientRectangle);
             }
-            else
+            else if (currentGameState == SCENE_NUMBER.showScore)
             {
+                game.currentScene.drawBeginScene(g, this.ClientRectangle);
+            }
+            else if (currentGameState == SCENE_NUMBER.instructions)
+            {
+                game.currentScene.drawBeginScene(g, this.ClientRectangle);
+            }
+
+
+
+            else if (currentGameState == SCENE_NUMBER.level1 || currentGameState == SCENE_NUMBER.level2 || currentGameState == SCENE_NUMBER.level3)
+            {   //make Quit button appear only if it isn't the end of the game
+                if (!player.isKilled)
+                {
+                    //this.button_QUIT.Enabled = true;
+                    // this.button_QUIT.Visible = true;
+                }
+
                 //iscrtuvanje na scenata
                 game.currentScene.drawScene(g, this.ClientRectangle);
 
@@ -103,25 +128,41 @@ namespace Game
                 //iscrtuvanje na igracot
                 player.DrawPlayer(g, this.ClientRectangle);
 
-                //ako igracot e pogoden od topka igrata zavrsuva
+
+                //  ako igracot e pogoden od topka igrata zavrsuva
                 if (player.isHit(Balls))
                 {
                     timer1.Stop();
-                    game.playerKilled(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
-                    player.isKilled = true;
-                    this.Update();
+                    //  if it's the last round draw the circle around the player and allow score View
+                    if (game.numLives == 1)
+                    {
+                        game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                        //make Quit button disappear
+                        //  this.button_QUIT.Enabled = false;
+                        //  this.button_QUIT.Visible = false;
+                         this.button_showScore.Enabled = true;
+                         this.button_showScore.Visible = true;
+                        player.isKilled = true;
+                        this.Update();
+                    }
+                    //if it's not the last round when the player is killed wait for 0.7 seconds and replay the round
+                    else
+                    {
+                        player.isKilled = true;
+                        this.Update();
 
-                    //if (player.isKilled)
-                    //{
-                    //    stopwatch = new Stopwatch();
-                    //    stopwatch.Start();
-                    //    while (stopwatch.Elapsed.Seconds <= 1) ;
+                        if (player.isKilled && game.numLives > 1)
+                        {
+                            stopwatch = new Stopwatch();
+                            stopwatch.Start();
+                            while (stopwatch.Elapsed.Seconds <= 0.7) ;
 
 
-                    //    stopwatch.Stop();
-                       replayLevel();
+                            stopwatch.Stop();
+                            replayLevel();
 
-                    //}                  
+                        }
+                    }
 
                 }
 
@@ -136,17 +177,19 @@ namespace Game
                 //iscrtuvanje na progres barot
                 pbTime.DrawPB(g);
 
-                               
+
             }
 
         }
 
 
-        
 
+
+        //replay the level with one life less
         public void replayLevel()
         {
-            if (game.numLives >0)
+            this.game.numLives -= 1;
+            if (game.numLives > 0)
             {
                 player.isKilled = false;
                 float score = game.currentScore;
@@ -157,6 +200,7 @@ namespace Game
                 setNewGame(playerId);
             }
         }
+
 
 
 
@@ -184,11 +228,11 @@ namespace Game
 
                     if (Shot != null)
 
-                    if (player.isKilled) break;
+                        if (player.isKilled) break;
 
                     if (Shot != null)
 
-                    Shot.resetShot(player, this.Height);
+                        Shot.resetShot(player, this.Height);
                     break;
             }
         }
@@ -229,71 +273,10 @@ namespace Game
                 timer1.Stop();
 
             if (player.isShooting)
-            hitBallCheck();
+                hitBallCheck();
             Invalidate();
         }
 
-        private void hideAllBeginMenuControls()
-        {
-            this.buttonChoosePLAYER.Visible = false;
-            this.buttonCONTROLS.Visible = false;
-            this.buttonNewGAME.Visible = false;
-            this.buttonChoosePLAYER.Enabled = false;
-            this.buttonCONTROLS.Enabled = false;
-            this.buttonNewGAME.Enabled = false;
-        }
-        private void activateAllBeginMenuControls()
-        {
-            this.buttonChoosePLAYER.Visible = true;
-            this.buttonCONTROLS.Visible = true;
-            this.buttonNewGAME.Visible = true;
-            this.buttonChoosePLAYER.Enabled = true;
-            this.buttonCONTROLS.Enabled = true;
-            this.buttonNewGAME.Enabled = true;
-        }
-
-         private void hideAllChoosePlayerMenuControls()
-         {
-             btn_back.Enabled = false;
-             btn_pl1.Enabled = false;
-             btn_pl2.Enabled = false;
-             btn_pl3.Enabled = false;
-
-             btn_back.Visible = false;
-             btn_pl1.Visible = false;
-             btn_pl2.Visible = false;
-             btn_pl3.Visible = false;
-         }
-         private void activateAllChoosePlayerMenuControls()
-         {
-             btn_back.Enabled = true;
-             btn_pl1.Enabled = true;
-             btn_pl2.Enabled = true;
-             btn_pl3.Enabled = true;
-
-             btn_back.Visible = true;
-             btn_pl1.Visible = true;
-             btn_pl2.Visible = true;
-             btn_pl3.Visible = true;
-         }
-        private void buttonNewGAME_Click(object sender, EventArgs e)
-        {
-            currentGameState = SCENE_NUMBER.level1;
-            game.goToScene(SCENE_NUMBER.level1);
-            this.hideAllBeginMenuControls();
-            this.hideAllChoosePlayerMenuControls();
-            this.setNewGame(this.playerId);
-        }
-
-        private void buttonChoosePLAYER_Click(object sender, EventArgs e)
-        {
-            currentGameState = SCENE_NUMBER.choosePlayer;
-            this.hideAllBeginMenuControls();
-            this.activateAllChoosePlayerMenuControls();
-            game.goToScene(SCENE_NUMBER.choosePlayer);
-            Invalidate();
-            //ne rabote kako so treba
-        }
 
         public void hitBallCheck()
         {
@@ -321,36 +304,101 @@ namespace Game
                     switch (current.Radius)
                     {
                         case 40:
-                            ball = new Ball(current.X+40, current.Y, this.Width, this.Height, 32, -Math.PI / 4);
+                            ball = new Ball(current.X + 40, current.Y, this.Width, this.Height, 32, -Math.PI / 4);
                             Balls.Add(ball);
-                            ball = new Ball(current.X-40, current.Y, this.Width, this.Height, 32, -3* Math.PI / 4);
+                            ball = new Ball(current.X - 40, current.Y, this.Width, this.Height, 32, -3 * Math.PI / 4);
                             Balls.Add(ball);
                             break;
                         case 32:
-                            ball = new Ball(current.X+30, current.Y, this.Width, this.Height, 20, -Math.PI / 4);
+                            ball = new Ball(current.X + 30, current.Y, this.Width, this.Height, 20, -Math.PI / 4);
                             Balls.Add(ball);
-                            ball = new Ball(current.X-30, current.Y, this.Width, this.Height, 20, -3* Math.PI / 4);
+                            ball = new Ball(current.X - 30, current.Y, this.Width, this.Height, 20, -3 * Math.PI / 4);
                             Balls.Add(ball);
                             break;
                         case 20:
-                            ball = new Ball(current.X+20, current.Y, this.Width, this.Height, 8, -Math.PI / 4);
+                            ball = new Ball(current.X + 20, current.Y, this.Width, this.Height, 8, -Math.PI / 4);
                             Balls.Add(ball);
-                            ball = new Ball(current.X-20, current.Y, this.Width, this.Height, 8, -3* Math.PI / 4);
+                            ball = new Ball(current.X - 20, current.Y, this.Width, this.Height, 8, -3 * Math.PI / 4);
                             Balls.Add(ball);
                             break;
                     }
                     Balls.RemoveAt(i);
                     break;
                 }
-               
+
             }
 
         }
-        
+
+
+
+        private void hideAllBeginMenuControls()
+        {
+            this.buttonChoosePLAYER.Visible = false;
+            this.buttonINSTRCTIONS.Visible = false;
+            this.buttonNewGAME.Visible = false;
+            this.buttonChoosePLAYER.Enabled = false;
+            this.buttonINSTRCTIONS.Enabled = false;
+            this.buttonNewGAME.Enabled = false;
+        }
+        private void activateAllBeginMenuControls()
+        {
+            this.buttonChoosePLAYER.Visible = true;
+            this.buttonINSTRCTIONS.Visible = true;
+            this.buttonNewGAME.Visible = true;
+            this.buttonChoosePLAYER.Enabled = true;
+            this.buttonINSTRCTIONS.Enabled = true;
+            this.buttonNewGAME.Enabled = true;
+        }
+
+        private void hideAllChoosePlayerMenuControls()
+        {
+            btn_back.Enabled = false;
+            btn_pl1.Enabled = false;
+            btn_pl2.Enabled = false;
+            btn_pl3.Enabled = false;
+
+            btn_back.Visible = false;
+            btn_pl1.Visible = false;
+            btn_pl2.Visible = false;
+            btn_pl3.Visible = false;
+        }
+        private void activateAllChoosePlayerMenuControls()
+        {
+            btn_back.Enabled = true;
+            btn_pl1.Enabled = true;
+            btn_pl2.Enabled = true;
+            btn_pl3.Enabled = true;
+
+            btn_back.Visible = true;
+            btn_pl1.Visible = true;
+            btn_pl2.Visible = true;
+            btn_pl3.Visible = true;
+        }
+        private void buttonNewGAME_Click(object sender, EventArgs e)
+        {
+            currentGameState = SCENE_NUMBER.level1;
+            game.goToScene(SCENE_NUMBER.level1);
+            this.hideAllBeginMenuControls();
+            this.hideAllChoosePlayerMenuControls();
+            this.setNewGame(this.playerId);
+        }
+
+        private void buttonChoosePLAYER_Click(object sender, EventArgs e)
+        {
+            currentGameState = SCENE_NUMBER.choosePlayer;
+            this.hideAllBeginMenuControls();
+            this.activateAllChoosePlayerMenuControls();
+            game.goToScene(SCENE_NUMBER.choosePlayer);
+            Invalidate();
+            //ne rabote kako so treba
+        }
+
+
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            currentGameState=SCENE_NUMBER.begin;
+            currentGameState = SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
             this.activateAllBeginMenuControls();
             this.hideAllChoosePlayerMenuControls();
@@ -387,6 +435,38 @@ namespace Game
             Invalidate();
         }
 
-      
+        //button which brings you to the Score (END) View
+        private void button_showScore_Click(object sender, EventArgs e)
+        {
+            //this.button_QUIT.Enabled = false;
+            //this.button_QUIT.Visible = false;
+            currentGameState = SCENE_NUMBER.showScore;
+            game.goToScene(currentGameState);
+            this.button_showScore.Visible = false;
+            this.button_showScore.Enabled = false;
+            //TODO: go to menu
+            Invalidate();
+        }
+
+        //button which brings you to the View with instructions
+        private void buttonINSTRCTIONS_Click(object sender, EventArgs e)
+        {
+           // this.button_QUIT.Enabled = false;
+           // this.button_QUIT.Visible = false;
+            currentGameState = SCENE_NUMBER.instructions;
+            game.goToScene(currentGameState);
+            this.hideAllBeginMenuControls();
+            this.hideAllChoosePlayerMenuControls();
+            this.btn_back.Enabled = true;
+            this.btn_back.Visible = true;
+            Invalidate();
+        }
+
+
+
+
+
+
+
     }
 }

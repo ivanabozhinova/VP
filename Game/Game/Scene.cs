@@ -31,7 +31,7 @@ namespace Game
             this.score = score;
             this.sceneNo = sceneNo;
 
-            backgroundImg = Resources.begin1;
+            backgroundImg = Resources.start;
             lifeImg = Resources.fire;
             statusBarImg = Resources.infoBar;
 
@@ -51,6 +51,12 @@ namespace Game
                     break;
                 case SCENE_NUMBER.choosePlayer:
                     backgroundImg = Resources.choose;
+                    break;
+                case SCENE_NUMBER.showScore:
+                    backgroundImg = Resources._01;
+                    break;
+                case SCENE_NUMBER.instructions:
+                    backgroundImg = Resources._01;
                     break;
             }
 
@@ -79,11 +85,11 @@ namespace Game
             if (sceneNo != SCENE_NUMBER.choosePlayer)
                 if (numLives > 0)
                 {
-                        for (int i = numLives; i >=1; i--)
-                            g.DrawImage(lifeImg,
-                                        ClientRectangle.X + i * (lifeImg.Width + 12) + 260, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 27,
-                                        lifeImg.Width + 5, lifeImg.Height - 5);
-                    
+                    for (int i = numLives; i >= 1; i--)
+                        g.DrawImage(lifeImg,
+                                    ClientRectangle.X + i * (lifeImg.Width + 12) + 260, ClientRectangle.Y + ClientRectangle.Height - statusBarImg.Height * 2 / 3 + 27,
+                                    lifeImg.Width + 5, lifeImg.Height - 5);
+
                 }
         }
 

@@ -9,7 +9,7 @@ using Game.Properties;
 
 namespace Game
 {
-    public enum SCENE_NUMBER { begin, choosePlayer, controls, level1, level2, level3 };
+    public enum SCENE_NUMBER { begin, choosePlayer, instructions, showScore, level1, level2, level3 };
     public class Game
     {
         public SCENE_NUMBER sceneNo { set; get; }
@@ -52,21 +52,24 @@ namespace Game
 
         //}
 
-      
-
-        
 
 
-        public void playerKilled(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
+
+
+
+        public void gameOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
         {
-            this.numLives -= 1;
+
             var circle = new System.Drawing.Drawing2D.GraphicsPath();
             circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
-            
+
             g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
             Brush brush = new SolidBrush(Color.FromArgb(70, Color.Black));
             g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);
-           
+
+            // Image gameover = Resourses.gameover;
+            //  g.DrawImage(gameover, ClientRectangle, this.currentScene.backgroundImg.Width / 2, this.currentScene.backgroundImg.Height/ 2,gameover.Width,gameover.Height);
+
         }
     }
 }

@@ -33,10 +33,11 @@
             this.btn_pl3 = new System.Windows.Forms.Button();
             this.btn_pl2 = new System.Windows.Forms.Button();
             this.btn_pl1 = new System.Windows.Forms.Button();
-            this.buttonCONTROLS = new System.Windows.Forms.Button();
+            this.buttonINSTRCTIONS = new System.Windows.Forms.Button();
             this.buttonNewGAME = new System.Windows.Forms.Button();
             this.buttonChoosePLAYER = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
+            this.button_showScore = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -83,17 +84,18 @@
             this.btn_pl1.UseVisualStyleBackColor = false;
             this.btn_pl1.Click += new System.EventHandler(this.btn_pl1_Click);
             // 
-            // buttonCONTROLS
+            // buttonINSTRCTIONS
             // 
-            this.buttonCONTROLS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonCONTROLS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCONTROLS.Font = new System.Drawing.Font("Ravie", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCONTROLS.Image = global::Game.Properties.Resources.instructions;
-            this.buttonCONTROLS.Location = new System.Drawing.Point(405, 268);
-            this.buttonCONTROLS.Name = "buttonCONTROLS";
-            this.buttonCONTROLS.Size = new System.Drawing.Size(262, 58);
-            this.buttonCONTROLS.TabIndex = 2;
-            this.buttonCONTROLS.UseVisualStyleBackColor = false;
+            this.buttonINSTRCTIONS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonINSTRCTIONS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonINSTRCTIONS.Font = new System.Drawing.Font("Ravie", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonINSTRCTIONS.Image = global::Game.Properties.Resources.instructions;
+            this.buttonINSTRCTIONS.Location = new System.Drawing.Point(405, 268);
+            this.buttonINSTRCTIONS.Name = "buttonINSTRCTIONS";
+            this.buttonINSTRCTIONS.Size = new System.Drawing.Size(262, 58);
+            this.buttonINSTRCTIONS.TabIndex = 2;
+            this.buttonINSTRCTIONS.UseVisualStyleBackColor = false;
+            this.buttonINSTRCTIONS.Click += new System.EventHandler(this.buttonINSTRCTIONS_Click);
             // 
             // buttonNewGAME
             // 
@@ -135,21 +137,31 @@
             this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
+            // button_showScore
+            // 
+            this.button_showScore.Location = new System.Drawing.Point(289, 124);
+            this.button_showScore.Name = "button_showScore";
+            this.button_showScore.Size = new System.Drawing.Size(75, 61);
+            this.button_showScore.TabIndex = 7;
+            this.button_showScore.Text = "SCORE";
+            this.button_showScore.UseVisualStyleBackColor = true;
+            this.button_showScore.Click += new System.EventHandler(this.button_showScore_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 445);
+            this.Controls.Add(this.button_showScore);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_pl3);
             this.Controls.Add(this.btn_pl2);
             this.Controls.Add(this.btn_pl1);
-            this.Controls.Add(this.buttonCONTROLS);
+            this.Controls.Add(this.buttonINSTRCTIONS);
             this.Controls.Add(this.buttonNewGAME);
             this.Controls.Add(this.buttonChoosePLAYER);
             this.Name = "Form1";
             this.Text = "Form1";
-            
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -162,11 +174,12 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonChoosePLAYER;
         private System.Windows.Forms.Button buttonNewGAME;
-        private System.Windows.Forms.Button buttonCONTROLS;
+        private System.Windows.Forms.Button buttonINSTRCTIONS;
         private System.Windows.Forms.Button btn_pl1;
         private System.Windows.Forms.Button btn_pl2;
         private System.Windows.Forms.Button btn_pl3;
         private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.Button button_showScore;
     }
 }
 
