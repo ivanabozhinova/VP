@@ -115,7 +115,7 @@ namespace Game
 
         public void DrawBall(Graphics g)
         {
-            g.DrawImage(bubble, (float)X, (float)Y, 2*Radius, 2*Radius);
+             g.DrawImage(bubble, (float)X, (float)Y, 2*Radius, 2*Radius);
         }
 
     }
