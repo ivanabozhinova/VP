@@ -63,11 +63,11 @@ namespace Game
 
 
             ball = new Ball(30, 40, this.Width, this.Height, 40, Math.PI / 4);
-            Balls.Add(ball);
-            ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
-            Balls.Add(ball);
-            ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
             //Balls.Add(ball);
+            ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
+            //Balls.Add(ball);
+            ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
+            Balls.Add(ball);
             ball = new Ball(this.Width - 115, 270, this.Width, this.Height, 8, 3 * Math.PI / 4);
             //Balls.Add(ball);
 
