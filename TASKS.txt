@@ -21,7 +21,7 @@ Tasks                           Name:                            State:					Desc
 14.Update na levelNo		Simona 		DONE
 
 
-15. [OPTIONAL] pred da se otvori noviot level da ti ja zatemni scenata i da pise levelNo
+15. [OPTIONAL] pred da se otvori noviot level da ti ja zatemni scenata i da pise Level 1/2/3
 16. [OPTIONAL] vo infoBar da imame kopce za pauza
 17. [OPTIONAL] koga ke gi mine site leveli da ide u state YOU WIN -- nova slikicka, so isti kopcinja kako game over 
 18. [OPTIONAL] da se prikase eksplozijata koga nekoe topce e pogodeno
