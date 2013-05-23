@@ -8,7 +8,7 @@ Tasks                           Name:                            State:					Desc
 5. da se napise metod kajsto ke se menuvaat pozadinite vo zavisnost od toa koj level si - DONE
 6. da se sredi dvizenjeto da coveceto za da ne izleguva od granicite na prozorecot - DONE
 
-7.Update na score											Pri sekoj hit na topce, da se menuva promenlivata i labelata
+7.Update na score		Simona									Pri sekoj hit na topce, da se menuva promenlivata i labelata
 8.Update na lives		Sneze                          22.05.2013									Pri sekoj hit na igracot da se menuva promenlivata i 
 													brojot na ogancinja vo info barot
 9.State gameOver		Sneze									Mislam deka bi trebalo da bide nova scena
@@ -21,7 +21,9 @@ Tasks                           Name:                            State:					Desc
 14.Update na levelNo		Simona 		DONE
 
 
-15. [OPTIONAL] pred da se otvori noviot level da ti ja zatemni scenata i da pise Level 1/2/3
+15. [OPTIONAL] pred da se otvori noviot level da ti ja zatemni scenata i da pise Level 1/2/3 i da se stopira tajmerot
 16. [OPTIONAL] vo infoBar da imame kopce za pauza
 17. [OPTIONAL] koga ke gi mine site leveli da ide u state YOU WIN -- nova slikicka, so isti kopcinja kako game over 
 18. [OPTIONAL] da se prikase eksplozijata koga nekoe topce e pogodeno
+
+
