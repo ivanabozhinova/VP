@@ -102,6 +102,13 @@ namespace Game.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap gameover {
+            get {
+                object obj = ResourceManager.GetObject("gameover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap infoBar {
             get {
                 object obj = ResourceManager.GetObject("infoBar", resourceCulture);

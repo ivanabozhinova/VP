@@ -130,7 +130,7 @@
             this.btn_back.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_back.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_back.Image = global::Game.Properties.Resources.back;
-            this.btn_back.Location = new System.Drawing.Point(12, 375);
+            this.btn_back.Location = new System.Drawing.Point(12, 410);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(139, 58);
             this.btn_back.TabIndex = 6;
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 445);
+            this.ClientSize = new System.Drawing.Size(723, 458);
             this.Controls.Add(this.button_showScore);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_pl3);

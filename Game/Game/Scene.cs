@@ -53,7 +53,7 @@ namespace Game
                     backgroundImg = Resources.choose;
                     break;
                 case SCENE_NUMBER.showScore:
-                    backgroundImg = Resources._01;
+                    backgroundImg = Resources.gameover;
                     break;
                 case SCENE_NUMBER.instructions:
                     backgroundImg = Resources._01;
