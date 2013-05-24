@@ -17,8 +17,6 @@ namespace Game
         public int numLives { set; get; }
         public Scene currentScene { set; get; }
 
-
-
         //ova najverojatno ke treba u forms poso tamu ke se regulira dali e udren ili ne 
         //public bool isPlayerHit { set; get; }
 
@@ -26,8 +24,6 @@ namespace Game
         public Game(SCENE_NUMBER sceneNo)
         {
             goToScene(sceneNo);
-
-
         }
 
         //moze da se bira samo begin(pocetna strana),choosePlayer,controls,ili da pocne so level 1 
@@ -55,26 +51,23 @@ namespace Game
             if (sceneNo <= SCENE_NUMBER.level3)
             {
                 this.currentScene = new Scene(sceneNo, currentScore, numLives);
-               
             }
             
         }
 
         public bool isLastLevel()
         {
-
             if (sceneNo == SCENE_NUMBER.level3) return true;
             return false;
- 
         }
 
         public void roundOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
         {
             
-                var circle = new System.Drawing.Drawing2D.GraphicsPath();
-                circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
+            var circle = new System.Drawing.Drawing2D.GraphicsPath();
+            circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
 
-                g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
+            g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
             
             Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
             g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);

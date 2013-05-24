@@ -20,6 +20,7 @@ namespace Game
         public Shot Shot;
         public ProgressBar pbTime;
         public SCENE_NUMBER currentGameState { set; get; }
+        public int currScore = 0;
         
         int ticksCounter;
         int INTERVAL = 15;
@@ -29,11 +30,14 @@ namespace Game
             InitializeComponent();
             currentGameState = SCENE_NUMBER.begin;
             this.hideAllChoosePlayerMenuControls();
+            
             //creating a new game 
             game = new Game(currentGameState);
             this.playerId = PLAYERID.player3;
-
             
+            //labeli za score
+            lblScore.BackColor = Color.Transparent;
+            finScore.BackColor = Color.Transparent;
 
             //fixing the form
             DoubleBuffered = true;
@@ -44,18 +48,14 @@ namespace Game
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
-            
-            
             this.timer1.Tick += new EventHandler(timer1_Tick);
 
             ticksCounter = 0;
-
         }
 
 
         public void setNewGame(PLAYERID playerId)
         {
-
             Shot = new Shot();
             Balls = new List<Ball>();
 
@@ -68,19 +68,24 @@ namespace Game
             //Balls.Add(ball);
             //middle ball
             ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
-           // Balls.Add(ball);
+            //Balls.Add(ball);
             //small ball
             ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
-           // Balls.Add(ball);
+            Balls.Add(ball);
             //smallest ball
             ball = new Ball(this.Width - 115, 270, this.Width, this.Height, 8, 3 * Math.PI / 4);
             Balls.Add(ball);
 
             pbTime = new ProgressBar(10, 412, this.Width-5, 5);
+            
+            finScore.Visible = false;
 
             this.timer1.Interval = INTERVAL;
             this.timer1.Enabled = true;
             this.timer1.Start();
+
+            //if (currentGameState == SCENE_NUMBER.level1 && player.isKilled)
+            //    currScore = 0;
 
         }
 
@@ -101,13 +106,14 @@ namespace Game
             else if (currentGameState == SCENE_NUMBER.showScore)
             {
                 game.currentScene.drawBeginScene(g, this.ClientRectangle);
+                lblScore.Visible = false;
+                this.finScore.Visible = true;
+                finScore.Text = lblScore.Text;
             }
             else if (currentGameState == SCENE_NUMBER.instructions)
             {
                 game.currentScene.drawBeginScene(g, this.ClientRectangle);
             }
-
-
 
             else if (currentGameState == SCENE_NUMBER.level1 || currentGameState == SCENE_NUMBER.level2 || currentGameState == SCENE_NUMBER.level3)
             {  //OVA E ZA NEXT LEVEL IMA BUG MN SE UBRZUVA TAJMEROT NEZNAM ZASTO ,istoto se desavase i na replay ama go izvadiv
@@ -118,58 +124,56 @@ namespace Game
                 //ako neso poveke vi se sviga bujrum pucajte idei .. ivanche te molam ne me hejtaj za vchera jas mnogu te sakam 
                 //i ti pishav  .. nz zasho ne se pratilo :(((((((((
 
-                //if (Balls.Count() == 0)
-                //{
-                //    if (!game.isLastLevel())
-                //    {
-                //        this.Update();
-                      
-                //        if (ticksCounter >=35)
-                //        {
-                //            ticksCounter = 0;
+                if (Balls.Count() == 0)
+                {
+                    if (!game.isLastLevel())
+                    {
+                        this.Update();
 
-                //            player.isKilled = false;
-                //            game.nextLevel();
-                //            INTERVAL += 15;
-                //            setNewGame(playerId);
-                //         }
-                //        else ticksCounter++;
-                         
-                //        Invalidate();
-                //    }
-                //    else
-                //    {
-                        
-                //        if (ticksCounter >= 35)
-                //        {
-                //            currentGameState = SCENE_NUMBER.showScore;
-                //            game.goToScene(currentGameState);
-                //            ticksCounter = 0;
-                //            this.button_QUITGame.Visible = true;
-                //            this.button_QUITGame.Enabled = true;
-                //            //this.button_QUITGame.Size = new Size(Resources.QUIT.Width, Resources.QUIT.Height);
-                //            this.button_QUITGame.Image = Resources.QUIT;
+                        if (ticksCounter >= 35)
+                        {
+                            ticksCounter = 0;
 
-                //            this.btn_back.Image = Resources.mainMenu;
-                //            this.btn_back.Size = new Size(Resources.mainMenu.Width, Resources.mainMenu.Height);
-                //            this.btn_back.Location = new Point(95, 312);
+                            player.isKilled = false;
+                            game.nextLevel();
+                            INTERVAL += 15;
+                            setNewGame(playerId);
+                        }
+                        else ticksCounter++;
 
-                //            this.btn_back.Visible = true;
-                //            this.btn_back.Enabled = true;
+                        Invalidate();
+                    }
+                    else
+                    {
 
-                           
-                //        }
-                //        else
-                //        {
-                //            ticksCounter++;
-                            
-                //        }
-                //        Invalidate();
-                //    }
-                //}
-                //else
+                        if (ticksCounter >= 35)
+                        {
+                            currentGameState = SCENE_NUMBER.showScore;
+                            game.goToScene(currentGameState);
+                            ticksCounter = 0;
+                            this.button_QUITGame.Visible = true;
+                            this.button_QUITGame.Enabled = true;
+                            //this.button_QUITGame.Size = new Size(Resources.QUIT.Width, Resources.QUIT.Height);
+                            this.button_QUITGame.Image = Resources.QUIT;
 
+                            this.btn_back.Image = Resources.mainMenu;
+                            this.btn_back.Size = new Size(Resources.mainMenu.Width, Resources.mainMenu.Height);
+                            this.btn_back.Location = new Point(95, 312);
 
+                            this.btn_back.Visible = true;
+                            this.btn_back.Enabled = true;
+                            this.lblScore.Visible = false;
+                        }
+                        else
+                        {
+                            ticksCounter++;
+
+                        }
+                        Invalidate();
+                    }
+                    
+                }
+                else
                 {
                     //iscrtuvanje na scenata
                     game.currentScene.drawScene(g, this.ClientRectangle);
@@ -233,14 +237,11 @@ namespace Game
                         {
                             if (ticksCounter >= 10)
                             {
-                                
                                 ticksCounter = 0;
-
 
                                 player.isKilled = false;
                                 game.replayLevel();
                                 setNewGame(playerId);
-
                             }
                             else
                             {
@@ -254,14 +255,10 @@ namespace Game
                                 else game.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
                             }
                             Invalidate();
-
-
                         }
-
+                        //currScore = 0;
                     }
-
-
-
+                    
                     //iscrtuvanje na linijata za pukanje
                     if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
                     {
@@ -270,14 +267,11 @@ namespace Game
 
                     //iscrtuvanje na progres barot
                     pbTime.DrawPB(g);
+                    
 
                 }
             }
         }
-
-
-
-
        
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -297,20 +291,17 @@ namespace Game
                     player.IsWalking = true;
                     break;
                case Keys.Space:
-
-                    
-                    if (player.isKilled) break;
-
+                    if (player.isKilled) 
+                        break;
                     if (Shot != null)
-
-                        if (player.isKilled) break;
-
+                        if (player.isKilled) 
+                            break;
                     if (Shot != null)
-
                         Shot.resetShot(player, this.Height);
                     break;
             }
         }
+
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -325,6 +316,7 @@ namespace Game
             }
 
         }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -396,20 +388,27 @@ namespace Game
                                 Balls.Add(ball);
                                 ball = new Ball(current.X - 40, current.Y, this.Width, this.Height, 32, -3 * Math.PI / 4);
                                 Balls.Add(ball);
+                                currScore += 10;
                                 break;
                             case 32:
                                 ball = new Ball(current.X + 30, current.Y, this.Width, this.Height, 20, -Math.PI / 4);
                                 Balls.Add(ball);
                                 ball = new Ball(current.X - 30, current.Y, this.Width, this.Height, 20, -3 * Math.PI / 4);
                                 Balls.Add(ball);
+                                currScore += 15;
                                 break;
                             case 20:
                                 ball = new Ball(current.X + 20, current.Y, this.Width, this.Height, 8, -Math.PI / 4);
                                 Balls.Add(ball);
                                 ball = new Ball(current.X - 20, current.Y, this.Width, this.Height, 8, -3 * Math.PI / 4);
                                 Balls.Add(ball);
+                                currScore += 20;
+                                break;
+                            case 8:
+                                currScore += 25;
                                 break;
                         }
+                        lblScore.Text = currScore.ToString();
                     }
                     break;
                 }
@@ -426,7 +425,9 @@ namespace Game
             this.buttonChoosePLAYER.Enabled = false;
             this.buttonINSTRCTIONS.Enabled = false;
             this.buttonNewGAME.Enabled = false;
+            this.finScore.Visible = false;
         }
+
         private void activateAllBeginMenuControls()
         {
             this.buttonChoosePLAYER.Visible = true;
@@ -448,7 +449,10 @@ namespace Game
             btn_pl1.Visible = false;
             btn_pl2.Visible = false;
             btn_pl3.Visible = false;
+
+            finScore.Visible = false;
         }
+
         private void activateAllChoosePlayerMenuControls()
         {
             btn_back.Enabled = true;
@@ -462,7 +466,9 @@ namespace Game
             btn_pl3.Visible = true;
             this.btn_back.Location = new Point(12, 410);
             this.btn_back.Image = Resources.back;
+            finScore.Visible = false;
         }
+
         private void buttonNewGAME_Click(object sender, EventArgs e)
         {
             currentGameState = SCENE_NUMBER.level1;
@@ -470,6 +476,10 @@ namespace Game
             this.hideAllBeginMenuControls();
             this.hideAllChoosePlayerMenuControls();
             this.setNewGame(this.playerId);
+            this.lblScore.Visible = true;
+            
+            currScore = 0;
+            lblScore.Text = currScore.ToString();
             INTERVAL = 15;
         }
 
@@ -499,6 +509,7 @@ namespace Game
             game.goToScene(currentGameState);
             this.activateAllBeginMenuControls();
             this.hideAllChoosePlayerMenuControls();
+            
             Invalidate();
         }
 
@@ -560,6 +571,10 @@ namespace Game
             this.Close();
         }
 
+   
+
+        
+       
 
 
 

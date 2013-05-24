@@ -17,6 +17,7 @@ namespace Game
         public Image statusBarImg { set; get; }
         public Image levelImg { set; get; }
         public SCENE_NUMBER sceneNo { set; get; }
+     
 
 
         public Scene(SCENE_NUMBER sceneNo, float score, int numLives)
@@ -118,5 +119,7 @@ namespace Game
             this.showLevel(g, ClientRectangle);
 
         }
+
+        
     }
 }

@@ -39,6 +39,8 @@
             this.buttonINSTRCTIONS = new System.Windows.Forms.Button();
             this.buttonNewGAME = new System.Windows.Forms.Button();
             this.buttonChoosePLAYER = new System.Windows.Forms.Button();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.finScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -150,11 +152,35 @@
             this.buttonChoosePLAYER.UseVisualStyleBackColor = false;
             this.buttonChoosePLAYER.Click += new System.EventHandler(this.buttonChoosePLAYER_Click);
             // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(195, 440);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(21, 21);
+            this.lblScore.TabIndex = 8;
+            this.lblScore.Text = "0";
+            this.lblScore.Visible = false;
+            // 
+            // finScore
+            // 
+            this.finScore.AutoSize = true;
+            this.finScore.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finScore.Location = new System.Drawing.Point(488, 244);
+            this.finScore.Name = "finScore";
+            this.finScore.Size = new System.Drawing.Size(21, 21);
+            this.finScore.TabIndex = 9;
+            this.finScore.Text = "0";
+            this.finScore.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 458);
+            this.Controls.Add(this.finScore);
+            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.button_QUITGame);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_pl3);
@@ -169,6 +195,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,6 +210,8 @@
         private System.Windows.Forms.Button btn_pl3;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Button button_QUITGame;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label finScore;
     }
 }
 
