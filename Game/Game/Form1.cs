@@ -22,7 +22,7 @@ namespace Game
         public SCENE_NUMBER currentGameState { set; get; }
         
         int ticksCounter;
-        
+        int INTERVAL = 15;
 
         public Form1()
         {
@@ -45,7 +45,7 @@ namespace Game
             this.MinimizeBox = false;
 
             
-            this.timer1.Interval = 15;
+            
             this.timer1.Tick += new EventHandler(timer1_Tick);
 
             ticksCounter = 0;
@@ -63,20 +63,23 @@ namespace Game
             player = new Player(this.Width / 2, this.Height - game.currentScene.statusBarImg.Height - 91, playerId);
             player.IsWalking = false;
 
-
+            //biggest ball
             ball = new Ball(30, 40, this.Width, this.Height, 40, Math.PI / 4);
-           // Balls.Add(ball);
+            //Balls.Add(ball);
+            //middle ball
             ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
-            //Balls.Add(ball);
+           // Balls.Add(ball);
+            //small ball
             ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
-            Balls.Add(ball);
+           // Balls.Add(ball);
+            //smallest ball
             ball = new Ball(this.Width - 115, 270, this.Width, this.Height, 8, 3 * Math.PI / 4);
-            //Balls.Add(ball);
+            Balls.Add(ball);
 
             pbTime = new ProgressBar(10, 412, this.Width-5, 5);
 
-            
-
+            this.timer1.Interval = INTERVAL;
+            this.timer1.Enabled = true;
             this.timer1.Start();
 
         }
@@ -107,43 +110,66 @@ namespace Game
 
 
             else if (currentGameState == SCENE_NUMBER.level1 || currentGameState == SCENE_NUMBER.level2 || currentGameState == SCENE_NUMBER.level3)
-            {
-                if (Balls.Count() == 0)
-                {
-                    if (game.nextLevel())
-                    {
-                        setNewGame(playerId);
-                    }
-                    else
-                    {
-                        this.Update();
-                        if (ticksCounter >= 25)
-                        {
-                            currentGameState = SCENE_NUMBER.showScore;
-                            game.goToScene(currentGameState);
-                            ticksCounter = 0;
-                            this.button_QUITGame.Visible = true;
-                            this.button_QUITGame.Enabled = true;
-                            //this.button_QUITGame.Size = new Size(Resources.QUIT.Width, Resources.QUIT.Height);
-                            this.button_QUITGame.Image = Resources.QUIT;
+            {  //OVA E ZA NEXT LEVEL IMA BUG MN SE UBRZUVA TAJMEROT NEZNAM ZASTO ,istoto se desavase i na replay ama go izvadiv
+                //od set new da bide u konstruktor
+                //i sea tamu e ok ama megu levelive ne e a neznam zasto zaso da nerecam kodot iako e grd e copy past od toa dole
+                //ako imate ideja neso probajte + za da ne praime neso klasi nz so za level mozeme da napraime enum od BALLperLEVEL
+                //i da gi staime site topcinja u niza i da pustame count do BALL per LEVEL .. samo kako ideja ova ..
+                //ako neso poveke vi se sviga bujrum pucajte idei .. ivanche te molam ne me hejtaj za vchera jas mnogu te sakam 
+                //i ti pishav  .. nz zasho ne se pratilo :(((((((((
 
-                            this.btn_back.Image = Resources.mainMenu;
-                            this.btn_back.Size = new Size(Resources.mainMenu.Width, Resources.mainMenu.Height);
-                            this.btn_back.Location = new Point(95, 312);
+                //if (Balls.Count() == 0)
+                //{
+                //    if (!game.isLastLevel())
+                //    {
+                //        this.Update();
+                      
+                //        if (ticksCounter >=35)
+                //        {
+                //            ticksCounter = 0;
 
-                            this.btn_back.Visible = true;
-                            this.btn_back.Enabled = true;
-                            //TODO: go to menu
-                        }
-                        else
-                        {
-                            ticksCounter++;
+                //            player.isKilled = false;
+                //            game.nextLevel();
+                //            INTERVAL += 15;
+                //            setNewGame(playerId);
+                //         }
+                //        else ticksCounter++;
+                         
+                //        Invalidate();
+                //    }
+                //    else
+                //    {
+                        
+                //        if (ticksCounter >= 35)
+                //        {
+                //            currentGameState = SCENE_NUMBER.showScore;
+                //            game.goToScene(currentGameState);
+                //            ticksCounter = 0;
+                //            this.button_QUITGame.Visible = true;
+                //            this.button_QUITGame.Enabled = true;
+                //            //this.button_QUITGame.Size = new Size(Resources.QUIT.Width, Resources.QUIT.Height);
+                //            this.button_QUITGame.Image = Resources.QUIT;
+
+                //            this.btn_back.Image = Resources.mainMenu;
+                //            this.btn_back.Size = new Size(Resources.mainMenu.Width, Resources.mainMenu.Height);
+                //            this.btn_back.Location = new Point(95, 312);
+
+                //            this.btn_back.Visible = true;
+                //            this.btn_back.Enabled = true;
+
+                           
+                //        }
+                //        else
+                //        {
+                //            ticksCounter++;
                             
-                        }
-                        Invalidate();
-                    }
-                }
-                else
+                //        }
+                //        Invalidate();
+                //    }
+                //}
+                //else
+
+
                 {
                     //iscrtuvanje na scenata
                     game.currentScene.drawScene(g, this.ClientRectangle);
@@ -207,7 +233,7 @@ namespace Game
                         {
                             if (ticksCounter >= 10)
                             {
-
+                                
                                 ticksCounter = 0;
 
 
@@ -239,7 +265,7 @@ namespace Game
                     //iscrtuvanje na linijata za pukanje
                     if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
                     {
-                        Shot.Draw(g, player);
+                        Shot.Draw(g, player); 
                     }
 
                     //iscrtuvanje na progres barot
@@ -444,6 +470,7 @@ namespace Game
             this.hideAllBeginMenuControls();
             this.hideAllChoosePlayerMenuControls();
             this.setNewGame(this.playerId);
+            INTERVAL = 15;
         }
 
         private void buttonChoosePLAYER_Click(object sender, EventArgs e)

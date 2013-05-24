@@ -49,19 +49,24 @@ namespace Game
             }
         }
 
-        public bool nextLevel()
+        public void nextLevel()
         {
             sceneNo += 1;
             if (sceneNo <= SCENE_NUMBER.level3)
             {
                 this.currentScene = new Scene(sceneNo, currentScore, numLives);
-                return true;
+               
             }
-            else
-               return false;
-
+            
         }
 
+        public bool isLastLevel()
+        {
+
+            if (sceneNo == SCENE_NUMBER.level3) return true;
+            return false;
+ 
+        }
 
         public void roundOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
         {
