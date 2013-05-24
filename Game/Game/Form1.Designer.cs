@@ -29,20 +29,47 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button_QUITGame = new System.Windows.Forms.Button();
+            this.btn_back = new System.Windows.Forms.Button();
             this.btn_pl3 = new System.Windows.Forms.Button();
             this.btn_pl2 = new System.Windows.Forms.Button();
             this.btn_pl1 = new System.Windows.Forms.Button();
             this.buttonINSTRCTIONS = new System.Windows.Forms.Button();
             this.buttonNewGAME = new System.Windows.Forms.Button();
             this.buttonChoosePLAYER = new System.Windows.Forms.Button();
-            this.btn_back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button_QUITGame
+            // 
+            this.button_QUITGame.Enabled = false;
+            this.button_QUITGame.Image = ((System.Drawing.Image)(resources.GetObject("button_QUITGame.Image")));
+            this.button_QUITGame.Location = new System.Drawing.Point(502, 312);
+            this.button_QUITGame.Name = "button_QUITGame";
+            this.button_QUITGame.Size = new System.Drawing.Size(146, 81);
+            this.button_QUITGame.TabIndex = 7;
+            this.button_QUITGame.UseVisualStyleBackColor = true;
+            this.button_QUITGame.Visible = false;
+            this.button_QUITGame.Click += new System.EventHandler(this.button_QUITGame_Click);
+            // 
+            // btn_back
+            // 
+            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_back.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.Image = global::Game.Properties.Resources.back;
+            this.btn_back.Location = new System.Drawing.Point(12, 410);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(139, 58);
+            this.btn_back.TabIndex = 6;
+            this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // btn_pl3
             // 
@@ -123,24 +150,12 @@
             this.buttonChoosePLAYER.UseVisualStyleBackColor = false;
             this.buttonChoosePLAYER.Click += new System.EventHandler(this.buttonChoosePLAYER_Click);
             // 
-            // btn_back
-            // 
-            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_back.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_back.Font = new System.Drawing.Font("Ravie", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.Image = global::Game.Properties.Resources.back;
-            this.btn_back.Location = new System.Drawing.Point(12, 410);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(139, 58);
-            this.btn_back.TabIndex = 6;
-            this.btn_back.UseVisualStyleBackColor = false;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 458);
+            this.Controls.Add(this.button_QUITGame);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_pl3);
             this.Controls.Add(this.btn_pl2);
@@ -167,6 +182,7 @@
         private System.Windows.Forms.Button btn_pl2;
         private System.Windows.Forms.Button btn_pl3;
         private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.Button button_QUITGame;
     }
 }
 

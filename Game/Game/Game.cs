@@ -36,30 +36,41 @@ namespace Game
             this.sceneNo = sceneNo;
             this.currentScore = currentScore;
             this.numLives = numLives;
-            // if (sceneNo != SCENE_NUMBER.choosePlayer)
             this.currentScene = new Scene(sceneNo, currentScore, numLives);
         }
 
-
-
-        //public void nextLevel()
-        //{
-        //    sceneNo += 1;
-        //    if (sceneNo <= SCENE_NUMBER.level3)
-        //        this.currentScene = new Scene(sceneNo, currentScore, numLives);
-        //    else
-        //        gameOver();
-
-        //}
-
-
-        public void gameOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
+        //replay the level with one life less
+        public void replayLevel()
         {
+            numLives -= 1;
+            if (numLives > 0)
+            {              
+                goToScene(sceneNo, currentScore,numLives);
+            }
+        }
 
-            var circle = new System.Drawing.Drawing2D.GraphicsPath();
-            circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
+        public bool nextLevel()
+        {
+            sceneNo += 1;
+            if (sceneNo <= SCENE_NUMBER.level3)
+            {
+                this.currentScene = new Scene(sceneNo, currentScore, numLives);
+                return true;
+            }
+            else
+               return false;
 
-            g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
+        }
+
+
+        public void roundOver(float playerCoordinateX, float playerCoordinateY, float radius, Graphics g, Rectangle ClientRectangle)
+        {
+            
+                var circle = new System.Drawing.Drawing2D.GraphicsPath();
+                circle.AddEllipse(playerCoordinateX, playerCoordinateY, radius, radius);
+
+                g.SetClip(circle, System.Drawing.Drawing2D.CombineMode.Exclude);
+            
             Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
             g.FillRectangle(brush, 0, 0, currentScene.backgroundImg.Width, currentScene.backgroundImg.Height);
 

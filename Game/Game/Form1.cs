@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Threading;
 using Game.Properties;
 
 namespace Game
@@ -22,8 +20,7 @@ namespace Game
         public Shot Shot;
         public ProgressBar pbTime;
         public SCENE_NUMBER currentGameState { set; get; }
-        public Stopwatch stopwatch;
-
+        
         int ticksCounter;
         
 
@@ -47,8 +44,9 @@ namespace Game
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
-            //this.button_QUIT.Enabled = false;
-            //this.button_QUIT.Visible = false;
+            
+            this.timer1.Interval = 15;
+            this.timer1.Tick += new EventHandler(timer1_Tick);
 
             ticksCounter = 0;
 
@@ -67,7 +65,7 @@ namespace Game
 
 
             ball = new Ball(30, 40, this.Width, this.Height, 40, Math.PI / 4);
-            Balls.Add(ball);
+           // Balls.Add(ball);
             ball = new Ball(this.Width - 115, 180, this.Width, this.Height, 32, 3 * Math.PI / 4);
             //Balls.Add(ball);
             ball = new Ball(30, 220, this.Width, this.Height, 20, Math.PI / 4);
@@ -75,14 +73,10 @@ namespace Game
             ball = new Ball(this.Width - 115, 270, this.Width, this.Height, 8, 3 * Math.PI / 4);
             //Balls.Add(ball);
 
-            pbTime = new ProgressBar(10, 412, this.Width, 5);
+            pbTime = new ProgressBar(10, 412, this.Width-5, 5);
 
-            this.timer1.Interval = 20;
+            
 
-            if (game.numLives == 5)
-                this.timer1.Tick += new EventHandler(timer1_Tick);
-
-            this.timer1.Enabled = true;
             this.timer1.Start();
 
         }
@@ -113,112 +107,152 @@ namespace Game
 
 
             else if (currentGameState == SCENE_NUMBER.level1 || currentGameState == SCENE_NUMBER.level2 || currentGameState == SCENE_NUMBER.level3)
-            {   //make Quit button appear only if it isn't the end of the game
-                if (!player.isKilled)
+            {
+                if (Balls.Count() == 0)
                 {
-                    //this.button_QUIT.Enabled = true;
-                    // this.button_QUIT.Visible = true;
-                }
-
-                //iscrtuvanje na scenata
-                game.currentScene.drawScene(g, this.ClientRectangle);
-
-                //iscrtuvanje na topkite
-                foreach (Ball ball in Balls)
-                {
-                    ball.DrawBall(g);
-                }
-                //iscrtuvanje na igracot
-                player.DrawPlayer(g, this.ClientRectangle);
-
-
-                //  ako igracot e pogoden od topka igrata zavrsuva
-                if (player.isHit(Balls))
-                {
-                    timer1.Stop();
-                    //  if it's the last round draw the circle around the player and allow score View
-                    if (game.numLives == 1)
+                    if (game.nextLevel())
                     {
-                        //make Quit button disappear
-                        //  this.button_QUIT.Enabled = false;
-                        //  this.button_QUIT.Visible = false;
-                        player.isKilled = true;
+                        setNewGame(playerId);
+                    }
+                    else
+                    {
                         this.Update();
-
-                        //otkako ke gi izgubi site zivoti
-                        //broi 15 ticks
-                        //za vreme na broenjeto se zatemnuva
-                        //i posle ide na gameOver(showScore)
-                        if (ticksCounter >= 25) 
+                        if (ticksCounter >= 25)
                         {
                             currentGameState = SCENE_NUMBER.showScore;
                             game.goToScene(currentGameState);
                             ticksCounter = 0;
+                            this.button_QUITGame.Visible = true;
+                            this.button_QUITGame.Enabled = true;
+                            //this.button_QUITGame.Size = new Size(Resources.QUIT.Width, Resources.QUIT.Height);
+                            this.button_QUITGame.Image = Resources.QUIT;
+
+                            this.btn_back.Image = Resources.mainMenu;
+                            this.btn_back.Size = new Size(Resources.mainMenu.Width, Resources.mainMenu.Height);
+                            this.btn_back.Location = new Point(95, 312);
+
+                            this.btn_back.Visible = true;
+                            this.btn_back.Enabled = true;
                             //TODO: go to menu
                         }
                         else
                         {
                             ticksCounter++;
-                            game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                            
                         }
                         Invalidate();
                     }
-                    //if it's not the last round when the player is killed wait for10 ticks and replay the round
-                    else
+                }
+                else
+                {
+                    //iscrtuvanje na scenata
+                    game.currentScene.drawScene(g, this.ClientRectangle);
+
+                    //iscrtuvanje na topkite
+                    foreach (Ball ball in Balls)
                     {
-                         if (ticksCounter >= 10) 
+                        ball.DrawBall(g);
+                    }
+                    //iscrtuvanje na igracot
+                    player.DrawPlayer(g, this.ClientRectangle);
+
+
+                    //  ako igracot e pogoden od topka igrata zavrsuva ili istece vremeto
+                    if (player.isHit(Balls) || pbTime.timeUp())
+                    {
+                        timer1.Stop();
+                        //  if it's the last round draw the circle around the player and allow score View
+                        if (game.numLives == 1)
                         {
-                            
-                            ticksCounter = 0;
+
                             player.isKilled = true;
-                            replayLevel();  
+                            this.Update();
+
+                            //otkako ke gi izgubi site zivoti
+                            //broi 15 ticks
+                            //za vreme na broenjeto se zatemnuva
+                            //i posle ide na gameOver(showScore)
+                            if (ticksCounter >= 25)
+                            {
+                                currentGameState = SCENE_NUMBER.showScore;
+                                game.goToScene(currentGameState);
+                                ticksCounter = 0;
+                                this.button_QUITGame.Visible = true;
+                                this.button_QUITGame.Enabled = true;
+                                //this.button_QUITGame.Size = new Size(Resources.QUIT.Width, Resources.QUIT.Height);
+                                this.button_QUITGame.Image = Resources.QUIT;
+
+                                this.btn_back.Image = Resources.mainMenu;
+                                this.btn_back.Size = new Size(Resources.mainMenu.Width, Resources.mainMenu.Height);
+                                this.btn_back.Location = new Point(95, 312);
+
+                                this.btn_back.Visible = true;
+                                this.btn_back.Enabled = true;
+                                //TODO: go to menu
+                            }
+                            else
+                            {
+                                ticksCounter++;
+                                if (pbTime.timeUp())
+                                {
+                                    Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
+                                    g.FillRectangle(brush, 0, 0, game.currentScene.backgroundImg.Width, game.currentScene.backgroundImg.Height);
+                                }
+                                else game.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                            }
+                            Invalidate();
                         }
+                        //if it's not the last round when the player is killed wait for 10 ticks and replay the round
                         else
                         {
-                            ticksCounter++;
-                            game.gameOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
-                        }
-                         Invalidate();  
+                            if (ticksCounter >= 10)
+                            {
 
-                        
+                                ticksCounter = 0;
+
+
+                                player.isKilled = false;
+                                game.replayLevel();
+                                setNewGame(playerId);
+
+                            }
+                            else
+                            {
+                                player.isKilled = true;
+                                ticksCounter++;
+                                if (pbTime.timeUp())
+                                {
+                                    Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
+                                    g.FillRectangle(brush, 0, 0, game.currentScene.backgroundImg.Width, game.currentScene.backgroundImg.Height);
+                                }
+                                else game.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                            }
+                            Invalidate();
+
+
+                        }
+
                     }
 
+
+
+                    //iscrtuvanje na linijata za pukanje
+                    if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
+                    {
+                        Shot.Draw(g, player);
+                    }
+
+                    //iscrtuvanje na progres barot
+                    pbTime.DrawPB(g);
+
                 }
-
-
-
-                //iscrtuvanje na linijata za pukanje
-                if (player.isShooting && Shot.numTicks > 0 && Shot.numTicks < 150)
-                {
-                    Shot.Draw(g, player);
-                }
-
-                //iscrtuvanje na progres barot
-                pbTime.DrawPB(g);
-
-            }
-
-        }
-
-
-
-
-        //replay the level with one life less
-        public void replayLevel()
-        {
-            this.game.numLives -= 1;
-            if (game.numLives > 0)
-            {
-                player.isKilled = false;
-                float score = game.currentScore;
-                SCENE_NUMBER scNo = game.sceneNo;
-                int lives = game.numLives;
-                game = new Game(scNo);
-                game.goToScene(scNo, score, lives);
-                setNewGame(playerId);
             }
         }
 
+
+
+
+       
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -236,9 +270,9 @@ namespace Game
                     player.Move(this.Width);
                     player.IsWalking = true;
                     break;
-                case Keys.Space:
+               case Keys.Space:
 
-
+                    
                     if (player.isKilled) break;
 
                     if (Shot != null)
@@ -257,6 +291,8 @@ namespace Game
             switch (e.KeyCode)
             {
                 case Keys.Left:
+                     player.IsWalking = false;
+                    break;
                 case Keys.Right:
                     player.IsWalking = false;
                     break;
@@ -287,10 +323,7 @@ namespace Game
             Shot.numTicks++;
 
             pbTime.timeChange++;
-            if (pbTime.timeChange == this.Width - 5)
-                timer1.Stop();
-
-           
+          
             hitBallCheck(player.isShooting);
 
             Invalidate();
@@ -401,6 +434,8 @@ namespace Game
             btn_pl1.Visible = true;
             btn_pl2.Visible = true;
             btn_pl3.Visible = true;
+            this.btn_back.Location = new Point(12, 410);
+            this.btn_back.Image = Resources.back;
         }
         private void buttonNewGAME_Click(object sender, EventArgs e)
         {
@@ -417,6 +452,11 @@ namespace Game
             this.hideAllBeginMenuControls();
             this.activateAllChoosePlayerMenuControls();
             game.goToScene(SCENE_NUMBER.choosePlayer);
+            this.btn_back.Enabled = true;
+            this.btn_back.Visible = true;
+            this.btn_back.Location = new Point(12, 410);
+            this.btn_back.Size = new Size(Resources.back.Width, Resources.back.Height);
+            this.btn_back.Image = Resources.back;
             Invalidate();
         }
 
@@ -424,6 +464,10 @@ namespace Game
 
         private void btn_back_Click(object sender, EventArgs e)
         {
+            this.btn_back.Visible = false;
+            this.btn_back.Enabled = false;
+            this.button_QUITGame.Visible = false;
+            this.button_QUITGame.Enabled = false;
             currentGameState = SCENE_NUMBER.begin;
             game.goToScene(currentGameState);
             this.activateAllBeginMenuControls();
@@ -464,26 +508,29 @@ namespace Game
         //button which brings you to the Score (END) View
         private void button_showScore_Click(object sender, EventArgs e)
         {
-            //this.button_QUIT.Enabled = false;
-            //this.button_QUIT.Visible = false;
             currentGameState = SCENE_NUMBER.showScore;
             game.goToScene(currentGameState);
-            //TODO: go to menu
             Invalidate();
         }
 
         //button which brings you to the View with instructions
         private void buttonINSTRCTIONS_Click(object sender, EventArgs e)
         {
-           // this.button_QUIT.Enabled = false;
-           // this.button_QUIT.Visible = false;
             currentGameState = SCENE_NUMBER.instructions;
             game.goToScene(currentGameState);
             this.hideAllBeginMenuControls();
             this.hideAllChoosePlayerMenuControls();
             this.btn_back.Enabled = true;
             this.btn_back.Visible = true;
+            this.btn_back.Location = new Point(12, 410);
+            this.btn_back.Size = new Size(Resources.back.Width, Resources.back.Height);
+            this.btn_back.Image = Resources.back;
             Invalidate();
+        }
+
+        private void button_QUITGame_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

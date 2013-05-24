@@ -59,7 +59,7 @@ namespace Game
                     backgroundImg = Resources.gameover;
                     break;
                 case SCENE_NUMBER.instructions:
-                    backgroundImg = Resources._01;
+                    backgroundImg = Resources.instructionsbg;
                     break;
             }
         }

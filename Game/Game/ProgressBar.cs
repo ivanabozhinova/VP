@@ -32,6 +32,11 @@ namespace Game
 
         }
 
+        public bool timeUp()
+        {
+            if (timeChange >= widthR - 5) return true;
+            return false;
+        }
 
     }
 }
