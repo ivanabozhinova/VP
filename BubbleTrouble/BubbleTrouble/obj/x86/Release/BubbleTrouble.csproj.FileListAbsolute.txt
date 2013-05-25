@@ -1,0 +1,7 @@
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Release\BubbleTrouble.Game.resources
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Release\BubbleTrouble.Properties.Resources.resources
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Release\BubbleTrouble.csproj.GenerateResource.Cache
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\bin\Release\BubbleTrouble.exe
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\bin\Release\BubbleTrouble.pdb
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Release\BubbleTrouble.exe
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Release\BubbleTrouble.pdb

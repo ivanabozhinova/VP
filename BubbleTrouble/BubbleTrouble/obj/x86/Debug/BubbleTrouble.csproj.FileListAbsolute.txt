@@ -1,0 +1,8 @@
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.Game.resources
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.Properties.Resources.resources
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.csproj.GenerateResource.Cache
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\bin\Debug\BubbleTrouble.exe
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\bin\Debug\BubbleTrouble.pdb
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.exe
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.pdb
+C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.csprojResolveAssemblyReference.cache

@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{33D2A6E5-A08E-4D7F-A487-F6A46CF23DD3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BubbleTrouble</RootNamespace>
+    <AssemblyName>BubbleTrouble</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ball.cs" />
+    <Compile Include="MenuViews\InstructionsView.cs" />
+    <Compile Include="MenuViews\ChoosePlayerView.cs" />
+    <Compile Include="Levels\FirstLevelView.cs" />
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Levels\LevelView.cs" />
+    <Compile Include="MenuViews\MainMenuView.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgressBar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Levels\SecondLevelView.cs" />
+    <Compile Include="MenuViews\ScoreView.cs" />
+    <Compile Include="Shot.cs" />
+    <Compile Include="Levels\ThirdLevelView.cs" />
+    <Compile Include="View.cs" />
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\03.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\begin1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\choose.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explosion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fire.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\infoBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\infoBar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instructions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instructionsbg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana_t.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana2_t.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ivana4_t.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl3.2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvlNo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvlNo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvlNo2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvlNo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvlNo3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvlNo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainMenu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pl1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pl2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pl3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3r.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player3r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QUIT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball6.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rball6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simona.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simona2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simona4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sneze4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
