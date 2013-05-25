@@ -78,12 +78,12 @@ namespace BubbleTrouble
             switch (direction)
             {
                 case DIRECTION.right:
-                    X += 8;
+                    X += 10;
                     if (X >= worldWidth - 50)
                         X = worldWidth - 50;
                     break;
                 case DIRECTION.left:
-                    X -= 8;
+                    X -= 10;
                     if (X < -5)
                         X = -5;
                     break;

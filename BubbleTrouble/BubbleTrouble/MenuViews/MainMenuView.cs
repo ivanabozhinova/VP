@@ -14,7 +14,7 @@ namespace BubbleTrouble
         public Image instructionsImg { set; get; }
 
         public MainMenuView()
-            : base(Resources.start1)
+            : base(Resources.start)
         {
             
             this.newGameImg=Resources.newGame;

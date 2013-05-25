@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.button_BACK = new System.Windows.Forms.Button();
             this.button_QUITGame = new System.Windows.Forms.Button();
             this.button_NewGAME = new System.Windows.Forms.Button();
@@ -163,8 +164,9 @@
             this.Controls.Add(this.button_NewGAME);
             this.Controls.Add(this.button_QUITGame);
             this.Controls.Add(this.button_BACK);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Game";
-            this.Text = "Form1";
+            this.Text = "Bublle Trouble";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

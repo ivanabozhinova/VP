@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BubbleTrouble.Properties;
+using System.Media;
 
 
 namespace BubbleTrouble
@@ -113,8 +114,8 @@ namespace BubbleTrouble
                 player.DrawPlayer(g, this.ClientRectangle);
 
                 if (Balls.Count() == 0)
-                { 
-                    
+                {
+
                     if (currentView.GetType() != typeof(ThirdLevelView))
                     {
                         this.Update();
@@ -132,28 +133,19 @@ namespace BubbleTrouble
                             //za congrats Level 1 completed etc...
                             lblScore.Visible = false;
                             if (currentView.GetType() == typeof(FirstLevelView))
-                                g.DrawImage(Resources.lvl1c,0,0,this.Width,this.Height);
+                                g.DrawImage(Resources.lvl1c, 0, 0, this.Width, this.Height);
                             if (currentView.GetType() == typeof(SecondLevelView))
                                 g.DrawImage(Resources.lvl2c, 0, 0, this.Width, this.Height);
                         }
                     }
                     else
                     {
-                        if (ticksCounter >= 65)
-                        {
-                            currentView = new ScoreView(); 
-                            currentView.backgroundImg = Resources.youWon;
-                            this.enableAllScoreViewControls();
-                            ticksCounter = 0;
-                            this.lblScore.Visible = false;
-                            Invalidate();
-                        }
-                        else
-                        {
-                            ticksCounter++;
-                            
-                        }
-                          
+                        currentView = new ScoreView();
+                        currentView.backgroundImg = Resources.youWon;
+                        this.enableAllScoreViewControls();
+                        ticksCounter = 0;
+                        this.lblScore.Visible = false;
+                        Invalidate();
                     }
                     
                 }
@@ -298,9 +290,14 @@ namespace BubbleTrouble
                     player.IsWalking = true;
                     break;
                 case Keys.Space:
-                    if (player.isKilled) break;
-                    if (Shot != null)
-                        Shot.resetShot(player, this.Height);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                    if (player != null)
+                    {
+                        if (player.isKilled) break;
+                        if (Shot != null)
+                            Shot.resetShot(player, this.Height);
+                    }
                     break;
             }
         }

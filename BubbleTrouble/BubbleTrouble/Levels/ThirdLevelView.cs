@@ -32,6 +32,8 @@ namespace BubbleTrouble
             //smallest ball
             ball = new Ball(width - 115, 270, width, height, 8, 3 * Math.PI / 4);
             Balls.Add(ball);
+            ball = new Ball(90, 270, width, height, 8, Math.PI / 4);
+            Balls.Add(ball);
         }
     }
 }

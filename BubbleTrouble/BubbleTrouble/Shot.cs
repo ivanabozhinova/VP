@@ -27,7 +27,6 @@ namespace BubbleTrouble
             numTicks = 0;
             yGrowth = 10;
             deviation = 5;
-
         }
 
         /*Ivana:
@@ -79,7 +78,7 @@ namespace BubbleTrouble
             {
                 player.isShooting = true;
                 shootingX = player.X + 25;
-                shootingY = height - 100;
+                shootingY = height - 159;
                 numTicks = 0;
                 ShootingPoints = new List<Point>();
                 deviation = 5;

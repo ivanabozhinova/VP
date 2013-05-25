@@ -67,13 +67,6 @@ namespace BubbleTrouble.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap _011 {
-            get {
-                object obj = ResourceManager.GetObject("_011", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap _02 {
             get {
                 object obj = ResourceManager.GetObject("_02", resourceCulture);
@@ -130,20 +123,6 @@ namespace BubbleTrouble.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap gameover2 {
-            get {
-                object obj = ResourceManager.GetObject("gameover2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap infoBar {
-            get {
-                object obj = ResourceManager.GetObject("infoBar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap infoBar1 {
             get {
                 object obj = ResourceManager.GetObject("infoBar1", resourceCulture);
@@ -179,13 +158,6 @@ namespace BubbleTrouble.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap lvlNo1 {
-            get {
-                object obj = ResourceManager.GetObject("lvlNo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap lvlNo11 {
             get {
                 object obj = ResourceManager.GetObject("lvlNo11", resourceCulture);
@@ -193,23 +165,9 @@ namespace BubbleTrouble.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap lvlNo2 {
-            get {
-                object obj = ResourceManager.GetObject("lvlNo2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap lvlNo21 {
             get {
                 object obj = ResourceManager.GetObject("lvlNo21", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap lvlNo3 {
-            get {
-                object obj = ResourceManager.GetObject("lvlNo3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -378,13 +336,6 @@ namespace BubbleTrouble.Properties {
         internal static System.Drawing.Bitmap start {
             get {
                 object obj = ResourceManager.GetObject("start", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap start1 {
-            get {
-                object obj = ResourceManager.GetObject("start1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
