@@ -57,7 +57,6 @@ namespace BubbleTrouble
             this.level = 1;
             this.scores = 0;
             this.numLives = 5;
-
             
         }
 

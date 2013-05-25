@@ -30,7 +30,8 @@ namespace BubbleTrouble
 
         }
 
-        /*Crtanjeto na linijata e implementirano so pomos na metodot DrawCurve
+        /*Ivana:
+         * Crtanjeto na linijata e implementirano so pomos na metodot DrawCurve
         * koj povrzuva niza od tocki.
         * So sekoj tik na tajmerot dodavame edna tocka poveke vo nizata.
         * Koordinatite na novata tocka se za yGrowth povisoko od prethodnata i 
@@ -64,11 +65,9 @@ namespace BubbleTrouble
                 //STRELKA
                 Point lastOne = (Point)ShootingPoints[ShootingPoints.Count-1];
                 trianglePoints = new Point[3];
-
                 trianglePoints[0] = new Point(lastOne.X - 2, lastOne.Y - 10);
                 trianglePoints[1] = new Point(lastOne.X - 8, lastOne.Y + 2);
                 trianglePoints[2] = new Point(lastOne.X + 4, lastOne.Y + 2);
-
                 g.FillPolygon(new SolidBrush(Color.Black), trianglePoints);
                 trianglePoints = new Point[3];
             }
