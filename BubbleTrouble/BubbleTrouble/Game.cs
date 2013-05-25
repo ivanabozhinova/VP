@@ -142,14 +142,7 @@ namespace BubbleTrouble
                         if (ticksCounter >= 65)
                         {
                             currentView = new ScoreView(); 
-                           /* treba da bide new YouWonView
-                            * ili da se naprave u new ScoreView da prima paramatar 
-                            * bool Won (ama ne moze u konstruktoro oti bila izvedena, ne znam zaso :S)
-                            * i ako e won da ja stave slikata za you won
-                            * ako ne za game over
-                            * oti taa slika e edinstvena razlika, kopcinjata 
-                            * i se drugo e isto
-                            */
+                            currentView.backgroundImg = Resources.youWon;
                             this.enableAllScoreViewControls();
                             ticksCounter = 0;
                             this.lblScore.Visible = false;
@@ -158,9 +151,9 @@ namespace BubbleTrouble
                         else
                         {
                             ticksCounter++;
-
+                            
                         }
-                        g.DrawImage(Resources.youWon, 0, 0, this.Width, this.Height);  
+                          
                     }
                     
                 }
