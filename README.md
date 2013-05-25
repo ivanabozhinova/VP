@@ -54,8 +54,7 @@
 ## **Screenshoots од изгледот на играта и кратко упатство како се игра**
 
 •       При стартување на играта се отвара прозорец каде јасно се гледа името на играта и основните опции кои ги нуди, како:
-  
-![Alt text](D:\Fakultet\IV semestar\Vizuelno programiranje\PrintScr za BubbleTrouble\NewGame.png "Optional title")
+
 o	Инструкции за контролите (How to play) – клик на копчето Instructions
  
 o	Избор на играч – клик на копчето Choose a Player 
