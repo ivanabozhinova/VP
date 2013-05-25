@@ -6,3 +6,12 @@ C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\bin\Debug\BubbleTrouble.pdb
 C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.exe
 C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.pdb
 C:\Users\Windows\Desktop\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.csprojResolveAssemblyReference.cache
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.exe
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.pdb
+C:\VP\BubbleTrouble\BubbleTrouble\bin\Debug\BubbleTrouble.exe
+C:\VP\BubbleTrouble\BubbleTrouble\bin\Debug\BubbleTrouble.pdb
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.Game.resources
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\BubbleTrouble.Properties.Resources.resources
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\VP\BubbleTrouble\BubbleTrouble\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Levels\LevelView.cs" />
     <Compile Include="MenuViews\MainMenuView.cs" />
+    <Compile Include="MenuViews\YouWonView.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressBar.cs" />
@@ -299,6 +300,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Untitled-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl1c.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl2c.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\youWon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

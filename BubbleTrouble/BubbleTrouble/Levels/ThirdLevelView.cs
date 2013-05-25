@@ -22,10 +22,10 @@ namespace BubbleTrouble
            
             //biggest ball
             ball = new Ball(30, 40, width, height, 40, Math.PI / 4);
-            Balls.Add(ball);
+            //Balls.Add(ball);
             //middle ball
             ball = new Ball(width - 115, 180, width, height, 32, 3 * Math.PI / 4);
-            Balls.Add(ball);
+            //Balls.Add(ball);
             //small ball
             ball = new Ball(30, 220, width, height, 20, Math.PI / 4);
             //Balls.Add(ball);

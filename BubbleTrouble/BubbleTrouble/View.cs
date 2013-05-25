@@ -13,8 +13,7 @@ namespace BubbleTrouble
 
         public  View(Image backgroundImg)
         {
-            this.backgroundImg=backgroundImg;
-           
+            this.backgroundImg=backgroundImg;           
         }
 
         //draw the background

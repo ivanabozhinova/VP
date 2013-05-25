@@ -83,8 +83,6 @@ namespace BubbleTrouble
             this.timer1.Interval = INTERVAL;
             this.timer1.Enabled = true;
             this.timer1.Start();
-
-
         }
 
 
@@ -121,7 +119,7 @@ namespace BubbleTrouble
                     if (currentView.GetType() != typeof(ThirdLevelView))
                     {
                         this.Update();
-                        if (ticksCounter >= 65)
+                        if (ticksCounter >= 15)
                         {
                             ticksCounter = 0;
                             player.isKilled = false;
@@ -134,15 +132,25 @@ namespace BubbleTrouble
                             ticksCounter++;
                             //za congrats Level 1 completed etc...
                             lblScore.Visible = false;
-                             g.DrawImage(Resources.start,0,0,this.Width,this.Height);
-
+                            if (currentView.GetType() == typeof(FirstLevelView))
+                                g.DrawImage(Resources.lvl1c,0,0,this.Width,this.Height);
+                            if (currentView.GetType() == typeof(SecondLevelView))
+                                g.DrawImage(Resources.lvl2c, 0, 0, this.Width, this.Height);
                         }
                     }
                     else
                     {
                         if (ticksCounter >= 65)
                         {
-                            currentView = new ScoreView();
+                            currentView = new ScoreView(); 
+                           /* treba da bide new YouWonView
+                            * ili da se naprave u new ScoreView da prima paramatar 
+                            * bool Won (ama ne moze u konstruktoro oti bila izvedena, ne znam zaso :S)
+                            * i ako e won da ja stave slikata za you won
+                            * ako ne za game over
+                            * oti taa slika e edinstvena razlika, kopcinjata 
+                            * i se drugo e isto
+                            */
                             this.enableAllScoreViewControls();
                             ticksCounter = 0;
                             this.lblScore.Visible = false;
@@ -153,7 +161,7 @@ namespace BubbleTrouble
                             ticksCounter++;
 
                         }
-                        
+                        g.DrawImage(Resources.youWon, 0, 0, this.Width, this.Height);  
                     }
                     
                 }
