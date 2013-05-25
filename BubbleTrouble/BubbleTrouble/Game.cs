@@ -118,7 +118,7 @@ namespace BubbleTrouble
                     if (currentView.GetType() != typeof(ThirdLevelView))
                     {
                         this.Update();
-                        if (ticksCounter >= 15)
+                        if (ticksCounter >= 35)
                         {
                             ticksCounter = 0;
                             player.isKilled = false;
@@ -169,7 +169,7 @@ namespace BubbleTrouble
                     if (player.isHit(Balls) || pbTime.timeUp())
                     {
                         timer1.Stop();
-                        //  if it's the last round draw the circle around the player and allow score View
+                        // ako e posledna runda i igracot go podogi topka ili istece vremeto
                         if (numLives == 1)
                         {
 
@@ -423,6 +423,7 @@ namespace BubbleTrouble
 
         private void disableAllMainMenuControls()
         {
+            
             MainMenuView mainManuView = (MainMenuView)currentView;
             this.button_NewGAME = mainManuView.disableMainMenuView_newGAME_Button(this.button_NewGAME);
             this.button_choosePLAYER = mainManuView.disableMainMenuView_choosePLAYER_Button(this.button_choosePLAYER);
@@ -482,11 +483,13 @@ namespace BubbleTrouble
 
         private void button_NewGAME_Click(object sender, EventArgs e)
         {
+            level = 1;
+            scores = 0;
+            numLives = 5;
             this.disableAllMainMenuControls();
             currentView = new FirstLevelView(numLives, scores);
             this.startGame();
             this.lblScore.Visible = true;
-            scores = 0;
             lblScore.Text = scores.ToString();
             Invalidate();
         }

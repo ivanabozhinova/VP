@@ -24,13 +24,13 @@ namespace BubbleTrouble
            // Balls.Add(ball);
             //middle ball
             ball = new Ball(width - 115, 180, height, height, 32, 3 * Math.PI / 4);
-            //Balls.Add(ball);
+            Balls.Add(ball);
             //small ball
             ball = new Ball(30, 220, width, height, 20, Math.PI / 4);
-           //  Balls.Add(ball);
+             Balls.Add(ball);
             //smallest ball
             ball = new Ball(width - 115, 270, width, height, 8, 3 * Math.PI / 4);
-             Balls.Add(ball);
+             //Balls.Add(ball);
         }
         
     }
