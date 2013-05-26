@@ -67,15 +67,18 @@
 o	Инструкции за контролите (How to play) – клик на копчето Instructions
  ![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/Instructions.png)
 o	Избор на играч – клик на копчето Choose a Player 
+![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/ChoosePlayer.png)
 •	При клик на копчето New Game се отвара поглед од првиот левел на играта, соодветен број на топки за левелот и играчот со кој сме избрале да играме, како и прогрес бар со време, број на животи и поени.
 Играта е поделена во три нивоа, а секое ниво е со своја тежина. Разликата меѓу нивоата е во бројот и брзината на топките.
 Левелот е успешно поминат кога се уништени сите топки во временскиот интервал кој е даден, и притоа играчот да не биде погоден од некоја топка.
 
+ ![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/LevelCompleted.png)
  
-
 •	За да стигне играчот до победа, потребно е да пука во топките и да избегнува тие да удрат во него. Во зависност од големината, кога топката е погодена се дели на две помали топки и тоа е анимирано со „експлозија“ 
+  ![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/Shot.png)
   ![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/BallExplosion.png)
 
 •	На крајот од играта (кога истекло времето или играчот ги изгубил сите животи) се прикажува прозорец  дека играта завршила, а кога ќе стигне до победа се прикажува прозорец со соодветна порака дека победил.
 Во двата случаи се прикажува бројот на поени што ги освоил и опции да игра повторно или да ја исклучи играта.
-  
+  ![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/GameOver.png)
+  ![My image](https://raw.github.com/ibozinova/VP/master/PrintScr_za_BubbleTrouble/YouWon.png)
