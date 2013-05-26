@@ -39,6 +39,7 @@
             this.button_player3 = new System.Windows.Forms.Button();
             this.lblScore = new System.Windows.Forms.Label();
             this.finScore = new System.Windows.Forms.Label();
+            this.buttonPause = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_BACK
@@ -149,11 +150,23 @@
             this.finScore.TabIndex = 9;
             this.finScore.Visible = false;
             // 
+            // buttonPause
+            // 
+            this.buttonPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPause.Location = new System.Drawing.Point(416, 432);
+            this.buttonPause.Name = "buttonPause";
+            this.buttonPause.Size = new System.Drawing.Size(48, 40);
+            this.buttonPause.TabIndex = 10;
+            this.buttonPause.Text = "PAUSE";
+            this.buttonPause.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(768, 466);
+            this.Controls.Add(this.buttonPause);
             this.Controls.Add(this.finScore);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.button_player3);
@@ -187,6 +200,7 @@
         private System.Windows.Forms.Button button_player3;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label finScore;
+        private System.Windows.Forms.Label buttonPause;
     }
 }
 

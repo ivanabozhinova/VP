@@ -54,7 +54,7 @@ namespace BubbleTrouble
         //display the number of current level
         protected  void drawLevel(Graphics g, Rectangle ClientRectangle)
         {
-            g.DrawImage(this.levelImg, ClientRectangle.X + 630, ClientRectangle.Y + 430,48,44);
+            g.DrawImage(this.levelImg, ClientRectangle.X + 615, ClientRectangle.Y + 425,48,44);
         }
 
         //draw the background

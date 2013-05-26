@@ -284,13 +284,6 @@ namespace BubbleTrouble.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap player3r1 {
-            get {
-                object obj = ResourceManager.GetObject("player3r1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap QUIT {
             get {
                 object obj = ResourceManager.GetObject("QUIT", resourceCulture);

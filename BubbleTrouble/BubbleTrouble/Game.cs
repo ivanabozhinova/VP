@@ -36,10 +36,15 @@ namespace BubbleTrouble
             this.playerId = PLAYERID.player1;
             this.enableAllMainMenuControls();
 
+           
             //fixing the form
             DoubleBuffered = true;
             this.Width = 700 + 15;
             this.Height = 520;
+
+            //pause
+            this.buttonPause.BackColor = Color.Transparent;
+            this.buttonPause.Visible = false;
 
             //labeli za score
             lblScore.BackColor = Color.Transparent;
@@ -104,12 +109,23 @@ namespace BubbleTrouble
                     this.finScore.Visible = true;
                     finScore.Text = lblScore.Text;
                 }
+                this.buttonPause.Visible = false;
             }
 
             else
             {
+                this.buttonPause.Visible = true;
+                lblScore.Visible = true;
+
                 //iscrtuvanje na scenata
                 currentView.drawView(g, this.ClientRectangle);
+
+                //iscrtuvanje na linijata za pukanje
+                if (player.isShooting && Shot.numTicks < 150)
+                {
+                    Shot.Draw(g, player);
+                }
+
                 //iscrtuvanje na igracot
                 player.DrawPlayer(g, this.ClientRectangle);
 
@@ -132,6 +148,7 @@ namespace BubbleTrouble
                             ticksCounter++;
                             //za congrats Level 1 completed etc...
                             lblScore.Visible = false;
+                            buttonPause.Visible = false;
                             if (currentView.GetType() == typeof(FirstLevelView))
                                 g.DrawImage(Resources.lvl1c, 0, 0, this.Width, this.Height);
                             if (currentView.GetType() == typeof(SecondLevelView))
@@ -139,12 +156,13 @@ namespace BubbleTrouble
                         }
                     }
                     else
-                    {
+                    {                        
                         currentView = new ScoreView();
                         currentView.backgroundImg = Resources.youWon;
                         this.enableAllScoreViewControls();
                         ticksCounter = 0;
                         this.lblScore.Visible = false;
+                        buttonPause.Visible = false;
                         Invalidate();
                     }
                     
@@ -219,10 +237,10 @@ namespace BubbleTrouble
                     pbTime.DrawPB(g);
                 }
 
-               //iscrtuvanje na linijata za pukanje
-               if (player.isShooting && Shot.numTicks < 150)
-               {  Shot.Draw(g, player);
-               }
+               ////iscrtuvanje na linijata za pukanje
+               //if (player.isShooting && Shot.numTicks < 150)
+               //{  Shot.Draw(g, player);
+               //}
             }
         }
 
@@ -577,6 +595,22 @@ namespace BubbleTrouble
         {
             this.Close();
         }
+
+        private void buttonPause_Click(object sender, EventArgs e)
+        {
+            if (buttonPause.Text == "PAUSE")
+            {
+                buttonPause.Text = "RESUME";
+                timer1.Enabled = false;
+            }
+            else if (buttonPause.Text == "RESUME")
+            {
+                buttonPause.Text = "PAUSE";
+                timer1.Enabled = true;
+            }
+        }
+
+       
 
 
 

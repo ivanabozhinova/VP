@@ -78,7 +78,7 @@ namespace BubbleTrouble
             {
                 player.isShooting = true;
                 shootingX = player.X + 25;
-                shootingY = height - 159;
+                shootingY = height - 100; //159 za da bide nad coveceto
                 numTicks = 0;
                 ShootingPoints = new List<Point>();
                 deviation = 5;

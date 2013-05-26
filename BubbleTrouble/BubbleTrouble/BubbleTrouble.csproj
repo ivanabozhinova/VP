@@ -131,9 +131,6 @@
     <None Include="Resources\infoBar.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\infoBar.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\instructions.png" />
   </ItemGroup>
   <ItemGroup>
@@ -309,6 +306,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\youWon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\infoBar.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
