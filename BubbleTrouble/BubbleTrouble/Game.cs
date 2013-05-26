@@ -197,7 +197,7 @@ namespace BubbleTrouble
                                 ticksCounter = 0;
 
                             }
-                            else
+                            else 
                             {
                                 ticksCounter++;
                                 if (pbTime.timeUp())
@@ -205,7 +205,7 @@ namespace BubbleTrouble
                                     Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
                                     g.FillRectangle(brush, 0, 0, currentView.backgroundImg.Width, currentView.backgroundImg.Height);
                                 }
-                                else this.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                                this.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
                             }
                             Invalidate();
                         }
@@ -226,8 +226,9 @@ namespace BubbleTrouble
                                 {
                                     Brush brush = new SolidBrush(Color.FromArgb(30, Color.Black));
                                     g.FillRectangle(brush, 0, 0, currentView.backgroundImg.Width, currentView.backgroundImg.Height);
+                                    
                                 }
-                                else this.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
+                                this.roundOver(this.player.X - 25, this.player.Y - 10, 100, g, this.ClientRectangle);
                             }
                         }
                         Invalidate();
@@ -236,11 +237,6 @@ namespace BubbleTrouble
                     //iscrtuvanje na progres barot
                     pbTime.DrawPB(g);
                 }
-
-               ////iscrtuvanje na linijata za pukanje
-               //if (player.isShooting && Shot.numTicks < 150)
-               //{  Shot.Draw(g, player);
-               //}
             }
         }
 
@@ -336,6 +332,7 @@ namespace BubbleTrouble
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
             for (int i = 0; i < Balls.Count; i++)
             {
                 if (!Balls[i].dying)
@@ -363,7 +360,7 @@ namespace BubbleTrouble
             Invalidate();
         }
 
-
+        //Proveruva dali postoi topka sto e pogodena od spiralata
         public void hitBallCheck(bool isShooting)
         {
             if (isShooting)
@@ -388,7 +385,6 @@ namespace BubbleTrouble
                             }
                     }
             }
-
 
             for (int i = Balls.Count - 1; i >= 0;  i--)
              {
@@ -591,11 +587,13 @@ namespace BubbleTrouble
             Invalidate();
         }
 
+        //kopce QUIT za isklucuvanje na igrata (vo posledniot pogled-ScoreView)
         private void button_QUITGame_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //kopce za pauziranje na igrata
         private void buttonPause_Click(object sender, EventArgs e)
         {
             if (buttonPause.Text == "PAUSE")
